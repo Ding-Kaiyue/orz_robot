@@ -8,6 +8,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include "geometry_msgs/msg/quaternion.hpp"
+#include "std_msgs/msg/int8_multi_array.hpp"
 #include "robot_interfaces/msg/qt_recv.hpp"
 #include "robot_interfaces/msg/arm_state.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
@@ -20,6 +21,7 @@ class TcpServer : public rclcpp::Node
         TcpServer(const std::string& node_name) : Node(node_name)
         {
             publisher_ = this->create_publisher<robot_interfaces::msg::QtRecv>("qt_cmd", 10);
+            publisher_gripper_states_ = this->create_publisher<std_msgs::msg::Int8MultiArray>("gripper_cmd", 10);
             subscriber_states_ = this->create_subscription<robot_interfaces::msg::ArmState>("arm_states", 10, std::bind(&TcpServer::arm_states_callback, this, _1));
             subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&TcpServer::joint_states_callback, this, _1));
 
@@ -67,11 +69,13 @@ class TcpServer : public rclcpp::Node
         std::thread accept_thread_;
         int receivedValue[50];
         robot_interfaces::msg::QtRecv qt_cmd;
+        std_msgs::msg::Int8MultiArray gripper_states;
         int client_fd_;
         geometry_msgs::msg::Pose end_effector_pose;     // 末端执行器的当前姿态
         tf2::Quaternion end_effector_quat;    // 末端执行器的当前四元数
 
-        rclcpp::Publisher<robot_interfaces::msg::QtRecv>::SharedPtr publisher_;
+        rclcpp::Publisher<robot_interfaces::msg::QtRecv>::SharedPtr publisher_;         // joint_states
+        rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr publisher_gripper_states_;     // gripper states
         rclcpp::Subscription<robot_interfaces::msg::ArmState>::SharedPtr subscriber_states_;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;
 
@@ -139,7 +143,7 @@ class TcpServer : public rclcpp::Node
                     qt_cmd.working_mode = 0x08;
                     qt_cmd.arm_pose_goal.position = end_effector_pose.position;
                     qt_cmd.arm_pose_goal.orientation = end_effector_pose.orientation;
-                    qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
+                    // qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
                     if (data[1] == 0x01) {           // Position                  
                         if (data[2] == 0x01) {           // +
                             qt_cmd.arm_pose_goal.position.z = end_effector_pose.position.z + 0.01 * data[3];
@@ -179,7 +183,7 @@ class TcpServer : public rclcpp::Node
                     qt_cmd.working_mode = 0x08;
                     qt_cmd.arm_pose_goal.position = end_effector_pose.position;
                     qt_cmd.arm_pose_goal.orientation = end_effector_pose.orientation;
-                    qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
+                    // qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
                     if (data[1] == 0x01) {           // Position
                         if (data[2] == 0x01) {           // +
                             RCLCPP_INFO(this->get_logger(), "xpos+%d", data[3]);
@@ -216,7 +220,7 @@ class TcpServer : public rclcpp::Node
                     qt_cmd.working_mode = 0x08;
                     qt_cmd.arm_pose_goal.position = end_effector_pose.position;
                     qt_cmd.arm_pose_goal.orientation = end_effector_pose.orientation;
-                    qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
+                    // qt_cmd.gripper_goal.data = {data[4], data[5], data[6]};
                     if (data[1] == 0x01) {           // Position
                         if (data[2] == 0x01) {           // +
                             RCLCPP_INFO(this->get_logger(), "ypos+%d", data[3]);
@@ -250,16 +254,24 @@ class TcpServer : public rclcpp::Node
                     break;
                 }
                 case 1145: {
-                    RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[1], data[2], data[3]);
-                    RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[4], data[5], data[6]);
-                    RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[7], data[8], data[9]);
+                    // RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[1], data[2], data[3]);
+                    // RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[4], data[5], data[6]);
+                    // RCLCPP_INFO(this->get_logger(), "%d, %d, %d", data[7], data[8], data[9]);
 
                     qt_cmd.joint_angles_goal.data = {data[1], data[2], data[3], data[4], data[5], data[6]};
-                    qt_cmd.gripper_goal.data = {data[7], data[8], data[9]};
+                    // qt_cmd.gripper_goal.data = {data[7], data[8], data[9]};
                     qt_cmd.working_mode = 0x09;
                     qt_cmd.arm_pose_goal = end_effector_pose;
                     publisher_->publish(qt_cmd);       
                     RCLCPP_INFO(this->get_logger(), "qt_cmd topic has been published");
+                    break;
+                }
+                case 1245: {
+                    gripper_states.data.clear();
+                    gripper_states.data.push_back(data[1]);
+                    gripper_states.data.push_back(data[2]);
+                    gripper_states.data.push_back(data[3]);
+                    publisher_gripper_states_->publish(gripper_states);
                     break;
                 }
                 default:
@@ -294,7 +306,7 @@ class TcpServer : public rclcpp::Node
             memcpy(buffer.data(), positions.data(), positionSize);
             memcpy(buffer.data() + positionSize, efforts.data(), effortSize);
             memcpy(buffer.data() + positionSize + effortSize, velocities.data(), velocitySize);
-
+            
             send(client_fd_, buffer.data(), dataSize, 0);
             // RCLCPP_INFO(this->get_logger(), "Sent joint positions and efforts to client");
         }

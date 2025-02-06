@@ -41,14 +41,14 @@ class RobotStateGet : public rclcpp :: Node
                 arm_states.end_effector_pose.position.z = transform.transform.translation.z;
                 arm_states.end_effector_pose.orientation = transform.transform.rotation;
 
-                RCLCPP_INFO(this->get_logger(), "Get the arm position: %lf, %lf, %lf. Get the arm orientation: %lf, %lf, %lf, %lf", 
-                                                    arm_states.end_effector_pose.position.x, 
-                                                    arm_states.end_effector_pose.position.y,
-                                                    arm_states.end_effector_pose.position.z,
-                                                    arm_states.end_effector_pose.orientation.w,
-                                                    arm_states.end_effector_pose.orientation.x,
-                                                    arm_states.end_effector_pose.orientation.y,
-                                                    arm_states.end_effector_pose.orientation.z);
+                // RCLCPP_INFO(this->get_logger(), "Get the arm position: %lf, %lf, %lf. Get the arm orientation: %lf, %lf, %lf, %lf", 
+                //                                     arm_states.end_effector_pose.position.x, 
+                //                                     arm_states.end_effector_pose.position.y,
+                //                                     arm_states.end_effector_pose.position.z,
+                //                                     arm_states.end_effector_pose.orientation.w,
+                //                                     arm_states.end_effector_pose.orientation.x,
+                //                                     arm_states.end_effector_pose.orientation.y,
+                //                                     arm_states.end_effector_pose.orientation.z);
                 publisher_states_->publish(arm_states);
             } catch (tf2::TransformException &ex) {
                 RCLCPP_WARN(this->get_logger(), "Could not transform: %s", ex.what());

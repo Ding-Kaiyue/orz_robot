@@ -212,10 +212,10 @@ class SocketCanReceiverNode : public rclcpp :: Node
             joint_state_fdb.effort[4] = (double)effort_data[4];
             joint_state_fdb.effort[5] = (double)effort_data[5];
             
-            // RCLCPP_INFO(this->get_logger(), "Motor angle feedback: %f, %f, %f, %f, %f, %f", 
-            //                                         joint_state_fdb.position[0], joint_state_fdb.position[1],
-            //                                         joint_state_fdb.position[2], joint_state_fdb.position[3], 
-            //                                         joint_state_fdb.position[4], joint_state_fdb.position[5]);
+            RCLCPP_INFO(this->get_logger(), "Motor angle feedback: %f, %f, %f, %f, %f, %f", 
+                                                    joint_state_fdb.position[0], joint_state_fdb.position[1],
+                                                    joint_state_fdb.position[2], joint_state_fdb.position[3], 
+                                                    joint_state_fdb.position[4], joint_state_fdb.position[5]);
             publisher_->publish(joint_state_fdb);
 
             for (uint8_t i = 0; i < 6; i++) {

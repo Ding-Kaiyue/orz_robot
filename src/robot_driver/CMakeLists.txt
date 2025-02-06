@@ -22,7 +22,7 @@ add_executable(robot_driver src/robot_driver.cpp)
 ament_target_dependencies(robot_driver rclcpp std_msgs message_filters serial sensor_msgs robot_interfaces)
 
 add_executable(robot_driver_cantx src/robot_driver_cantx.cpp)
-ament_target_dependencies(robot_driver_cantx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
+ament_target_dependencies(robot_driver_cantx rclcpp std_msgs can_msgs ros2_socketcan sensor_msgs robot_interfaces)
 
 add_executable(robot_driver_canrx src/robot_driver_canrx.cpp)
 ament_target_dependencies(robot_driver_canrx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
