@@ -168,27 +168,7 @@ class RobotFunctions : public rclcpp :: Node
 
                     RCLCPP_INFO(this->get_logger(), "Plan (pose goal) %s", success ? "SUCCEED" : "FAILED");
                     
-                    pub.working_mode = msg->working_mode;
-                    pub.enable_flag = true;
-                    // gripper_msgs.resize(3);
                     if (success) { 
-                        const trajectory_msgs::msg::JointTrajectoryPoint& last_point = plan.trajectory_.joint_trajectory.points.back();
-                        std_msgs::msg::Float64MultiArray inv_kin_msg;
-                        inv_kin_msg.data.resize(last_point.positions.size());
-                        RCLCPP_INFO(this->get_logger(), "inv_kin_msg.data.size = %ld", inv_kin_msg.data.size());
-                        for (size_t i = 0; i < inv_kin_msg.data.size(); i++) {
-                            inv_kin_msg.data[i] = last_point.positions[i];
-                            RCLCPP_INFO(this->get_logger(), "inv_kin_msg.data[%ld]: %lf", i, inv_kin_msg.data[i]);
-                        }
-                        // for (int i = 0; i < 3; i++) {
-                        //     gripper_msgs[i] = msg->gripper_goal.data[i];
-                        //     RCLCPP_INFO(this->get_logger(), "Gripper msgs [%d]: [%d]", i, gripper_msgs[i]);
-                        // }
-                        pub.joint_group_positions = inv_kin_msg.data;
-                        // pub.gripper_msgs = gripper_msgs;
-                        publisher_->publish(pub);
-                        // 此时应该给上位机反馈规划成功标志
-                        // ************** For Test **************
                         arm->execute(plan); 
                         
                         plan_result.data = true;
@@ -207,26 +187,15 @@ class RobotFunctions : public rclcpp :: Node
                     if (msg->joint_angles_goal.data.size() < 6) {
                         RCLCPP_WARN(this->get_logger(), "Received joint goal with incorrect size: %zu", msg->joint_angles_goal.data.size());
                         return;
-                    }
-                    pub.working_mode = msg->working_mode;
-                    pub.enable_flag = true;
+                    }                    
                     joint_group_positions.resize(6);
-                    // gripper_msgs.resize(3);
                     for (int i = 0; i < 6; i++) {
                         joint_group_positions[i] = static_cast<double>(msg->joint_angles_goal.data[i] * M_PI / 180.0);
                         RCLCPP_INFO(this->get_logger(), "Joint group positions [%d]: %lf", i+1, joint_group_positions[i]);
                     }
-                    // for (int i = 0; i < 3; i++) {
-                    //     gripper_msgs[i] = msg->gripper_goal.data[i];
-                    //     RCLCPP_INFO(this->get_logger(), "Gripper msgs [%d]: [%d]", i, gripper_msgs[i]);
-                    // }
-                    pub.joint_group_positions = joint_group_positions;
-                    // pub.gripper_msgs = gripper_msgs;
-                    publisher_->publish(pub);
-                    // ************** For Test **************
+                    
                     arm->setJointValueTarget(joint_group_positions);
                     arm->move();
-                    // ************** For Test **************
                     break;
                 }
                 case 0x0A: {
@@ -234,7 +203,7 @@ class RobotFunctions : public rclcpp :: Node
                     for (size_t i = 0; i < 6; i++) {
                         joint_group_positions[i] = 0.0f;
                     }
-                    // 写入关节值(for gazebo)正式版本删除在gazebo中控制的内容
+
                     arm->setJointValueTarget(joint_group_positions);
                     arm->move();
                     break;
@@ -244,7 +213,7 @@ class RobotFunctions : public rclcpp :: Node
                     for (size_t i = 0; i < 6; i++) {
                         joint_group_positions[i] = 0.0f;
                     }
-                    // 写入关节值(for gazebo)正式版本删除在gazebo中控制的内容
+
                     arm->setJointValueTarget(joint_group_positions);
                     arm->move();
                     break;

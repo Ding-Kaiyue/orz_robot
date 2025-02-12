@@ -22,9 +22,17 @@ find_package(actionlib_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
 find_package(robot_interfaces REQUIRED)
 
+include_directories(
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
+)
 
 add_executable(robot_state_get src/robot_state_get.cpp)
 ament_target_dependencies(robot_state_get geometry_msgs std_msgs rclcpp moveit_ros_planning_interface moveit_ros_move_group tf2_ros robot_interfaces)
+
+add_executable(robot_key_controller src/robot_key_controller.cpp)
+ament_target_dependencies(robot_key_controller rclcpp moveit_ros_planning_interface moveit_ros_move_group geometry_msgs std_msgs)
 
 add_executable(robot_func src/robot_func.cpp)
 ament_target_dependencies(robot_func 
@@ -44,6 +52,7 @@ ament_target_dependencies(robot_func
 install(TARGETS
     robot_state_get
     robot_func
+    robot_key_controller
     DESTINATION lib/${PROJECT_NAME}
 )
 

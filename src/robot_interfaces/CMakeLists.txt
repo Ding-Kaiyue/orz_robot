@@ -24,6 +24,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ArmState.msg"
   "msg/QtPub.msg"
   "msg/MotorFdb.msg"
+  "msg/RobotControlMsg.msg"
   DEPENDENCIES std_msgs geometry_msgs sensor_msgs tf2_geometry_msgs tf2_ros trajectory_msgs
 )
 
