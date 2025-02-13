@@ -32,6 +32,20 @@ JOINT6_NEGATIVE = 52
 GRIPPER_OPEN = 53
 GRIPPER_CLOSE = 54
 
+FORWARD = 55
+BACKWARD = 56
+LEFT = 57
+RIGHT = 58
+UP = 59
+DOWN = 60
+ROLL_POSITIVE = 61
+ROLL_NEGATIVE = 62
+PITCH_POSITIVE = 63
+PITCH_NEGATIVE = 64
+YAW_POSITIVE = 65
+YAW_NEGATIVE = 66
+
+
 settings = termios.tcgetattr(sys.stdin)
 
 msg = """
@@ -68,6 +82,17 @@ keyboard, thereby controlling the movement of the arm.
 CTRL-C to quit.
 """
 
+msg_cartesian = """
+At this mode, you can directly set the position and orientation of the end-effector of the arm 
+by long pressing the keyboard, thereby controlling the movement of the arm.
+--------------------------------------------------------------------------------------------------
+|  Keyboard  |    q/a   |    w/s   |    e/d    |    r/f    |    t/g    |    y/h    |   Gripper   |
+--------------------------------------------------------------------------------------------------
+|    Key     | forward/ |   right/ |    up/    |    roll   |   pitch   |    yaw    |     [/]     |
+|  Function  | backward |   left   |    down   |    ctrl   |   ctrl    |    ctrl   |  open/close |   
+--------------------------------------------------------------------------------------------------     
+"""
+
 # 添加一个字典来映射按键和模式
 key_mode_mapping = {
     '`': BACKTOSTART,
@@ -100,6 +125,24 @@ key_jointctrl_mapping = {
     '[': GRIPPER_OPEN,
     ']': GRIPPER_CLOSE,
 }
+
+key_cartesian_mapping = {
+    'q': FORWARD,
+    'w': RIGHT,
+    'e': UP,
+    'r': ROLL_POSITIVE,
+    't': PITCH_POSITIVE,
+    'y': YAW_POSITIVE,
+    'a': BACKWARD,
+    's': LEFT,
+    'd': DOWN,
+    'f': ROLL_NEGATIVE,
+    'g': PITCH_NEGATIVE,
+    'h': YAW_NEGATIVE,
+    '[': GRIPPER_OPEN,
+    ']': GRIPPER_CLOSE,
+}
+
 # 定义每个模式的允许前序模式
 mode_preconditions = {
     BACKTOSTART: [PASSIVE, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
@@ -130,11 +173,13 @@ def main(args=None):
     rclpy.init(args=args)
     node = rclpy.create_node('keyboard_control_node')
     publisher_mode_ = node.create_publisher(Int8, 'keyboard_control_mode', qos_profile_system_default)
-    publisher_joint_action_ = node.create_publisher(Int8, 'joint_action', qos_profile_system_default)
+    publisher_joint_action_ = node.create_publisher(Int8, 'jointctrl_action', qos_profile_system_default)
+    publisher_cartesian_ = node.create_publisher(Int8, 'cartesian_action', qos_profile_system_default)
 
     keyboard_control_working_mode = PASSIVE  # 上电默认电机为阻尼状态(实际上为速度模式速度为0)
     mode_msg = Int8()
-    joint_action_msg = Int8()
+    joint_action_msg = Int8()       # JOINTCTRL Mode
+    cartesian_msg = Int8()          # CARTESIAN Mode
 
     try:
         print(msg)
@@ -152,6 +197,8 @@ def main(args=None):
                     print(f"当前模式 {keyboard_control_working_mode} 无法切换到模式 {target_mode}")
             elif key in key_jointctrl_mapping and keyboard_control_working_mode == JOINTCONTROL:
                 joint_action_msg.data = key_jointctrl_mapping[key]
+            elif key in key_cartesian_mapping and keyboard_control_working_mode == CARTESIAN:
+                cartesian_msg.data = key_cartesian_mapping[key]
             else:
                 if key == '\x03':
                     break
@@ -159,6 +206,7 @@ def main(args=None):
             mode_msg.data = keyboard_control_working_mode
             publisher_mode_.publish(mode_msg)
             publisher_joint_action_.publish(joint_action_msg)
+            publisher_cartesian_.publish(cartesian_msg)
     except KeyboardInterrupt:  
         pass
     

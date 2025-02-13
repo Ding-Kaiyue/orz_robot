@@ -3,8 +3,11 @@
 #include <geometry_msgs/msg/pose.hpp>
 #include <std_msgs/msg/int8.hpp>
 #include <robot_interfaces/msg/robot_control_msg.hpp>
+#include <robot_interfaces/msg/arm_state.hpp>
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "std_msgs/msg/int8_multi_array.hpp"
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <chrono>
 #include <thread>
 #include "robot_key_controller.h"
@@ -16,6 +19,9 @@ KeyboardController::KeyboardController(std::string node_name) : Node(node_name) 
     motor_msg_pub = this->create_publisher<robot_interfaces::msg::RobotControlMsg>("motor_msg", 10);
     gripper_msg_pub = this->create_publisher<std_msgs::msg::Int8MultiArray>("gripper_msg", 10);
     subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&KeyboardController::joint_states_callback, this, std::placeholders::_1));
+    subscriber_arm_states_ = this->create_subscription<robot_interfaces::msg::ArmState>("arm_states", 10, std::bind(&KeyboardController::arm_states_callback, this, std::placeholders::_1));
+    timer_ = this->create_wall_timer(std::chrono::microseconds(50), std::bind(&KeyboardController::timer_callback, this));
+
     // 设置机械臂运动允许的误差
     arm->setGoalJointTolerance(0.0007);
     // 设置机械臂运动参数
@@ -55,11 +61,13 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
             break;
         }
         case JOINTCONTROL: {         // 关节空间速度控制，可以通过长按键盘直接地给定机械臂六个关节运动的速度
-            joint_action_ = this->create_subscription<std_msgs::msg::Int8>("joint_action", 10, std::bind(&KeyboardController::joint_action_callback, this, std::placeholders::_1));
+            timer_ = this->create_wall_timer(std::chrono::microseconds(20), std::bind(&KeyboardController::timer_callback, this));
+            jointctrl_action_ = this->create_subscription<std_msgs::msg::Int8>("jointctrl_action", 10, std::bind(&KeyboardController::jointctrl_action_callback, this, std::placeholders::_1));
             break;
         }
         case CARTESIAN: {            // 笛卡尔空间控制，可以通过键盘给定机械臂末端的期望位置与姿态的运动速度
-
+            cartesian_action_ = this->create_subscription<std_msgs::msg::Int8>("cartesian_action", 10, std::bind(&KeyboardController::cartesian_action_callback, this, std::placeholders::_1));
+            break;
         }
         case MOVEJ: {
 
@@ -90,7 +98,8 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
     }
 }
 
-void KeyboardController::joint_action_callback(const std_msgs::msg::Int8::SharedPtr msg) {
+void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::SharedPtr msg) {
+    last_msg_time = this->now();
     switch (msg->data) {
         case JOINT1_POSITIVE: {
             rbt_ctrl_msg.motor_enable_flag.resize(6);
@@ -444,6 +453,401 @@ void KeyboardController::joint_action_callback(const std_msgs::msg::Int8::Shared
     }
 }
 
+void KeyboardController::timer_callback()
+{
+    auto elapsed_time = this->now() - last_msg_time;
+    // 将时间差转换为ms
+    auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed_time.to_chrono<std::chrono::nanoseconds>());
+    if (elapsed_ms.count() > 100) {
+        rbt_ctrl_msg.motor_enable_flag.resize(6);
+        rbt_ctrl_msg.motor_mode.resize(6);
+        rbt_ctrl_msg.motor_msg.resize(6);
+
+        for (size_t i = 0; i < rbt_ctrl_msg.motor_enable_flag.size(); i++) {
+            rbt_ctrl_msg.motor_enable_flag[i] = true;
+            rbt_ctrl_msg.motor_mode[i] = VELOCITY_MODE;
+            rbt_ctrl_msg.motor_msg[i] = 0.0f;
+        }
+
+        motor_msg_pub->publish(rbt_ctrl_msg);
+    }
+}
+
+void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg) {
+    geometry_msgs::msg::Pose arm_current_pose = arm->getCurrentPose().pose;
+    geometry_msgs::msg::Pose arm_goal_pose;
+
+    switch (msg->data) {
+        case FORWARD: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.x += 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in FORWARD direction");
+            }
+            break;
+        }
+        case BACKWARD: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.x -= 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in BACKWARD direction");
+            }
+            break;
+        }
+        case LEFT: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.y -= 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in LEFT direction");
+            }
+            break;
+        }
+        case RIGHT: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.y += 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in RIGHT direction");
+            }
+            break;
+        }
+        case UP: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.z += 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in UP direction");
+            }
+            break;
+        }
+        case DOWN: {
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.z -= 0.01;
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in DOWN direction");
+            }
+            break;
+        }
+        case ROLL_POSITIVE: {
+            arm_goal_pose = arm_current_pose;
+            double roll_angle = 0.017453f; // 1度
+
+            // 创建一个表示绕x轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(roll_angle, 0, 0);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in ROLL_POSITIVE direction");
+            }
+            break;
+        }
+        case ROLL_NEGATIVE: {
+            arm_goal_pose = arm_current_pose;
+            double roll_angle = -0.017453f; // -1度
+
+            // 创建一个表示绕x轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(roll_angle, 0, 0);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in ROLL_NEGATIVE direction");
+            }
+            break;
+        }
+        case PITCH_POSITIVE: {
+            arm_goal_pose = arm_current_pose;
+            double pitch_angle = 0.017453f; // 1度
+
+            // 创建一个表示绕y轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(0, pitch_angle, 0);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in PITCH_POSITIVE direction");
+            }
+            break;
+        }
+        case PITCH_NEGATIVE: {
+            arm_goal_pose = arm_current_pose;
+            double pitch_angle = -0.017453f; // 1度
+
+            // 创建一个表示绕y轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(0, pitch_angle, 0);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in PITCH_NEGATIVE direction");
+            }
+            break;
+        }
+        case YAW_POSITIVE: {
+            arm_goal_pose = arm_current_pose;
+            double yaw_angle = 0.017453f; // 1度
+
+            // 创建一个表示绕y轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(0, 0, yaw_angle);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in YAW_POSITIVE direction");
+            }
+            break;
+        }
+        case YAW_NEGATIVE: {
+            arm_goal_pose = arm_current_pose;
+            double yaw_angle = -0.017453f; // 1度
+
+            // 创建一个表示绕y轴旋转的四元数
+            tf2::Quaternion q_roll;
+            q_roll.setRPY(0, 0, yaw_angle);
+
+            // 将当前姿态的四元数从geometry_msgs::msg::Quaternion 转换为tf2::Quaternion
+            tf2::Quaternion q_current;
+            tf2::fromMsg(arm_current_pose.orientation, q_current);
+
+            // 组合两个四元数以得到新的姿态
+            tf2::Quaternion q_new = q_roll * q_current;
+            q_new.normalize(); // 归一化四元数
+
+            // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
+
+            std::vector<geometry_msgs::msg::Pose> waypoints;
+            waypoints.push_back(arm_goal_pose);
+
+            moveit_msgs::msg::RobotTrajectory trajectory;
+            const double jump_threshold = 0.0;
+            const double eef_step = 0.01;
+            double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+            if (fraction > 0.9) {
+                moveit::planning_interface::MoveGroupInterface::Plan plan;
+                plan.trajectory_ = trajectory;
+                arm->execute(plan);
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in YAW_NEGATIVE direction");
+            }
+            break;
+        }
+        case GRIPPER_OPEN: {
+            std_msgs::msg::Int8MultiArray gripper_states;
+            if (gripper_position > 0) {
+                gripper_position--;
+            }            
+            gripper_states.data.clear();
+            gripper_states.data.push_back(gripper_position);
+            gripper_states.data.push_back(50);
+            gripper_states.data.push_back(0);
+            gripper_msg_pub->publish(gripper_states);
+            break;
+        }
+        case GRIPPER_CLOSE: {
+            std_msgs::msg::Int8MultiArray gripper_states;
+            if (gripper_position < 255) {
+                gripper_position++;
+            }            
+            gripper_states.data.clear();
+            gripper_states.data.push_back(gripper_position);
+            gripper_states.data.push_back(50);
+            gripper_states.data.push_back(0);
+            gripper_msg_pub->publish(gripper_states);
+            break;
+        }
+        default:
+            break;
+    }
+}
 void KeyboardController::joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
 {
     current_joint_states_.header.stamp = this->get_clock()->now();

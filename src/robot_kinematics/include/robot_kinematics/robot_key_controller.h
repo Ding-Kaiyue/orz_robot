@@ -33,6 +33,20 @@
 #define GRIPPER_OPEN 53
 #define GRIPPER_CLOSE 54
 
+#define FORWARD 55
+#define BACKWARD 56
+#define LEFT 57
+#define RIGHT 58
+#define UP 59
+#define DOWN 60
+#define ROLL_POSITIVE 61
+#define ROLL_NEGATIVE 62
+#define PITCH_POSITIVE 63
+#define PITCH_NEGATIVE 64
+#define YAW_POSITIVE 65
+#define YAW_NEGATIVE 66
+
+
 #define PI_ 3.141592654f
 #define JOINT_ROTATE_POSITIVE_SPEED 0.04*3.141592654f
 #define JOINT_ROTATE_NEGATIVE_SPEED -0.04*3.141592654f
@@ -45,19 +59,27 @@ class KeyboardController : public rclcpp :: Node {
     private:
         std::shared_ptr<moveit::planning_interface::MoveGroupInterface> arm;
         rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr mode_sub;
-        rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr joint_action_;
+        rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr jointctrl_action_;
+        rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr cartesian_action_;
         rclcpp::Publisher<robot_interfaces::msg::RobotControlMsg>::SharedPtr motor_msg_pub;
         rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr gripper_msg_pub;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;
+        rclcpp::Subscription<robot_interfaces::msg::ArmState>::SharedPtr subscriber_arm_states_;
         geometry_msgs::msg::Pose current_pose_;
         sensor_msgs::msg::JointState current_joint_states_;
+        rclcpp::TimerBase::SharedPtr timer_;
         
         // std::vector<double> joint_group_positions;
         robot_interfaces::msg::RobotControlMsg rbt_ctrl_msg;
         uint8_t gripper_position;
+        rclcpp::Time last_msg_time;
+
         void working_mode_callback(const std_msgs::msg::Int8::SharedPtr msg);    
-        void joint_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
+        void jointctrl_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
+        void cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
+        void arm_states_callback(const robot_interfaces::msg::ArmState::SharedPtr msg);
+        void timer_callback();
 };
 
 #endif
