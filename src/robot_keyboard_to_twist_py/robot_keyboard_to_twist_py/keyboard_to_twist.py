@@ -16,8 +16,22 @@ TEACHREPEAT = 8
 SAVESTATE = 9
 TOSTATE = 10
 CALIBRATION = 11
-POSITIVE = 0x0A
-NEGATIVE = 0x0B
+
+JOINT1_POSITIVE = 41
+JOINT1_NEGATIVE = 42
+JOINT2_POSITIVE = 43
+JOINT2_NEGATIVE = 44
+JOINT3_POSITIVE = 45
+JOINT3_NEGATIVE = 46
+JOINT4_POSITIVE = 47
+JOINT4_NEGATIVE = 48
+JOINT5_POSITIVE = 49
+JOINT5_NEGATIVE = 50
+JOINT6_POSITIVE = 51
+JOINT6_NEGATIVE = 52
+GRIPPER_OPEN = 53
+GRIPPER_CLOSE = 54
+
 settings = termios.tcgetattr(sys.stdin)
 
 msg = """
@@ -45,9 +59,9 @@ keyboard, thereby controlling the movement of the arm.
 ----------------------------------------------------------------------------------------------------
 | Joint ID     |     0     |     1     |     2     |     3     |     4     |     5     |  Gripper  |          
 ----------------------------------------------------------------------------------------------------
-| Keyboard     |    q/a    |    w/s    |    e/d    |    r/f    |    t/g    |    y/h    |    {/}    |
+| Keyboard     |    q/a    |    w/s    |    e/d    |    r/f    |    t/g    |    y/h    |    [/]    |
 ----------------------------------------------------------------------------------------------------
-| Joint Action | positive/ | positive/ | positive/ | positive/ | positive/ | positive/ |    open   |
+| Joint Action | positive/ | positive/ | positive/ | positive/ | positive/ | positive/ |   open/   |
 | (right hand) | negative  | negative  | negative  | negative  | negative  | negative  |   close   |
 ----------------------------------------------------------------------------------------------------
 
@@ -71,20 +85,20 @@ key_mode_mapping = {
 }
 
 key_jointctrl_mapping = {
-    'q': POSITIVE,
-    'w': POSITIVE,
-    'e': POSITIVE,
-    'r': POSITIVE,
-    't': POSITIVE,
-    'y': POSITIVE,
-    'a': NEGATIVE,
-    's': NEGATIVE,
-    'd': NEGATIVE,
-    'f': NEGATIVE,
-    'g': NEGATIVE,
-    'h': NEGATIVE,
-    '{': POSITIVE,
-    '}': NEGATIVE,
+    'q': JOINT1_POSITIVE,
+    'w': JOINT2_POSITIVE,
+    'e': JOINT3_POSITIVE,
+    'r': JOINT4_POSITIVE,
+    't': JOINT5_POSITIVE,
+    'y': JOINT6_POSITIVE,
+    'a': JOINT1_NEGATIVE,
+    's': JOINT2_NEGATIVE,
+    'd': JOINT3_NEGATIVE,
+    'f': JOINT4_NEGATIVE,
+    'g': JOINT5_NEGATIVE,
+    'h': JOINT6_NEGATIVE,
+    '[': GRIPPER_OPEN,
+    ']': GRIPPER_CLOSE,
 }
 # 定义每个模式的允许前序模式
 mode_preconditions = {
@@ -115,9 +129,12 @@ def main(args=None):
 
     rclpy.init(args=args)
     node = rclpy.create_node('keyboard_control_node')
-    publisher_ = node.create_publisher(Int8, 'keyboard_control_mode', qos_profile_system_default)
+    publisher_mode_ = node.create_publisher(Int8, 'keyboard_control_mode', qos_profile_system_default)
+    publisher_joint_action_ = node.create_publisher(Int8, 'joint_action', qos_profile_system_default)
+
     keyboard_control_working_mode = PASSIVE  # 上电默认电机为阻尼状态(实际上为速度模式速度为0)
     mode_msg = Int8()
+    joint_action_msg = Int8()
 
     try:
         print(msg)
@@ -128,16 +145,20 @@ def main(args=None):
                 # 检查当前模式是否允许切换到目标模式
                 if keyboard_control_working_mode in mode_preconditions[target_mode]:
                     keyboard_control_working_mode = target_mode
+                    print(f"切换到模式 {target_mode}")
+                    if keyboard_control_working_mode == JOINTCONTROL:
+                        print(msg_jointcontrol)
                 else:
                     print(f"当前模式 {keyboard_control_working_mode} 无法切换到模式 {target_mode}")
-            elif key in key_jointctrl_mapping[key] and keyboard_control_working_mode == JOINTCONTROL:
-                    print(msg_jointcontrol)
+            elif key in key_jointctrl_mapping and keyboard_control_working_mode == JOINTCONTROL:
+                joint_action_msg.data = key_jointctrl_mapping[key]
             else:
                 if key == '\x03':
                     break
                 print(f"无效按键: {key}")
             mode_msg.data = keyboard_control_working_mode
-            publisher_.publish(mode_msg)
-    except KeyboardInterrupt: 
+            publisher_mode_.publish(mode_msg)
+            publisher_joint_action_.publish(joint_action_msg)
+    except KeyboardInterrupt:  
         pass
     

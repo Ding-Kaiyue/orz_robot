@@ -4,6 +4,7 @@
 #include "ros2_socketcan/socket_can_sender.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "robot_interfaces/msg/qt_pub.hpp"
+#include "robot_interfaces/msg/robot_control_msg.hpp"
 #include "std_msgs/msg/int32.hpp"
 #include "std_msgs/msg/int8_multi_array.hpp"
 #include <iostream>
@@ -27,11 +28,14 @@ class SocketCanSenderNode : public rclcpp :: Node
     public:
         SocketCanSenderNode(const std::string& node_name) : Node(node_name)
         {
-            // receive the cubic polynomials from the robot_control node
+            // Rviz Controller
             subscriber_ = this->create_subscription<sensor_msgs::msg::JointState>("motor_cmd", 10, std::bind(&SocketCanSenderNode::joint_pos_callback, this, _1));
-            // receive the qt cmd from the DRobot app
+            // Qt Controller
             subscriber_motor_states_ = this->create_subscription<robot_interfaces::msg::QtPub>("motor_states_req", 10, std::bind(&SocketCanSenderNode::motor_states_request_callback, this, _1));
             subscriber_gripper_states_ = this->create_subscription<std_msgs::msg::Int8MultiArray>("gripper_cmd", 10, std::bind(&SocketCanSenderNode::gripper_states_request_callback, this, _1));
+            // Keyboards Controller
+            subscriber_motor_msgs_ = this->create_subscription<robot_interfaces::msg::RobotControlMsg>("motor_msgs", 10, std::bind(&SocketCanSenderNode::motor_msg_cmd_callback, this, _1));
+
             subscriber_motor_zero_position_set_ = this->create_subscription<std_msgs::msg::Int32>("motor_zero_position_set", 10, std::bind(&SocketCanSenderNode::motor_zero_position_set_callback, this, _1));
             timer_ = this->create_wall_timer(std::chrono::milliseconds(20), std::bind(&SocketCanSenderNode::timer_callback, this));
         }
@@ -39,6 +43,7 @@ class SocketCanSenderNode : public rclcpp :: Node
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_;
         rclcpp::Subscription<robot_interfaces::msg::QtPub>::SharedPtr subscriber_motor_states_;
         rclcpp::Subscription<std_msgs::msg::Int8MultiArray>::SharedPtr subscriber_gripper_states_;
+        rclcpp::Subscription<robot_interfaces::msg::RobotControlMsg>::SharedPtr subscriber_motor_msgs_;
         rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr subscriber_motor_zero_position_set_;
         rclcpp::TimerBase::SharedPtr timer_;
         union FloatUintConverter {
@@ -62,7 +67,7 @@ class SocketCanSenderNode : public rclcpp :: Node
         void joint_pos_callback(const sensor_msgs::msg::JointState::SharedPtr msg) {
             for (size_t i = 0; i < msg->position.size(); i++) {
                 motor_req(i+1, MOTOR_ENABLE, POSITION_MODE, msg->position[i]);
-                std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
             }
         }
 
@@ -71,14 +76,21 @@ class SocketCanSenderNode : public rclcpp :: Node
             if (msg->working_mode != 0x06) {
                 for (size_t i = 0; i < msg->joint_group_positions.size(); i++) {
                     motor_req(i+1, msg->enable_flag, POSITION_MODE, msg->joint_group_positions[i]);
-                    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(20));
                 }
                 // gripper_req(msg->gripper_msgs[0], msg->gripper_msgs[1], msg->gripper_msgs[2]);
             } else {
                 for (size_t i = 0; i < msg->joint_group_positions.size(); i++) {
                     motor_req(i+1, msg->enable_flag, SPEED_MODE, 0.0f);
-                    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(20));
                 }
+            }
+        }
+
+        void motor_msg_cmd_callback(const robot_interfaces::msg::RobotControlMsg::SharedPtr msg) {
+            for (size_t i = 0; i < msg->motor_mode.size(); i++) {
+                motor_req(i+1, msg->motor_enable_flag[i], msg->motor_mode[i], msg->motor_msg[i]);
+                std::this_thread::sleep_for(std::chrono::milliseconds(20)); 
             }
         }
 
