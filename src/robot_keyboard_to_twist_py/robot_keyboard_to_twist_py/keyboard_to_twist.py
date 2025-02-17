@@ -1,7 +1,9 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int8
-from rclpy.qos import qos_profile_system_default
+from std_msgs.msg import Bool
+from std_msgs.msg import Float64MultiArray
+from rclpy.qos import QoSProfile, qos_profile_system_default
 import sys, select, termios, tty
 
 BACKTOSTART = 0
@@ -93,6 +95,47 @@ by long pressing the keyboard, thereby controlling the movement of the arm.
 --------------------------------------------------------------------------------------------------     
 """
 
+msg_movej = """
+At this mode, please enter the pose data in the format of six numbers separated
+by spaces.
+    For example: 0.5 0.1 0.1 0.5 -0.2 0.5.
+Make sure your input is correct. After that, press the “Enter” key twice, and 
+the robotic arm will start moving.
+
+Note: The purpose of pressing “Enter” twice is that when using keyboard control,
+we allow you to continue entering the next pose after pressing “Enter” once. 
+Press “Enter” twice after finishing your input, and the robotic arm will execute
+the tasks in sequence.
+--------------------------------------------------------------------------------
+Please input:
+"""
+
+msg_movel = """
+At this mode, please enter the goal robotic arm pose separated by spaces.
+    For example: 0.5 0.1 0.1 0.5 -0.2 0.5.
+Make sure your input is correct. After that, press the “Enter” key twice, and 
+the robotic arm will start moving.
+
+Note: The purpose of pressing “Enter” twice is that when using keyboard control,
+we allow you to continue entering the next pose after pressing “Enter” once. 
+Press “Enter” twice after finishing your input, and the robotic arm will execute
+the tasks in sequence.
+--------------------------------------------------------------------------------
+Please input:
+"""
+
+msg_movec = """
+At this mode, please input the poses twice, which are the intermediate pose and
+the final pose respectively.
+    For example: Enter the intermediate pose: type “0 0 0 0.45 0 0.4” 
+                 and then press the “Enter” key.
+                 Next, enter the final pose: type “0 0 0 0.45 0.2 0.2” 
+                 and then press the “Enter” key twice. 
+                 
+                 After that, the corresponding operation will be executed.
+--------------------------------------------------------------------------------
+Please input:
+"""
 # 添加一个字典来映射按键和模式
 key_mode_mapping = {
     '`': BACKTOSTART,
@@ -145,13 +188,13 @@ key_cartesian_mapping = {
 
 # 定义每个模式的允许前序模式
 mode_preconditions = {
-    BACKTOSTART: [PASSIVE, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
-    PASSIVE: [BACKTOSTART, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
-    JOINTCONTROL: [BACKTOSTART, PASSIVE, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
-    CARTESIAN: [PASSIVE, JOINTCONTROL, MOVEJ, MOVEL, MOVEC],
-    MOVEJ: [JOINTCONTROL, CARTESIAN, MOVEL, MOVEC],
-    MOVEL: [JOINTCONTROL, CARTESIAN, MOVEJ, MOVEC],
-    MOVEC: [JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL],
+    BACKTOSTART: [BACKTOSTART, PASSIVE, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
+    PASSIVE: [PASSIVE, BACKTOSTART, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
+    JOINTCONTROL: [JOINTCONTROL, BACKTOSTART, PASSIVE, CARTESIAN, MOVEJ, MOVEL, MOVEC, TEACH],
+    CARTESIAN: [CARTESIAN, PASSIVE, JOINTCONTROL, MOVEJ, MOVEL, MOVEC],
+    MOVEJ: [MOVEJ, JOINTCONTROL, CARTESIAN, MOVEL, MOVEC],
+    MOVEL: [MOVEL, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEC],
+    MOVEC: [MOVEC, JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL],
     TEACH: [JOINTCONTROL],
     TEACHREPEAT: [JOINTCONTROL], 
     SAVESTATE: [JOINTCONTROL, CARTESIAN, MOVEJ, MOVEL, MOVEC],
@@ -159,54 +202,141 @@ mode_preconditions = {
     CALIBRATION: [PASSIVE]
 }
 
-def getKey():
-    tty.setraw(sys.stdin.fileno())
-    select.select([sys.stdin], [], [], 0)
-    key = sys.stdin.read(1)
-    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
-    return key      
+class KeyboardControlNode(Node):
+    def __init__(self):
+        super().__init__('keyboard_control_node')
+        self.publisher_mode_ = self.create_publisher(Int8, 'keyboard_control_mode', qos_profile_system_default)
+        self.publisher_joint_action_ = self.create_publisher(Int8, 'jointctrl_action', qos_profile_system_default)
+        self.publisher_cartesian_ = self.create_publisher(Int8, 'cartesian_action', qos_profile_system_default)
+        self.publisher_movej_ = self.create_publisher(Float64MultiArray, 'movej_action', qos_profile_system_default)
+        self.publisher_movel_ = self.create_publisher(Float64MultiArray, 'movel_action', qos_profile_system_default)
+        self.publisher_movec_ = self.create_publisher(Float64MultiArray, 'movec_action', qos_profile_system_default)
+
+        self.keyboard_control_working_mode = PASSIVE
+        self.mode_msg = Int8()
+        self.joint_action_msg = Int8()      # JOINTCTRL Mode
+        self.cartesian_msg = Int8()         # CARTESIAN Mode
+
+        # 保存终端设置
+        self.settings = termios.tcgetattr(sys.stdin)
+
+    def get_key(self):
+        tty.setraw(sys.stdin.fileno())
+        select.select([sys.stdin], [], [], 0)
+        key = sys.stdin.read(1)
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
+        return key
+
+    def run(self):
+        try:
+            print(msg)
+            while(True):
+                key = self.get_key()
+                if key in key_mode_mapping:
+                    target_mode = key_mode_mapping[key]
+                    # 检查当前模式是否允许切换到目标模式
+                    if self.keyboard_control_working_mode in mode_preconditions[target_mode]:
+                        self.keyboard_control_working_mode = target_mode
+                        print(f"切换到模式 {target_mode}")
+                        if self.keyboard_control_working_mode == JOINTCONTROL:
+                            print(msg_jointcontrol)
+                        elif self.keyboard_control_working_mode == MOVEJ:
+                            print(msg_movej)
+                            all_joint_positions = []
+                            empty_input_count_j = 0
+                            while True:
+                                input_str = input()
+                                if input_str:
+                                    try:
+                                        joint_positions = [float(x) for x in input_str.split()]
+                                        if len(joint_positions)!= 6:
+                                            print("Invalid input. Please enter exactly six joint positions.")
+                                        else:
+                                            all_joint_positions.extend(joint_positions)
+                                            empty_input_count_j = 0
+                                    except ValueError:
+                                        print("Invalid input. Please enter valid joint positions separated by spaces.")
+                                else:
+                                    empty_input_count_j += 1
+                                    if empty_input_count_j == 2:
+                                        break
+                            joint_position_msgs = Float64MultiArray()
+                            joint_position_msgs.data = all_joint_positions
+                            self.publisher_movej_.publish(joint_position_msgs)
+                        elif self.keyboard_control_working_mode == MOVEL:
+                            print(msg_movel)
+                            all_arm_positions = []
+                            empty_input_count_l = 0
+                            while True:
+                                input_str = input()
+                                if input_str:
+                                    try:
+                                        arm_positions = [float(x) for x in input_str.split()]
+                                        if len(arm_positions)!= 6:
+                                            print("Invalid input. Please enter exactly six values: x, y, z, roll, yaw and pitch.")
+                                        else:
+                                            all_arm_positions.extend(arm_positions)
+                                            empty_input_count_l = 0
+                                    except ValueError:
+                                        print("Invalid input. Please enter valid arm pose separated by spaces.")
+                                else:
+                                    empty_input_count_l += 1
+                                    if empty_input_count_l == 2:
+                                        break
+                            arm_position_msgs = Float64MultiArray()
+                            arm_position_msgs.data = all_arm_positions
+                            self.publisher_movel_.publish(arm_position_msgs)
+
+                        elif self.keyboard_control_working_mode == MOVEC:
+                            print(msg_movec)
+                            all_circle_arm_positions = []
+                            empty_input_count_c = 0
+                            while True:
+                                input_str = input()
+                                if input_str:
+                                    try:
+                                        circle_arm_positions = [float(x) for x in input_str.split()]
+                                        if len(circle_arm_positions) != 6:
+                                            print("Invalid input. Please enter exactly six values: x, y, z, roll, yaw and pitch.")
+                                        else:
+                                            all_circle_arm_positions.extend(circle_arm_positions)
+                                            empty_input_count_c = 0
+                                    except ValueError:
+                                        print("Invalid input. Please enter valid arm pose separated by spaces.")
+                                else:
+                                    empty_input_count_c += 1
+                                    if empty_input_count_c == 2:
+                                        break
+                            arm_circle_position_msgs = Float64MultiArray()
+                            arm_circle_position_msgs.data = all_circle_arm_positions
+                            self.publisher_movec_.publish(arm_circle_position_msgs)
+                    else:
+                        print(f"当前模式 {self.keyboard_control_working_mode} 无法切换到模式 {target_mode}")
+                elif key in key_jointctrl_mapping and self.keyboard_control_working_mode == JOINTCONTROL:
+                    self.joint_action_msg.data = key_jointctrl_mapping[key]
+                elif key in key_cartesian_mapping and self.keyboard_control_working_mode == CARTESIAN:
+                    self.cartesian_msg.data = key_cartesian_mapping[key]
+                else:
+                    if key == '\x03':
+                        break
+                    print(f"无效按键: {key}")
+
+                self.mode_msg.data = self.keyboard_control_working_mode
+                self.publisher_mode_.publish(self.mode_msg)
+                self.publisher_joint_action_.publish(self.joint_action_msg)
+                self.publisher_cartesian_.publish(self.cartesian_msg)
+        except KeyboardInterrupt:  
+            pass
+    
 
 def main(args=None):
     if args is None:
         args = sys.argv
-
     rclpy.init(args=args)
-    node = rclpy.create_node('keyboard_control_node')
-    publisher_mode_ = node.create_publisher(Int8, 'keyboard_control_mode', qos_profile_system_default)
-    publisher_joint_action_ = node.create_publisher(Int8, 'jointctrl_action', qos_profile_system_default)
-    publisher_cartesian_ = node.create_publisher(Int8, 'cartesian_action', qos_profile_system_default)
+    node = KeyboardControlNode()
+    node.run()
+    node.destroy_node()
+    rclpy.shutdown()
 
-    keyboard_control_working_mode = PASSIVE  # 上电默认电机为阻尼状态(实际上为速度模式速度为0)
-    mode_msg = Int8()
-    joint_action_msg = Int8()       # JOINTCTRL Mode
-    cartesian_msg = Int8()          # CARTESIAN Mode
-
-    try:
-        print(msg)
-        while(True):
-            key = getKey()
-            if key in key_mode_mapping:
-                target_mode = key_mode_mapping[key]
-                # 检查当前模式是否允许切换到目标模式
-                if keyboard_control_working_mode in mode_preconditions[target_mode]:
-                    keyboard_control_working_mode = target_mode
-                    print(f"切换到模式 {target_mode}")
-                    if keyboard_control_working_mode == JOINTCONTROL:
-                        print(msg_jointcontrol)
-                else:
-                    print(f"当前模式 {keyboard_control_working_mode} 无法切换到模式 {target_mode}")
-            elif key in key_jointctrl_mapping and keyboard_control_working_mode == JOINTCONTROL:
-                joint_action_msg.data = key_jointctrl_mapping[key]
-            elif key in key_cartesian_mapping and keyboard_control_working_mode == CARTESIAN:
-                cartesian_msg.data = key_cartesian_mapping[key]
-            else:
-                if key == '\x03':
-                    break
-                print(f"无效按键: {key}")
-            mode_msg.data = keyboard_control_working_mode
-            publisher_mode_.publish(mode_msg)
-            publisher_joint_action_.publish(joint_action_msg)
-            publisher_cartesian_.publish(cartesian_msg)
-    except KeyboardInterrupt:  
-        pass
-    
+if __name__ == '__main__':
+    main()

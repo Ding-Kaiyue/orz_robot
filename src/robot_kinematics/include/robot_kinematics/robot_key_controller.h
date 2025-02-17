@@ -61,10 +61,13 @@ class KeyboardController : public rclcpp :: Node {
         rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr mode_sub;
         rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr jointctrl_action_;
         rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr cartesian_action_;
+
+        rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movej_action_;
+        rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movel_action_;
+
         rclcpp::Publisher<robot_interfaces::msg::RobotControlMsg>::SharedPtr motor_msg_pub;
         rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr gripper_msg_pub;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;
-        rclcpp::Subscription<robot_interfaces::msg::ArmState>::SharedPtr subscriber_arm_states_;
         geometry_msgs::msg::Pose current_pose_;
         sensor_msgs::msg::JointState current_joint_states_;
         rclcpp::TimerBase::SharedPtr timer_;
@@ -77,8 +80,9 @@ class KeyboardController : public rclcpp :: Node {
         void working_mode_callback(const std_msgs::msg::Int8::SharedPtr msg);    
         void jointctrl_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
         void cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
+        void movej_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
+        void movel_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
-        void arm_states_callback(const robot_interfaces::msg::ArmState::SharedPtr msg);
         void timer_callback();
 };
 

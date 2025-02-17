@@ -159,7 +159,7 @@ class RobotFunctions : public rclcpp :: Node
                 case 0x08: {
                     RCLCPP_INFO(this->get_logger(), "Start robot_ik mode");
                     std_msgs::msg::Bool plan_result;
-                    // 由于上位机控制均为直线运动，moveit规划不出来三个以上有效路点，不能进行插值，应直接按照计算得出的结果赋值
+
                     arm->setStartStateToCurrentState();
                     arm->setPoseTarget(msg->arm_pose_goal, arm->getEndEffectorLink());
 

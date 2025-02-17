@@ -1,11 +1,14 @@
 #include <rclcpp/rclcpp.hpp>
 #include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit_msgs/msg/move_it_error_codes.hpp>
 #include <geometry_msgs/msg/pose.hpp>
 #include <std_msgs/msg/int8.hpp>
 #include <robot_interfaces/msg/robot_control_msg.hpp>
 #include <robot_interfaces/msg/arm_state.hpp>
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "std_msgs/msg/int8_multi_array.hpp"
+#include "std_msgs/msg/float64_multi_array.hpp"
+#include "std_msgs/msg/bool.hpp"
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <chrono>
@@ -19,7 +22,6 @@ KeyboardController::KeyboardController(std::string node_name) : Node(node_name) 
     motor_msg_pub = this->create_publisher<robot_interfaces::msg::RobotControlMsg>("motor_msg", 10);
     gripper_msg_pub = this->create_publisher<std_msgs::msg::Int8MultiArray>("gripper_msg", 10);
     subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&KeyboardController::joint_states_callback, this, std::placeholders::_1));
-    subscriber_arm_states_ = this->create_subscription<robot_interfaces::msg::ArmState>("arm_states", 10, std::bind(&KeyboardController::arm_states_callback, this, std::placeholders::_1));
     timer_ = this->create_wall_timer(std::chrono::microseconds(50), std::bind(&KeyboardController::timer_callback, this));
 
     // 设置机械臂运动允许的误差
@@ -70,10 +72,12 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
             break;
         }
         case MOVEJ: {
-
+            movej_action_ = this->create_subscription<std_msgs::msg::Float64MultiArray>("movej_action", 10, std::bind(&KeyboardController::movej_action_callback, this, std::placeholders::_1));
+            break;
         }
         case MOVEL: {
-
+            movel_action_ = this->create_subscription<std_msgs::msg::Float64MultiArray>("movel_action", 10, std::bind(&KeyboardController::movel_action_callback, this, std::placeholders::_1));
+            break;
         }
         case MOVEC: {
 
@@ -449,6 +453,64 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
         }
         default: {
             break;
+        }
+    }
+}
+
+void KeyboardController::movej_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg) {
+    std::vector<double> joint_group_positions;
+    if (msg->data.size() % 6 != 0) {
+        RCLCPP_ERROR(this->get_logger(), "Error input joint angle values!");
+    } else {
+        joint_group_positions.resize(6);
+        for (size_t i = 0; i < msg->data.size(); i += 6) {
+            for (size_t j = 0; j < 6; j++) {
+                joint_group_positions[i] = msg->data[i+j];
+            }
+            arm->setJointValueTarget(joint_group_positions);
+            moveit_msgs::msg::MoveItErrorCodes move_result = arm->move();
+            if (move_result.val != moveit_msgs::msg::MoveItErrorCodes::SUCCESS) {
+                RCLCPP_ERROR(this->get_logger(), "MoveIt error: %d", move_result.val);
+            } else {
+                RCLCPP_INFO(this->get_logger(), "Joint angle movements group[%zu] are completed.", i/6 + 1);
+            }
+        }
+    }
+}
+
+void KeyboardController::movel_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg) {
+    std_msgs::msg::Bool plan_result;
+    geometry_msgs::msg::Pose arm_goal_pose;
+    if (msg->data.size() % 6 != 0) {
+        RCLCPP_ERROR(this->get_logger(), "Error input pose values!");
+    } else {
+        for (size_t i = 0; i < msg->data.size(); i += 6) {
+            arm_goal_pose.position.x = msg->data[i];
+            arm_goal_pose.position.y = msg->data[i+1];
+            arm_goal_pose.position.z = msg->data[i+2];
+            double roll = msg->data[i+3];
+            double pitch = msg->data[i+4];
+            double yaw = msg->data[i+5];
+
+            tf2::Quaternion quat_tf;
+            quat_tf.setRPY(roll, pitch, yaw);
+
+            geometry_msgs::msg::Quaternion quat_msg;
+            quat_msg = tf2::toMsg(quat_tf);
+            arm_goal_pose.orientation = quat_msg;
+
+            arm->setStartStateToCurrentState();
+            arm->setPoseTarget(arm_goal_pose, arm->getEndEffectorLink());
+
+            moveit::planning_interface::MoveGroupInterface::Plan plan;
+            moveit::core::MoveItErrorCode success = arm->plan(plan);
+
+            RCLCPP_INFO(this->get_logger(), "Plan (pose goal) %s", success ? "SUCCEED" : "FAILED");
+            
+            if (success) { 
+                moveit::core::MoveItErrorCode execute_success = arm->execute(plan); 
+                RCLCPP_INFO(this->get_logger(), "Execute (pose goal) %s", execute_success? "SUCCEED" : "FAILED");
+            }
         }
     }
 }
@@ -848,6 +910,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
     }
 }
+
 void KeyboardController::joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
 {
     current_joint_states_.header.stamp = this->get_clock()->now();
