@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.8)
+project(robot_driver)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(message_filters REQUIRED)
+find_package(serial REQUIRED)
+find_package(robot_interfaces REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(ros2_socketcan REQUIRED)
+
+add_executable(robot_driver src/robot_driver.cpp)
+ament_target_dependencies(robot_driver rclcpp std_msgs message_filters serial sensor_msgs robot_interfaces)
+
+add_executable(robot_driver_cantx src/robot_driver_cantx.cpp)
+ament_target_dependencies(robot_driver_cantx rclcpp std_msgs can_msgs ros2_socketcan sensor_msgs robot_interfaces)
+
+add_executable(robot_driver_canrx src/robot_driver_canrx.cpp)
+ament_target_dependencies(robot_driver_canrx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
+
+install(TARGETS
+    robot_driver
+    robot_driver_cantx
+    robot_driver_canrx 
+    DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+    DIRECTORY launch
+    DESTINATION share/${PROJECT_NAME}
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
