@@ -16,20 +16,18 @@
 
 ## <span style="color:#B885B0;">控制</span>
 ### <span style="color:#8DB732;">正运动</span>
-* 给定六个关节位置J1~J6, slider的范围后续再定，默认值均为0；
-* 给定夹爪的位置、速度和力， slider的范围均为0~255, 默认值为0, 100, 20
+* 给定六个关节位置J1~J6, slider的范围将当前J3的-90~90改为-75~75，其他值不变，默认值均为0；
 * 在拖动过程中, 将机械臂目标状态实时显示出来，点击[这里](#arm_show)跳转到具体显示说明
-* 点击确认按钮后，将这九个值发送给机械臂
+* 点击确认按钮OK后，将这六个值发送给机械臂
 <p align="center">
     <img src="img/image03.png" alt="正运动" width="460" />
 </p>
 
 * <span id="protocol-forward-kinematics">发送协议为</span>
 
-    | data[0] | data[1] | data[2] | data[3] | data[4] | data[5] | data[6] | data[7] | data[8] | data[9] |
-    |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-    | 1145(head) |  joint1 |  joint2 |  joint3 |  joint4 |  joint5 |  joint6 | gripper_pos | gripper_vel | gripper_effort |
-
+    | data[0] | data[1] | data[2] | data[3] | data[4] | data[5] | data[6] |
+    |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
+    | 1145(head) |  joint1 |  joint2 |  joint3 |  joint4 |  joint5 |  joint6 |
 ### <span style="color:#8DB732;">逆运动</span>
 * 第一个Tab为机械臂平移指令，依次为"z pos + value", "x pos + value", "z pos - value", "y pos - value", "y pos + value", "x pos - value"
 * 第二个Tab为机械臂旋转指令，依次为"z rot + value", "x rot + value", "z rot - value", "y rot + value", "y rot - value, " x rot - value"
@@ -49,22 +47,47 @@
 
 * 发送协议为
   
-    | data[0] | data[1] | data[2] | data[3] | data[4] | data[5] | data[6] |   Operation   |
-    |  :---:  |  :---:  |  :---:  |  :---:  | :---: | :---: | :---:|      :---:     |
-    |  0x01   |  0x01   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | z pos - value |
-    |  0x01   |  0x01   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | z pos + value |
-    |  0x01   |  0x02   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | z rot - value |
-    |  0x01   |  0x02   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | z rot + value |
-    |  0x02   |  0x01   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | x pos - value |
-    |  0x02   |  0x01   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | x pos + value |
-    |  0x02   |  0x01   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | x rot - value |
-    |  0x02   |  0x01   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | x rot + value |
-    |  0x03   |  0x01   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | y pos - value |
-    |  0x03   |  0x01   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | y pos + value |
-    |  0x03   |  0x02   |   0x00  |  value  | gripper_pos | gripper_vel | gripper_effort | y rot - value |
-    |  0x03   |  0x02   |   0x01  |  value  | gripper_pos | gripper_vel | gripper_effort | y rot + value |
- 短按: pos平移的value单位为cm, 暂定为1, rot旋转的value单位为度，暂定为1
- 长按: 根据按下时间长短决定value的值，5s对应10cm(举例说明，不一定这个速度)，松开时发送
+    * 短按: pos平移的value单位为cm, 暂定为1, rot旋转的value单位为度，暂定为1
+
+    | data[0] | data[1] | data[2] | data[3] |   Operation   |
+    |  :---:  |  :---:  |  :---:  |  :---:  |     :---:     |
+    |  0x01   |  0x01   |   0x00  |  value  | z pos - value |
+    |  0x01   |  0x01   |   0x01  |  value  | z pos + value |
+    |  0x01   |  0x02   |   0x00  |  value  | z rot - value |
+    |  0x01   |  0x02   |   0x01  |  value  | z rot + value |
+    |  0x02   |  0x01   |   0x00  |  value  | x pos - value |
+    |  0x02   |  0x01   |   0x01  |  value  | x pos + value |
+    |  0x02   |  0x01   |   0x00  |  value  | x rot - value |
+    |  0x02   |  0x01   |   0x01  |  value  | x rot + value |
+    |  0x03   |  0x01   |   0x00  |  value  | y pos - value |
+    |  0x03   |  0x01   |   0x01  |  value  | y pos + value |
+    |  0x03   |  0x02   |   0x00  |  value  | y rot - value |
+    |  0x03   |  0x02   |   0x01  |  value  | y rot + value |
+
+    * 长按: 长按机械臂进入Cartesian Space运动模式，末端执行器**持续**沿箭头方向平移或旋转
+
+    | data[0] | data[1] | data[2] | data[3] |   Operation   |
+    |  :---:  |  :---:  |  :---:  |  :---:  |     :---:     |
+    |  0x04   |  0x01   |   0x00  |  value  |    z pos--    |
+    |  0x04   |  0x01   |   0x01  |  value  |    z pos++    |
+    |  0x04   |  0x02   |   0x00  |  value  |    z rot--    |
+    |  0x04   |  0x02   |   0x01  |  value  |    z rot++    |
+    |  0x05   |  0x01   |   0x00  |  value  |    x pos--    |
+    |  0x05   |  0x01   |   0x01  |  value  |    x pos++    |
+    |  0x05   |  0x01   |   0x00  |  value  |    x rot--    |
+    |  0x05   |  0x01   |   0x01  |  value  |    x rot++    |
+    |  0x06   |  0x01   |   0x00  |  value  |    y pos--    |
+    |  0x06   |  0x01   |   0x01  |  value  |    y pos++    |
+    |  0x06   |  0x02   |   0x00  |  value  |    y rot--    |
+    |  0x06   |  0x02   |   0x01  |  value  |    y rot++    |
+
+### <span style="color:#8DB732;">夹爪</span>
+* 给定夹爪的位置、速度和力， slider的范围均为0~255, 默认值为0, 100, 20
+* 当slider的值改变时，就发送当前的夹爪信息，发送协议为
+  | data[0] | data[1] | data[2] | data[3] |
+  |  :---:  |  :---:  |  :---:  |  :---:  |
+  |  1245   | GVars[0]| GVars[1]| GVars[2]|
+
 
 ### <span style="color:#8DB732;">示教</span>
 示教功能共三个putton
@@ -104,7 +127,7 @@
   * XYPlane: J1~J6分别为某个固定值，暂定为0, 后续需要修改，GP, GV, GF分别为0, 100, 20
   * Initial: J1~J6分别为某个固定值，暂定为0, 后续需要修改，GP, GV, GF分别为0, 100, 20
 
-## <span id="arm_show" style="color:#B885B0;">显示</span>
+## <span id="arm_show" style="color:#B885B0;">机械臂状态显示</span>
 使用OpenGl显示机械臂的目标位姿和机械臂的反馈位姿，其中不透明的机械臂为目标位姿，透明的机械臂为通过TCP服务器反馈得到的反馈位姿
   <p align="center">
     <img src="img/image10.png" alt="机械臂显示" width="180" />
@@ -112,6 +135,17 @@
   <p align="center">
     <img src="img/image11.png" alt="机械臂显示" width="450" />
   </p>
+反馈协议同发送协议正运动学的协议
+
+  | data[0] | data[1] | data[2] | data[3] | data[4] | data[5] | data[6] |
+  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
+  | 1145(head) |  joint1 |  joint2 |  joint3 |  joint4 |  joint5 |  joint6 |
+
+## <span id="camera_show" style="color:#B885B0;">相机图像显示</span>
+  <p align="center">
+    <img src="img/image20.png" alt="机械臂显示" width="480" />
+  </p>
+  图为Realsense D435i相机画面，后续可能会增加选择相机型号的功能
 
 ## <span style="color:#B885B0;">菜单栏</span>
 **Analyze**
@@ -131,7 +165,11 @@
   <p align="center">
     <img src="img/image15.png" alt="示教" width="360" />
   </p>
-* 更新固件
+* 更新固件: github链接(暂时不放)
   
----
-Ref: https://github.com/Ding-Kaiyue/DRobot_Ctrl.git
+## <span style="color:#B885B0;">其他功能</span>
+* 页面缩放功能
+* 新增选择机械臂类型选项，根据不同的选择，在右下方机械臂显示上显示不同的机械臂模型(暂时只有这一款，另一款等结构出图再定)，具体在哪里添加这个选项由UI设计决定
+* 当相机未连接时，在右侧中间提示框中提示无相机连接，而不是整个报错上位机不显示，后期可能要添加其他相机类型(USB相机等)，需要自动识别相机类型或手动选择相机类型
+<!-- ---
+Ref: https://github.com/Ding-Kaiyue/DRobot_Ctrl.git -->
