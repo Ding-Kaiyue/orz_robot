@@ -3,8 +3,10 @@ from rclpy.node import Node
 from std_msgs.msg import Int8
 from std_msgs.msg import Bool
 from std_msgs.msg import Float64MultiArray
+from sensor_msgs.msg import JointState
 from rclpy.qos import QoSProfile, qos_profile_system_default
 import sys, select, termios, tty
+import csv, os
 
 BACKTOSTART = 0
 PASSIVE = 1
@@ -136,6 +138,35 @@ the final pose respectively.
 --------------------------------------------------------------------------------
 Please input:
 """
+
+msg_teach = """
+At this mode, you should enter the label name of the trajectory firstly. And then
+press enter and drag the robotics arm to anywhere you want. The trajectory until 
+you press 2 will be save to your_label_name.csv. 
+--------------------------------------------------------------------------------
+Please input:
+"""
+
+msg_teachrepeat = """
+At this mode, you should enter one of the label name of your_label_name.csv. And
+then the robotic arm will move alone the trajectory of this file.
+--------------------------------------------------------------------------------
+Please input:
+"""
+
+msg_savestate = """
+You have saved the current robotic arm joint state. Please enter the label name
+of this robotic arm state.
+--------------------------------------------------------------------------------
+Please input:
+"""
+
+msg_tostate = """
+At this mode, you should enter one of the label name of savedArmStates.csv. And 
+the robotics arm will move to this state.
+--------------------------------------------------------------------------------
+Please input:
+"""
 # 添加一个字典来映射按键和模式
 key_mode_mapping = {
     '`': BACKTOSTART,
@@ -211,6 +242,16 @@ class KeyboardControlNode(Node):
         self.publisher_movej_ = self.create_publisher(Float64MultiArray, 'movej_action', qos_profile_system_default)
         self.publisher_movel_ = self.create_publisher(Float64MultiArray, 'movel_action', qos_profile_system_default)
         self.publisher_movec_ = self.create_publisher(Float64MultiArray, 'movec_action', qos_profile_system_default)
+        self.joint_state_pub_ = self.create_publisher(JointState, "motor_cmd", 10)
+        self.sub_joint_positions_ = None
+        self.csv_file = None
+        self.csv_writer = None
+        self.config_path = os.path.join(os.getcwd(), 'config')
+        self.savestate_path = os.path.join(self.config_path, 'savedArmStates.csv')
+        self.current_joint_positions = None
+        self.joint_positions = []
+        if not os.path.exists(self.config_path):
+            os.makedirs(self.config_path)
 
         self.keyboard_control_working_mode = PASSIVE
         self.mode_msg = Int8()
@@ -245,6 +286,7 @@ class KeyboardControlNode(Node):
                             all_joint_positions = []
                             empty_input_count_j = 0
                             while True:
+                                print(empty_input_count_j)
                                 input_str = input()
                                 if input_str:
                                     try:
@@ -258,11 +300,12 @@ class KeyboardControlNode(Node):
                                         print("Invalid input. Please enter valid joint positions separated by spaces.")
                                 else:
                                     empty_input_count_j += 1
-                                    if empty_input_count_j == 2:
+                                    if empty_input_count_j == 1:
                                         break
                             joint_position_msgs = Float64MultiArray()
                             joint_position_msgs.data = all_joint_positions
                             self.publisher_movej_.publish(joint_position_msgs)
+                            print("----- The joint position msg has been published -----")
                         elif self.keyboard_control_working_mode == MOVEL:
                             print(msg_movel)
                             all_arm_positions = []
@@ -278,20 +321,23 @@ class KeyboardControlNode(Node):
                                             all_arm_positions.extend(arm_positions)
                                             empty_input_count_l = 0
                                     except ValueError:
-                                        print("Invalid input. Please enter valid arm pose separated by spaces.")
+                                        print("Invalid input. Please enter valid robotics arm pose separated by spaces.")
                                 else:
                                     empty_input_count_l += 1
-                                    if empty_input_count_l == 2:
+                                    if empty_input_count_l == 1:
                                         break
                             arm_position_msgs = Float64MultiArray()
                             arm_position_msgs.data = all_arm_positions
                             self.publisher_movel_.publish(arm_position_msgs)
-
+                            print("----- The robotics arm pose has been published -----")
                         elif self.keyboard_control_working_mode == MOVEC:
                             print(msg_movec)
                             all_circle_arm_positions = []
                             empty_input_count_c = 0
+                            input_count = 0     # 已经输入的数值数量
                             while True:
+                                if input_count == 12:
+                                    break
                                 input_str = input()
                                 if input_str:
                                     try:
@@ -299,23 +345,83 @@ class KeyboardControlNode(Node):
                                         if len(circle_arm_positions) != 6:
                                             print("Invalid input. Please enter exactly six values: x, y, z, roll, yaw and pitch.")
                                         else:
-                                            all_circle_arm_positions.extend(circle_arm_positions)
+                                            if input_count == 6:
+                                                all_circle_arm_positions.extend(circle_arm_positions)
+                                                input_count += 6
+                                            elif input_count == 0:
+                                                all_circle_arm_positions.extend(circle_arm_positions)
+                                                input_count +=6
+                                            else:
+                                                print("Invalid input. You can only enter six values at a time, and you should enter them twice.")
                                             empty_input_count_c = 0
                                     except ValueError:
                                         print("Invalid input. Please enter valid arm pose separated by spaces.")
                                 else:
                                     empty_input_count_c += 1
-                                    if empty_input_count_c == 2:
+                                    if input_count == 12 and empty_input_count_c == 1:
                                         break
                             arm_circle_position_msgs = Float64MultiArray()
                             arm_circle_position_msgs.data = all_circle_arm_positions
                             self.publisher_movec_.publish(arm_circle_position_msgs)
+                            print("----- The path midpoint and end point poses have been published -----")
+                        elif self.keyboard_control_working_mode == TEACH:
+                            print(msg_teach)
+                            file_name = input()
+                            file_path = os.path.join(self.config_path, file_name)
+                            if os.path.isfile(file_name):
+                                print(f"Error: 已存在同名 CSV 文件 {file_path}")
+                                continue
+                            try:
+                                self.csv_file = open(file_path, mode='w', newline='')
+                                self.csv_writer = csv.writer(self.csv_file)
+                                self.file_name = file_path
+                                self.subscription = self.create_subscription(JointState, 'joint_states', self.joint_states_callback, 10)
+                                rclpy.spin(self)
+                            except Exception as e:
+                                self.get_logger().error(f"出现错误: {e}")
+                            finally:
+                                if self.csv_file:
+                                    self.csv_file.close()
+                                if self.subscription:
+                                    self.subscription.destroy()
+                        elif self.keyboard_control_working_mode == TEACHREPEAT:
+                            print(msg_teachrepeat)
+                            file_name = input()
+                            file_path = os.path.join(self.config_path, file_name)
+                            if not os.path.isfile(file_path):
+                                print(f"Error: 没有找到 CSV 文件 {file_path}")
+                                continue
+                            try:
+                                self.pub_teach_repeat_ = self.create_publisher(JointState, 'joint_positions_repeat', 10)
+                                with open(file_path, 'r') as file:
+                                    csv_reader = csv.reader(file)
+                                    for row in csv_reader:
+                                        positions = [float(pos) for pos in row]
+                                        self.joint_positions.append(positions)
+                                    self.data_index = 0
+                                    self.timer = self.create_timer(0.24, self.joint_positions_publish_callback)
+                                    rclpy.spin(self)
+                            except Exception as e:
+                                self.get_logger().error(f"出现错误: {e}")
+                            finally:
+                                if self.timer:
+                                    self.timer.cancel()
+                                self.joint_positions = []
+                        elif self.keyboard_control_working_mode == SAVESTATE:
+                            print(msg_savestate)
+                            self.subscription = self.create_subscription(JointState, 'joint_states', self.current_state_callback, 10)
+                            self.save_current_state(self)
+                            
+                        elif self.keyboard_control_working_mode == TOSTATE:
+                            print(msg_tostate)
+                            self.move_to_state(self)
                     else:
                         print(f"当前模式 {self.keyboard_control_working_mode} 无法切换到模式 {target_mode}")
                 elif key in key_jointctrl_mapping and self.keyboard_control_working_mode == JOINTCONTROL:
                     self.joint_action_msg.data = key_jointctrl_mapping[key]
                 elif key in key_cartesian_mapping and self.keyboard_control_working_mode == CARTESIAN:
                     self.cartesian_msg.data = key_cartesian_mapping[key]
+
                 else:
                     if key == '\x03':
                         break
@@ -328,6 +434,70 @@ class KeyboardControlNode(Node):
         except KeyboardInterrupt:  
             pass
     
+    def joint_states_callback(self, msg):
+        positions = msg.position
+        try: 
+            self.csv_writer.writerow(positions)
+        except Exception as e:
+            self.get_logger().error(f"写入文件出错: {e}")
+
+    def current_state_callback(self, msg):
+        self.current_joint_positions = msg.position
+
+    def save_current_state(self):
+        label_name = input('请输入自定义的标签名: ')
+        if not os.path.exists(self.config_path):
+            os.makedirs(self.config_path)
+        try:
+            with open(self.savestate_path, mode='a', newline='') as csv_file:
+                csv_writer = csv.writer(csv_file)
+                csv_writer.writerow([label_name] + list(self.current_joint_positions))
+            self.get_logger().info(f"已保存标签 '{label_name}' 的关节状态到 {self.savestate_path}")
+        except Exception as e:
+            self.get_logger().error(f"无法创建或打开 {self.savestate_path}")
+
+    def move_to_state(self):
+        saved_states = {}
+        try:
+            with open(self.savestate_path, mode='r') as csv_file:
+                csv_reader = csv.reader(csv_file)
+                for row in csv_reader:
+                    label = row[0]
+                    joint_positions = [float(pos) for pos in row[1:]]
+                    saved_states[label] = joint_positions
+        except FileNotFoundError:
+            self.get_logger().error(f"未找到保存状态的文件 {self.savestate_path}")
+            return
+        
+        label_name = input('请输入要执行的标签名: ')
+        if label_name in saved_states:
+            joint_positions = saved_states[label_name]
+            self.control_arm_to_state(joint_positions)
+        else:
+            self.get_logger().error(f"未找到标签 '{label_name}' 的保存状态")
+            return
+            
+    def control_arm_to_state(self, joint_positions):
+        joint_state_msg = JointState()
+        joint_state_msg.name = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6']
+        joint_state_msg.position = joint_positions
+        self.joint_state_pub_.publish(joint_state_msg) 
+        self.get_logger().info(f"已发布关节状态到 {self.joint_state_pub_.topic_name}")
+
+
+    def joint_positions_publish_callback(self):
+        if self.data_index < len(self.joint_positions):
+            positions = self.joint_positions[self.data_index]
+            joint_state = JointState()
+            joint_state.name = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6']
+            joint_state.position = positions
+
+            self.pub_teach_repeat_.publish(joint_state)
+            self.get_logger().info(f"Published joint positions: {positions}")
+            self.data_index += 1
+        else:
+            self.timer.cancel()
+
 
 def main(args=None):
     if args is None:

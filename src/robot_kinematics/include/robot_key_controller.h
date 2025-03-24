@@ -64,6 +64,7 @@ class KeyboardController : public rclcpp :: Node {
 
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movej_action_;
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movel_action_;
+        rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movec_action_;
 
         rclcpp::Publisher<robot_interfaces::msg::RobotControlMsg>::SharedPtr motor_msg_pub;
         rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr gripper_msg_pub;
@@ -82,6 +83,7 @@ class KeyboardController : public rclcpp :: Node {
         void cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg);
         void movej_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void movel_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
+        void movec_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
         void timer_callback();
 };

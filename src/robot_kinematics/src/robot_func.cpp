@@ -158,31 +158,47 @@ class RobotFunctions : public rclcpp :: Node
                 }
                 case 0x08: {
                     RCLCPP_INFO(this->get_logger(), "Start robot_ik mode");
-                    std_msgs::msg::Bool plan_result;
-                    plan_result.data = true;
-                    publisher_plan_state_->publish(plan_result);
+                    // std_msgs::msg::Bool plan_result;
+                    // plan_result.data = true;
+                    // publisher_plan_state_->publish(plan_result);
 
-                    arm->setStartStateToCurrentState();
-                    arm->setPoseTarget(msg->arm_pose_goal, arm->getEndEffectorLink());
+                    // arm->setStartStateToCurrentState();
+                    // arm->setPoseTarget(msg->arm_pose_goal, arm->getEndEffectorLink());
 
-                    moveit::planning_interface::MoveGroupInterface::Plan plan;
-                    moveit::core::MoveItErrorCode success = arm->plan(plan);
+                    // moveit::planning_interface::MoveGroupInterface::Plan plan;
+                    // moveit::core::MoveItErrorCode success = arm->plan(plan);
 
-                    RCLCPP_INFO(this->get_logger(), "Plan (pose goal) %s", success ? "SUCCEED" : "FAILED");
-                    RCLCPP_INFO(this->get_logger(), "??????????????????????????????????????????????????????");
-                    if (success) { 
-                        arm->execute(plan); 
+                    // RCLCPP_INFO(this->get_logger(), "Plan (pose goal) %s", success ? "SUCCEED" : "FAILED");
+                    // RCLCPP_INFO(this->get_logger(), "??????????????????????????????????????????????????????");
+                    // if (success) { 
+                    //     arm->execute(plan); 
                         
-                        // plan_result.data = true;
-                        // publisher_plan_state_->publish(plan_result);
-                        // ************** For Test **************
+                    //     // plan_result.data = true;
+                    //     // publisher_plan_state_->publish(plan_result);
+                    //     // ************** For Test **************
+                    // } else {
+                    //     RCLCPP_INFO(this->get_logger(), "No valid plan found! ");
+                    //     // 此时应该给上位机反馈规划失败标志
+                    //     // plan_result.data = false;
+                    //     // publisher_plan_state_->publish(plan_result);
+                    // }
+                    geometry_msgs::msg::Pose arm_pose_goal;
+                    arm_pose_goal = msg->arm_pose_goal;
+                    std::vector<geometry_msgs::msg::Pose> waypoints;
+                    waypoints.push_back(arm_pose_goal);
+
+                    moveit_msgs::msg::RobotTrajectory trajectory;
+                    const double jump_threshold = 0.0;
+                    const double eef_step = 0.01;
+                    double fraction = arm->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+
+                    if (fraction > 0.9) {
+                        moveit::planning_interface::MoveGroupInterface::Plan plan;
+                        plan.trajectory_ = trajectory;
+                        arm->execute(plan);
                     } else {
-                        RCLCPP_INFO(this->get_logger(), "No valid plan found! ");
-                        // 此时应该给上位机反馈规划失败标志
-                        // plan_result.data = false;
-                        // publisher_plan_state_->publish(plan_result);
+                        RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in PITCH_POSITIVE direction");
                     }
-                    
                     break;
                 }
                 case 0x09: {
