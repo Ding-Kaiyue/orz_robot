@@ -1,6 +1,0 @@
-{
-  "package_name": "ros2_socketcan_msgs",
-  "non_idl_tuples": [
-    "/home/orin/auto_install/orz_robot/src/ros2_socketcan/ros2_socketcan_msgs:msg/FdFrame.msg"
-  ]
-}

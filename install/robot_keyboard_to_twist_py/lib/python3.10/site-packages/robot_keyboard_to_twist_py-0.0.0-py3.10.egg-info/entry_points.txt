@@ -1,3 +1,0 @@
-[console_scripts]
-keyboard_to_twist_py = robot_keyboard_to_twist_py.keyboard_to_twist:main
-
