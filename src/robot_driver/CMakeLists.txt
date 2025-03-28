@@ -13,13 +13,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(message_filters REQUIRED)
-find_package(serial REQUIRED)
 find_package(robot_interfaces REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
-
-add_executable(robot_driver src/robot_driver.cpp)
-ament_target_dependencies(robot_driver rclcpp std_msgs message_filters serial sensor_msgs robot_interfaces)
 
 add_executable(robot_driver_cantx src/robot_driver_cantx.cpp)
 ament_target_dependencies(robot_driver_cantx rclcpp std_msgs can_msgs ros2_socketcan sensor_msgs robot_interfaces)
@@ -28,7 +24,6 @@ add_executable(robot_driver_canrx src/robot_driver_canrx.cpp)
 ament_target_dependencies(robot_driver_canrx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
 
 install(TARGETS
-    robot_driver
     robot_driver_cantx
     robot_driver_canrx 
     DESTINATION lib/${PROJECT_NAME}

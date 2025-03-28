@@ -1,0 +1,42 @@
+running egg_info
+creating ../../build/robot_test_py/robot_test_py.egg-info
+writing ../../build/robot_test_py/robot_test_py.egg-info/PKG-INFO
+writing dependency_links to ../../build/robot_test_py/robot_test_py.egg-info/dependency_links.txt
+writing entry points to ../../build/robot_test_py/robot_test_py.egg-info/entry_points.txt
+writing requirements to ../../build/robot_test_py/robot_test_py.egg-info/requires.txt
+writing top-level names to ../../build/robot_test_py/robot_test_py.egg-info/top_level.txt
+writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+reading manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/orin/auto_install/orz_robot/build/robot_test_py/build
+creating /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib
+creating /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+copying robot_test_py/robot_test_py2.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+copying robot_test_py/__init__.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+copying robot_test_py/robot_test_py.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+copying robot_test_py/robot_test_py3.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+running install
+running install_lib
+creating /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py2.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/__init__.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py3.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py2.py to robot_test_py2.cpython-310.pyc
+byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py.py to robot_test_py.cpython-310.pyc
+byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py3.py to robot_test_py3.cpython-310.pyc
+running install_data
+creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index
+creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index
+creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index/packages
+copying resource/robot_test_py -> /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index/packages
+copying package.xml -> /home/orin/auto_install/orz_robot/install/robot_test_py/share/robot_test_py
+running install_egg_info
+Copying ../../build/robot_test_py/robot_test_py.egg-info to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py-0.0.0-py3.10.egg-info
+running install_scripts
+Installing robot_test_py script to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/robot_test_py
+Installing robot_test_py2 script to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/robot_test_py
+writing list of installed files to '/home/orin/auto_install/orz_robot/build/robot_test_py/install.log'

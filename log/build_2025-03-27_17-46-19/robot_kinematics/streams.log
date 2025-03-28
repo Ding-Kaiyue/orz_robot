@@ -1,0 +1,98 @@
+[0.024s] Invoking command in '/home/orin/auto_install/orz_robot/build/robot_kinematics': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake /home/orin/auto_install/orz_robot/src/robot_kinematics -DCMAKE_INSTALL_PREFIX=/home/orin/auto_install/orz_robot/install/robot_kinematics
+[0.151s] -- The C compiler identification is GNU 11.4.0
+[0.289s] -- The CXX compiler identification is GNU 11.4.0
+[0.304s] -- Detecting C compiler ABI info
+[0.453s] -- Detecting C compiler ABI info - done
+[0.466s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.466s] -- Detecting C compile features
+[0.468s] -- Detecting C compile features - done
+[0.473s] -- Detecting CXX compiler ABI info
+[0.647s] -- Detecting CXX compiler ABI info - done
+[0.661s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.661s] -- Detecting CXX compile features
+[0.662s] -- Detecting CXX compile features - done
+[0.667s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.064s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.289s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[1.381s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.390s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.408s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.439s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.481s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.592s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.599s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.793s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.848s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.932s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.950s] -- Looking for pthread.h
+[2.098s] -- Looking for pthread.h - found
+[2.099s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.259s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.260s] -- Found Threads: TRUE  
+[2.373s] -- Found moveit_ros_planning_interface: 2.5.8 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)
+[2.434s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[2.801s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[2.904s] -- Found parameter_traits: 0.4.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[2.933s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.940s] -- Found rclcpp_lifecycle: 16.0.11 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[2.995s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[3.174s] -- library: /usr/lib/aarch64-linux-gnu/libcurl.so
+[3.241s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[3.527s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[3.594s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[3.643s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[3.709s] -- Found actionlib_msgs: 4.2.4 (/opt/ros/humble/share/actionlib_msgs/cmake)
+[3.740s] -- Found control_msgs: 4.7.0 (/opt/ros/humble/share/control_msgs/cmake)
+[3.792s] -- Found robot_interfaces: 0.0.0 (/home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake)
+[3.856s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.054s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.055s] -- Configured cppcheck include dirs: /home/orin/auto_install/orz_robot/src/robot_kinematics/include;/home/orin/auto_install/orz_robot/src/robot_kinematics/include/robot_kinematics
+[4.055s] -- Configured cppcheck exclude dirs and/or files: 
+[4.057s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.058s] -- Added test 'lint_cmake' to check CMake code style
+[4.059s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.061s] -- Added test 'uncrustify' to check C / C++ code style
+[4.061s] -- Configured uncrustify additional arguments: 
+[4.062s] -- Added test 'xmllint' to check XML markup files
+[4.065s] -- Configuring done
+[4.202s] -- Generating done
+[4.243s] -- Build files have been written to: /home/orin/auto_install/orz_robot/build/robot_kinematics
+[4.298s] Invoked command in '/home/orin/auto_install/orz_robot/build/robot_kinematics' returned '0': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake /home/orin/auto_install/orz_robot/src/robot_kinematics -DCMAKE_INSTALL_PREFIX=/home/orin/auto_install/orz_robot/install/robot_kinematics
+[4.302s] Invoking command in '/home/orin/auto_install/orz_robot/build/robot_kinematics': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/orin/auto_install/orz_robot/build/robot_kinematics -- -j8 -l8
+[4.419s] [ 16%] [32mBuilding CXX object CMakeFiles/robot_state_get.dir/src/robot_state_get.cpp.o[0m
+[4.421s] [ 33%] [32mBuilding CXX object CMakeFiles/robot_key_controller.dir/src/robot_key_controller.cpp.o[0m
+[4.428s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_func.dir/src/robot_func.cpp.o[0m
+[16.370s] [ 66%] [32m[1mLinking CXX executable robot_state_get[0m
+[18.437s] [ 66%] Built target robot_state_get
+[48.452s] [ 83%] [32m[1mLinking CXX executable robot_func[0m
+[51.059s] [ 83%] Built target robot_func
+[55.019s] [100%] [32m[1mLinking CXX executable robot_key_controller[0m
+[58.030s] [100%] Built target robot_key_controller
+[58.056s] Invoked command in '/home/orin/auto_install/orz_robot/build/robot_kinematics' returned '0': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/orin/auto_install/orz_robot/build/robot_kinematics -- -j8 -l8
+[58.060s] Invoking command in '/home/orin/auto_install/orz_robot/build/robot_kinematics': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/orin/auto_install/orz_robot/build/robot_kinematics
+[58.075s] -- Install configuration: ""
+[58.076s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_state_get
+[58.078s] -- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_state_get" to ""
+[58.079s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_func
+[58.091s] -- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_func" to ""
+[58.092s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_key_controller
+[58.107s] -- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_key_controller" to ""
+[58.108s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch
+[58.108s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch/robot_func.launch.py
+[58.108s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch/robot_state_get.launch.py
+[58.109s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/package_run_dependencies/robot_kinematics
+[58.109s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/parent_prefix_path/robot_kinematics
+[58.110s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/ament_prefix_path.sh
+[58.110s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/ament_prefix_path.dsv
+[58.110s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/path.sh
+[58.111s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/path.dsv
+[58.111s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.bash
+[58.111s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.sh
+[58.111s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.zsh
+[58.112s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.dsv
+[58.112s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/package.dsv
+[58.112s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/packages/robot_kinematics
+[58.113s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/cmake/robot_kinematicsConfig.cmake
+[58.113s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/cmake/robot_kinematicsConfig-version.cmake
+[58.113s] -- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/package.xml
+[58.118s] Invoked command in '/home/orin/auto_install/orz_robot/build/robot_kinematics' returned '0': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/orin/auto_install/orz_robot/build/robot_kinematics

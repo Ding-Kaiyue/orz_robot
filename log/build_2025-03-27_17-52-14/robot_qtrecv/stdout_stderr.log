@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target robot_tcp_server[0m
+[100%] Built target robot_tcp_server
+-- Install configuration: ""
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/lib/robot_qtrecv/robot_tcp_server
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/launch
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/launch/robot_tcp_server.launch.py
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/launch/robot_qtrecv.launch.py
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/ament_index/resource_index/package_run_dependencies/robot_qtrecv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/ament_index/resource_index/parent_prefix_path/robot_qtrecv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/environment/ament_prefix_path.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/environment/path.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/environment/path.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/local_setup.bash
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/local_setup.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/local_setup.zsh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/local_setup.dsv
+-- Installing: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/package.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/ament_index/resource_index/packages/robot_qtrecv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/cmake/robot_qtrecvConfig.cmake
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/cmake/robot_qtrecvConfig-version.cmake
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_qtrecv/share/robot_qtrecv/package.xml

@@ -1,0 +1,552 @@
+[0.000000] (-) TimerEvent: {}
+[0.000711] (-) JobUnselected: {'identifier': 'robot_bringup'}
+[0.001224] (-) JobUnselected: {'identifier': 'robot_config'}
+[0.001497] (-) JobUnselected: {'identifier': 'robot_control'}
+[0.001552] (-) JobUnselected: {'identifier': 'robot_description'}
+[0.001811] (-) JobUnselected: {'identifier': 'robot_driver'}
+[0.001917] (-) JobUnselected: {'identifier': 'robot_gazebo'}
+[0.002055] (-) JobUnselected: {'identifier': 'robot_keyboard_to_twist_py'}
+[0.002140] (-) JobUnselected: {'identifier': 'robot_kinematics'}
+[0.002225] (-) JobUnselected: {'identifier': 'robot_qtrecv'}
+[0.002297] (-) JobUnselected: {'identifier': 'robot_test'}
+[0.002396] (-) JobUnselected: {'identifier': 'robot_test_py'}
+[0.002554] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
+[0.002599] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.002690] (robot_interfaces) JobQueued: {'identifier': 'robot_interfaces', 'dependencies': OrderedDict()}
+[0.002749] (robot_interfaces) JobStarted: {'identifier': 'robot_interfaces'}
+[0.015832] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'cmake'}
+[0.016831] (robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '/home/orin/auto_install/orz_robot/src/robot_interfaces', '-DCMAKE_INSTALL_PREFIX=/home/orin/auto_install/orz_robot/install/robot_interfaces'], 'cwd': '/home/orin/auto_install/orz_robot/build/robot_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/robot_interfaces'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099273] (-) TimerEvent: {}
+[0.127263] (robot_interfaces) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199449] (-) TimerEvent: {}
+[0.236579] (robot_interfaces) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.258399] (robot_interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299614] (-) TimerEvent: {}
+[0.400308] (-) TimerEvent: {}
+[0.402321] (robot_interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.427102] (robot_interfaces) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.427970] (robot_interfaces) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.429442] (robot_interfaces) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.440387] (robot_interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500485] (-) TimerEvent: {}
+[0.598658] (robot_interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.600535] (-) TimerEvent: {}
+[0.611312] (robot_interfaces) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.611859] (robot_interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.612765] (robot_interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.617047] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.700750] (-) TimerEvent: {}
+[0.801487] (-) TimerEvent: {}
+[0.902202] (-) TimerEvent: {}
+[0.927967] (robot_interfaces) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.002339] (-) TimerEvent: {}
+[1.102941] (-) TimerEvent: {}
+[1.147227] (robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.153068] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.166092] (robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.203051] (-) TimerEvent: {}
+[1.237565] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.298468] (robot_interfaces) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.303128] (-) TimerEvent: {}
+[1.374878] (robot_interfaces) StdoutLine: {'line': b'-- Found tf2_ros: 0.25.12 (/opt/ros/humble/share/tf2_ros/cmake)\n'}
+[1.403270] (-) TimerEvent: {}
+[1.496856] (robot_interfaces) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.501247] (robot_interfaces) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.503342] (-) TimerEvent: {}
+[1.603752] (-) TimerEvent: {}
+[1.684600] (robot_interfaces) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.703880] (-) TimerEvent: {}
+[1.735453] (robot_interfaces) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.804103] (-) TimerEvent: {}
+[1.807091] (robot_interfaces) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.822154] (robot_interfaces) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.904234] (-) TimerEvent: {}
+[1.963863] (robot_interfaces) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.964681] (robot_interfaces) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.004425] (-) TimerEvent: {}
+[2.105163] (-) TimerEvent: {}
+[2.123324] (robot_interfaces) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[2.126647] (robot_interfaces) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.205250] (-) TimerEvent: {}
+[2.305773] (-) TimerEvent: {}
+[2.357675] (robot_interfaces) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.12 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[2.387490] (robot_interfaces) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[2.391098] (robot_interfaces) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[2.391374] (robot_interfaces) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[2.398003] (robot_interfaces) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[2.405826] (-) TimerEvent: {}
+[2.437628] (robot_interfaces) StdoutLine: {'line': b'-- Found trajectory_msgs: 4.2.4 (/opt/ros/humble/share/trajectory_msgs/cmake)\n'}
+[2.505981] (-) TimerEvent: {}
+[2.606613] (-) TimerEvent: {}
+[2.707240] (-) TimerEvent: {}
+[2.807698] (-) TimerEvent: {}
+[2.908211] (-) TimerEvent: {}
+[3.008721] (-) TimerEvent: {}
+[3.109412] (-) TimerEvent: {}
+[3.190705] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[3.209506] (-) TimerEvent: {}
+[3.309953] (-) TimerEvent: {}
+[3.410494] (-) TimerEvent: {}
+[3.511108] (-) TimerEvent: {}
+[3.611629] (-) TimerEvent: {}
+[3.712196] (-) TimerEvent: {}
+[3.812730] (-) TimerEvent: {}
+[3.818845] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.912829] (-) TimerEvent: {}
+[4.013364] (-) TimerEvent: {}
+[4.113998] (-) TimerEvent: {}
+[4.214626] (-) TimerEvent: {}
+[4.315233] (-) TimerEvent: {}
+[4.415828] (-) TimerEvent: {}
+[4.516462] (-) TimerEvent: {}
+[4.617028] (-) TimerEvent: {}
+[4.654983] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.708700] (robot_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[4.714026] (robot_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[4.717115] (-) TimerEvent: {}
+[4.776840] (robot_interfaces) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[4.777482] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[4.777758] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[4.778004] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[4.817230] (-) TimerEvent: {}
+[4.822144] (robot_interfaces) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[4.917417] (-) TimerEvent: {}
+[5.008007] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[5.017487] (-) TimerEvent: {}
+[5.041709] (robot_interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[5.043462] (robot_interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[5.048656] (robot_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[5.117642] (-) TimerEvent: {}
+[5.154265] (robot_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[5.185552] (robot_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /home/orin/auto_install/orz_robot/build/robot_interfaces\n'}
+[5.217751] (-) TimerEvent: {}
+[5.220681] (robot_interfaces) CommandEnded: {'returncode': 0}
+[5.222195] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'build'}
+[5.224547] (robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/orin/auto_install/orz_robot/build/robot_interfaces', '--', '-j8', '-l8'], 'cwd': '/home/orin/auto_install/orz_robot/build/robot_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/robot_interfaces'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[5.316482] (robot_interfaces) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[5.317840] (-) TimerEvent: {}
+[5.334677] (robot_interfaces) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[5.351313] (robot_interfaces) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_robot_interfaces\n'}
+[5.417999] (-) TimerEvent: {}
+[5.518552] (-) TimerEvent: {}
+[5.619169] (-) TimerEvent: {}
+[5.719783] (-) TimerEvent: {}
+[5.820351] (-) TimerEvent: {}
+[5.914677] (robot_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[5.915978] (robot_interfaces) StdoutLine: {'line': b'creating robot_interfaces.egg-info\n'}
+[5.916480] (robot_interfaces) StdoutLine: {'line': b'writing robot_interfaces.egg-info/PKG-INFO\n'}
+[5.916908] (robot_interfaces) StdoutLine: {'line': b'writing dependency_links to robot_interfaces.egg-info/dependency_links.txt\n'}
+[5.917321] (robot_interfaces) StdoutLine: {'line': b'writing top-level names to robot_interfaces.egg-info/top_level.txt\n'}
+[5.917761] (robot_interfaces) StdoutLine: {'line': b"writing manifest file 'robot_interfaces.egg-info/SOURCES.txt'\n"}
+[5.920408] (-) TimerEvent: {}
+[5.922196] (robot_interfaces) StdoutLine: {'line': b"reading manifest file 'robot_interfaces.egg-info/SOURCES.txt'\n"}
+[5.923385] (robot_interfaces) StdoutLine: {'line': b"writing manifest file 'robot_interfaces.egg-info/SOURCES.txt'\n"}
+[6.000640] (robot_interfaces) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_build_robot_interfaces_egg\n'}
+[6.020520] (-) TimerEvent: {}
+[6.121006] (-) TimerEvent: {}
+[6.221506] (-) TimerEvent: {}
+[6.321883] (-) TimerEvent: {}
+[6.422316] (-) TimerEvent: {}
+[6.522977] (-) TimerEvent: {}
+[6.586366] (robot_interfaces) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/qt_recv__functions.c.o\x1b[0m\n'}
+[6.597298] (robot_interfaces) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/qt_pub__functions.c.o\x1b[0m\n'}
+[6.597957] (robot_interfaces) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/arm_state__functions.c.o\x1b[0m\n'}
+[6.598165] (robot_interfaces) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/line_msg__functions.c.o\x1b[0m\n'}
+[6.612701] (robot_interfaces) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/motor_fdb__functions.c.o\x1b[0m\n'}
+[6.623205] (-) TimerEvent: {}
+[6.628583] (robot_interfaces) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/robot_control_msg__functions.c.o\x1b[0m\n'}
+[6.647409] (robot_interfaces) StdoutLine: {'line': b'[ 11%] Built target robot_interfaces__cpp\n'}
+[6.669566] (robot_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.675885] (robot_interfaces) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.709300] (robot_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[6.723352] (-) TimerEvent: {}
+[6.745751] (robot_interfaces) StdoutLine: {'line': b'[ 16%] \x1b[32m\x1b[1mLinking C shared library librobot_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[6.819328] (robot_interfaces) StdoutLine: {'line': b'[ 16%] Built target robot_interfaces__rosidl_generator_c\n'}
+[6.823449] (-) TimerEvent: {}
+[6.840633] (robot_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.841090] (robot_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.841249] (robot_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[6.923621] (-) TimerEvent: {}
+[7.024269] (-) TimerEvent: {}
+[7.124912] (-) TimerEvent: {}
+[7.225557] (-) TimerEvent: {}
+[7.326434] (-) TimerEvent: {}
+[7.427052] (-) TimerEvent: {}
+[7.527675] (-) TimerEvent: {}
+[7.578538] (robot_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/arm_state__type_support.cpp.o\x1b[0m\n'}
+[7.578990] (robot_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/line_msg__type_support.cpp.o\x1b[0m\n'}
+[7.579296] (robot_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/qt_recv__type_support.cpp.o\x1b[0m\n'}
+[7.627865] (-) TimerEvent: {}
+[7.728800] (-) TimerEvent: {}
+[7.806374] (robot_interfaces) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/qt_recv__type_support.cpp.o\x1b[0m\n'}
+[7.828991] (-) TimerEvent: {}
+[7.900527] (robot_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/line_msg__type_support.cpp.o\x1b[0m\n'}
+[7.929200] (-) TimerEvent: {}
+[7.953122] (robot_interfaces) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/qt_recv__type_support.cpp.o\x1b[0m\n'}
+[7.968935] (robot_interfaces) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/arm_state__type_support.cpp.o\x1b[0m\n'}
+[8.029406] (-) TimerEvent: {}
+[8.035868] (robot_interfaces) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/qt_pub__type_support.cpp.o\x1b[0m\n'}
+[8.087715] (robot_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/qt_recv__type_support.cpp.o\x1b[0m\n'}
+[8.088359] (robot_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/qt_recv__type_support.c.o\x1b[0m\n'}
+[8.102737] (robot_interfaces) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/motor_fdb__type_support.cpp.o\x1b[0m\n'}
+[8.106610] (robot_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/qt_recv__type_support_c.cpp.o\x1b[0m\n'}
+[8.129612] (-) TimerEvent: {}
+[8.176238] (robot_interfaces) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/line_msg__type_support.c.o\x1b[0m\n'}
+[8.176989] (robot_interfaces) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/robot_control_msg__type_support.cpp.o\x1b[0m\n'}
+[8.226550] (robot_interfaces) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/arm_state__type_support.c.o\x1b[0m\n'}
+[8.229774] (-) TimerEvent: {}
+[8.234841] (robot_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/qt_pub__type_support.cpp.o\x1b[0m\n'}
+[8.244398] (robot_interfaces) StdoutLine: {'line': b'[ 45%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[8.264921] (robot_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/line_msg__type_support_c.cpp.o\x1b[0m\n'}
+[8.295206] (robot_interfaces) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/motor_fdb__type_support.cpp.o\x1b[0m\n'}
+[8.310108] (robot_interfaces) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/qt_pub__type_support.c.o\x1b[0m\n'}
+[8.330008] (-) TimerEvent: {}
+[8.351028] (robot_interfaces) StdoutLine: {'line': b'[ 49%] Built target robot_interfaces__rosidl_typesupport_c\n'}
+[8.373624] (robot_interfaces) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/line_msg__type_support.cpp.o\x1b[0m\n'}
+[8.396217] (robot_interfaces) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/motor_fdb__type_support.c.o\x1b[0m\n'}
+[8.430199] (-) TimerEvent: {}
+[8.500064] (robot_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/robot_control_msg__type_support.c.o\x1b[0m\n'}
+[8.530432] (-) TimerEvent: {}
+[8.603658] (robot_interfaces) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking C shared library librobot_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[8.630645] (-) TimerEvent: {}
+[8.679892] (robot_interfaces) StdoutLine: {'line': b'[ 54%] Built target robot_interfaces__rosidl_typesupport_introspection_c\n'}
+[8.700552] (robot_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/arm_state__type_support_c.cpp.o\x1b[0m\n'}
+[8.730865] (-) TimerEvent: {}
+[8.831937] (-) TimerEvent: {}
+[8.866914] (robot_interfaces) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/robot_control_msg__type_support.cpp.o\x1b[0m\n'}
+[8.901760] (robot_interfaces) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/line_msg__type_support.cpp.o\x1b[0m\n'}
+[8.932178] (-) TimerEvent: {}
+[8.955629] (robot_interfaces) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/arm_state__type_support.cpp.o\x1b[0m\n'}
+[9.032325] (-) TimerEvent: {}
+[9.033962] (robot_interfaces) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/qt_pub__type_support_c.cpp.o\x1b[0m\n'}
+[9.053948] (robot_interfaces) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/arm_state__type_support.cpp.o\x1b[0m\n'}
+[9.063350] (robot_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/motor_fdb__type_support_c.cpp.o\x1b[0m\n'}
+[9.132529] (-) TimerEvent: {}
+[9.233280] (-) TimerEvent: {}
+[9.316639] (robot_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/qt_pub__type_support.cpp.o\x1b[0m\n'}
+[9.333501] (-) TimerEvent: {}
+[9.434294] (-) TimerEvent: {}
+[9.498037] (robot_interfaces) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[9.505723] (robot_interfaces) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/robot_control_msg__type_support_c.cpp.o\x1b[0m\n'}
+[9.534486] (-) TimerEvent: {}
+[9.597741] (robot_interfaces) StdoutLine: {'line': b'[ 69%] Built target robot_interfaces__rosidl_typesupport_cpp\n'}
+[9.616992] (robot_interfaces) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/motor_fdb__type_support.cpp.o\x1b[0m\n'}
+[9.634687] (-) TimerEvent: {}
+[9.735409] (-) TimerEvent: {}
+[9.836205] (-) TimerEvent: {}
+[9.836912] (robot_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/robot_control_msg__type_support.cpp.o\x1b[0m\n'}
+[9.866869] (robot_interfaces) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/qt_pub__type_support.cpp.o\x1b[0m\n'}
+[9.886770] (robot_interfaces) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/motor_fdb__type_support.cpp.o\x1b[0m\n'}
+[9.933467] (robot_interfaces) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/robot_control_msg__type_support.cpp.o\x1b[0m\n'}
+[9.936283] (-) TimerEvent: {}
+[10.037246] (-) TimerEvent: {}
+[10.138290] (-) TimerEvent: {}
+[10.239329] (-) TimerEvent: {}
+[10.325350] (robot_interfaces) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[10.339543] (-) TimerEvent: {}
+[10.440280] (-) TimerEvent: {}
+[10.513481] (robot_interfaces) StdoutLine: {'line': b'[ 77%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[10.540442] (-) TimerEvent: {}
+[10.641174] (-) TimerEvent: {}
+[10.742181] (-) TimerEvent: {}
+[10.842909] (-) TimerEvent: {}
+[10.943607] (-) TimerEvent: {}
+[11.032892] (robot_interfaces) StdoutLine: {'line': b'[ 78%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[11.043748] (-) TimerEvent: {}
+[11.048656] (robot_interfaces) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[11.143950] (-) TimerEvent: {}
+[11.193344] (robot_interfaces) StdoutLine: {'line': b'[ 80%] Built target robot_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[11.219505] (robot_interfaces) StdoutLine: {'line': b'[ 80%] Built target robot_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[11.244082] (-) TimerEvent: {}
+[11.260748] (robot_interfaces) StdoutLine: {'line': b'[ 80%] Built target robot_interfaces\n'}
+[11.302417] (robot_interfaces) StdoutLine: {'line': b'[ 81%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[11.344202] (-) TimerEvent: {}
+[11.444979] (-) TimerEvent: {}
+[11.545819] (-) TimerEvent: {}
+[11.646675] (-) TimerEvent: {}
+[11.747505] (-) TimerEvent: {}
+[11.848294] (-) TimerEvent: {}
+[11.949108] (-) TimerEvent: {}
+[12.049668] (-) TimerEvent: {}
+[12.150228] (-) TimerEvent: {}
+[12.250778] (-) TimerEvent: {}
+[12.351328] (-) TimerEvent: {}
+[12.451840] (-) TimerEvent: {}
+[12.552391] (-) TimerEvent: {}
+[12.652868] (-) TimerEvent: {}
+[12.753409] (-) TimerEvent: {}
+[12.853933] (-) TimerEvent: {}
+[12.954433] (-) TimerEvent: {}
+[13.054947] (-) TimerEvent: {}
+[13.155549] (-) TimerEvent: {}
+[13.166843] (robot_interfaces) StdoutLine: {'line': b'[ 81%] Built target robot_interfaces__py\n'}
+[13.208849] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_qt_pub_s.c.o\x1b[0m\n'}
+[13.209381] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_line_msg_s.c.o\x1b[0m\n'}
+[13.209553] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_robot_control_msg_s.c.o\x1b[0m\n'}
+[13.209701] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_motor_fdb_s.c.o\x1b[0m\n'}
+[13.209872] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_arm_state_s.c.o\x1b[0m\n'}
+[13.210006] (robot_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_qt_recv_s.c.o\x1b[0m\n'}
+[13.255745] (-) TimerEvent: {}
+[13.356457] (-) TimerEvent: {}
+[13.457163] (-) TimerEvent: {}
+[13.481642] (robot_interfaces) StdoutLine: {'line': b'[ 91%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/librobot_interfaces__rosidl_generator_py.so\x1b[0m\n'}
+[13.557359] (-) TimerEvent: {}
+[13.573724] (robot_interfaces) StdoutLine: {'line': b'[ 91%] Built target robot_interfaces__rosidl_generator_py\n'}
+[13.612242] (robot_interfaces) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[13.612819] (robot_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[13.614709] (robot_interfaces) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[13.657540] (-) TimerEvent: {}
+[13.758504] (-) TimerEvent: {}
+[13.854409] (robot_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.854921] (robot_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.855108] (robot_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.858608] (-) TimerEvent: {}
+[13.957552] (robot_interfaces) StdoutLine: {'line': b'[100%] Built target robot_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[13.958691] (-) TimerEvent: {}
+[13.959899] (robot_interfaces) StdoutLine: {'line': b'[100%] Built target robot_interfaces__rosidl_typesupport_c__pyext\n'}
+[13.960693] (robot_interfaces) StdoutLine: {'line': b'[100%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[13.985864] (robot_interfaces) CommandEnded: {'returncode': 0}
+[13.988494] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'install'}
+[14.006920] (robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/orin/auto_install/orz_robot/build/robot_interfaces'], 'cwd': '/home/orin/auto_install/orz_robot/build/robot_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/robot_interfaces'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[14.024932] (robot_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.025469] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/ament_index/resource_index/rosidl_interfaces/robot_interfaces\n'}
+[14.025869] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.026184] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.026426] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/motor_fdb.h\n'}
+[14.026660] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[14.026929] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/qt_recv.h\n'}
+[14.027165] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/line_msg.h\n'}
+[14.027388] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/qt_pub.h\n'}
+[14.027617] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/arm_state.h\n'}
+[14.027829] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.028041] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__type_support.h\n'}
+[14.028278] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__functions.h\n'}
+[14.028509] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__type_support.h\n'}
+[14.028728] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__type_support.h\n'}
+[14.028958] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__functions.c\n'}
+[14.029210] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__functions.h\n'}
+[14.029446] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__struct.h\n'}
+[14.029679] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__functions.h\n'}
+[14.029910] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__struct.h\n'}
+[14.030136] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__functions.h\n'}
+[14.030366] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__functions.c\n'}
+[14.030616] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__struct.h\n'}
+[14.030842] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__type_support.h\n'}
+[14.031069] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__functions.c\n'}
+[14.031306] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__struct.h\n'}
+[14.031882] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__functions.c\n'}
+[14.032132] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__struct.h\n'}
+[14.032392] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__functions.h\n'}
+[14.032624] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__functions.c\n'}
+[14.032859] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__struct.h\n'}
+[14.033124] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__functions.c\n'}
+[14.033390] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__type_support.h\n'}
+[14.033641] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__functions.h\n'}
+[14.033901] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__type_support.h\n'}
+[14.034149] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/robot_control_msg.h\n'}
+[14.034546] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/library_path.sh\n'}
+[14.034870] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/library_path.dsv\n'}
+[14.035285] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so\n'}
+[14.035995] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so" to ""\n'}
+[14.036354] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.036612] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.036855] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[14.037111] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.037366] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__rosidl_typesupport_fastrtps_c.h\n'}
+[14.037651] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__rosidl_typesupport_fastrtps_c.h\n'}
+[14.037904] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__rosidl_typesupport_fastrtps_c.h\n'}
+[14.038110] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__rosidl_typesupport_fastrtps_c.h\n'}
+[14.038357] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__rosidl_typesupport_fastrtps_c.h\n'}
+[14.038562] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__rosidl_typesupport_fastrtps_c.h\n'}
+[14.038764] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[14.039005] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[14.039297] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.039583] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.039828] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[14.040074] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.040320] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__rosidl_typesupport_introspection_c.h\n'}
+[14.040581] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__type_support.c\n'}
+[14.040827] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__rosidl_typesupport_introspection_c.h\n'}
+[14.041066] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__rosidl_typesupport_introspection_c.h\n'}
+[14.041316] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__type_support.c\n'}
+[14.041559] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__rosidl_typesupport_introspection_c.h\n'}
+[14.041841] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__type_support.c\n'}
+[14.042094] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__type_support.c\n'}
+[14.042341] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__type_support.c\n'}
+[14.042586] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__rosidl_typesupport_introspection_c.h\n'}
+[14.042830] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__rosidl_typesupport_introspection_c.h\n'}
+[14.043053] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__type_support.c\n'}
+[14.043255] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[14.043491] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[14.043745] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so\n'}
+[14.044189] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[14.044728] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.045025] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.045333] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/motor_fdb.hpp\n'}
+[14.045601] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/qt_recv.hpp\n'}
+[14.045823] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/robot_control_msg.hpp\n'}
+[14.046190] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.046427] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__type_support.hpp\n'}
+[14.046781] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__type_support.hpp\n'}
+[14.047088] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__struct.hpp\n'}
+[14.047355] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__builder.hpp\n'}
+[14.047672] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__type_support.hpp\n'}
+[14.047948] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__builder.hpp\n'}
+[14.048254] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__builder.hpp\n'}
+[14.048575] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__struct.hpp\n'}
+[14.048855] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__struct.hpp\n'}
+[14.049116] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__struct.hpp\n'}
+[14.049383] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__builder.hpp\n'}
+[14.049655] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__traits.hpp\n'}
+[14.049935] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__struct.hpp\n'}
+[14.050204] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__traits.hpp\n'}
+[14.050470] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__struct.hpp\n'}
+[14.050798] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__traits.hpp\n'}
+[14.051074] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__traits.hpp\n'}
+[14.051347] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__type_support.hpp\n'}
+[14.051651] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__type_support.hpp\n'}
+[14.051892] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__traits.hpp\n'}
+[14.052364] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__traits.hpp\n'}
+[14.052681] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__type_support.hpp\n'}
+[14.052953] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__builder.hpp\n'}
+[14.053224] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__builder.hpp\n'}
+[14.053525] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/arm_state.hpp\n'}
+[14.053808] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/line_msg.hpp\n'}
+[14.054088] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[14.054360] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/qt_pub.hpp\n'}
+[14.054631] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.054854] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.055068] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.055279] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.055587] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.055909] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.056215] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.056477] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.056868] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/dds_fastrtps\n'}
+[14.057138] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.057467] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[14.057749] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[14.058022] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[14.058318] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[14.058546] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[14.058818] (-) TimerEvent: {}
+[14.059237] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[14.059514] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__type_support.cpp\n'}
+[14.059747] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__type_support.cpp\n'}
+[14.060021] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.060347] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__type_support.cpp\n'}
+[14.060579] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/motor_fdb__type_support.cpp\n'}
+[14.060860] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/arm_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.061138] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.061406] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.061684] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_recv__type_support.cpp\n'}
+[14.061964] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/qt_pub__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.062241] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/robot_control_msg__type_support.cpp\n'}
+[14.062552] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/line_msg__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.062784] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[14.063095] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[14.063325] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so\n'}
+[14.063600] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[14.063878] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.sh\n'}
+[14.064171] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.dsv\n'}
+[14.064451] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info\n'}
+[14.064712] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[14.065045] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[14.065331] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[14.065633] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[14.065860] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces\n'}
+[14.066140] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[14.066417] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/librobot_interfaces__rosidl_generator_py.so\n'}
+[14.066732] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.067017] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[14.067308] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.067586] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py\n'}
+[14.067861] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg\n'}
+[14.068195] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_pub_s.c\n'}
+[14.068535] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_arm_state_s.c\n'}
+[14.068766] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_motor_fdb_s.c\n'}
+[14.069045] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_line_msg.py\n'}
+[14.069263] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_robot_control_msg_s.c\n'}
+[14.069476] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py\n'}
+[14.069688] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_line_msg_s.c\n'}
+[14.069935] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_recv.py\n'}
+[14.070147] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_motor_fdb.py\n'}
+[14.070356] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_robot_control_msg.py\n'}
+[14.070565] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_pub.py\n'}
+[14.070776] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_recv_s.c\n'}
+[14.070986] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_arm_state.py\n'}
+[14.071196] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.071412] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[14.144057] (robot_interfaces) StdoutLine: {'line': b"Listing '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces'...\n"}
+[14.144487] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py'...\n"}
+[14.144776] (robot_interfaces) StdoutLine: {'line': b"Listing '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg'...\n"}
+[14.145004] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py'...\n"}
+[14.145225] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_arm_state.py'...\n"}
+[14.145441] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_line_msg.py'...\n"}
+[14.145656] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_motor_fdb.py'...\n"}
+[14.145870] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_pub.py'...\n"}
+[14.146080] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_qt_recv.py'...\n"}
+[14.146289] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_robot_control_msg.py'...\n"}
+[14.155647] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.156438] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.156857] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.157514] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.157919] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.158578] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.158858] (-) TimerEvent: {}
+[14.159179] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so\n'}
+[14.159959] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so" to ""\n'}
+[14.160505] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/QtRecv.idl\n'}
+[14.160861] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/LineMsg.idl\n'}
+[14.161176] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/ArmState.idl\n'}
+[14.161474] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/QtPub.idl\n'}
+[14.161768] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/MotorFdb.idl\n'}
+[14.162051] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/RobotControlMsg.idl\n'}
+[14.162333] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/QtRecv.msg\n'}
+[14.162619] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/LineMsg.msg\n'}
+[14.162924] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/ArmState.msg\n'}
+[14.163211] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/QtPub.msg\n'}
+[14.163481] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/MotorFdb.msg\n'}
+[14.163712] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/msg/RobotControlMsg.msg\n'}
+[14.163989] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/ament_index/resource_index/package_run_dependencies/robot_interfaces\n'}
+[14.164321] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/ament_index/resource_index/parent_prefix_path/robot_interfaces\n'}
+[14.164645] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.sh\n'}
+[14.164925] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.dsv\n'}
+[14.165203] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/path.sh\n'}
+[14.165474] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/environment/path.dsv\n'}
+[14.165740] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/local_setup.bash\n'}
+[14.165967] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/local_setup.sh\n'}
+[14.166236] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/local_setup.zsh\n'}
+[14.166505] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/local_setup.dsv\n'}
+[14.166773] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/package.dsv\n'}
+[14.167034] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/ament_index/resource_index/packages/robot_interfaces\n'}
+[14.167380] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport.cmake\n'}
+[14.167702] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[14.168035] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[14.168433] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[14.169144] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[14.169643] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[14.170014] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[14.170335] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[14.170652] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cppExport.cmake\n'}
+[14.170954] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[14.171233] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[14.171517] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[14.171785] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[14.172134] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[14.172486] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[14.172813] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport.cmake\n'}
+[14.173161] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[14.173465] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[14.173756] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[14.174068] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[14.174367] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[14.174693] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[14.174977] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[14.175320] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[14.175625] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig.cmake\n'}
+[14.175915] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig-version.cmake\n'}
+[14.176214] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/robot_interfaces/share/robot_interfaces/package.xml\n'}
+[14.181339] (robot_interfaces) CommandEnded: {'returncode': 0}
+[14.249732] (robot_interfaces) JobEnded: {'identifier': 'robot_interfaces', 'rc': 0}
+[14.251679] (-) EventReactorShutdown: {}

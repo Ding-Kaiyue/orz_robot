@@ -1,0 +1,11 @@
+{
+  "package_name": "robot_interfaces",
+  "non_idl_tuples": [
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/QtRecv.msg",
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/LineMsg.msg",
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/ArmState.msg",
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/QtPub.msg",
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/MotorFdb.msg",
+    "/home/orin/auto_install/orz_robot/src/robot_interfaces:msg/RobotControlMsg.msg"
+  ]
+}

@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from robot_interfaces/msg/RobotControlMsg.msg
+// generated code does not contain a copyright notice
+
+
+module robot_interfaces {
+  module msg {
+    struct RobotControlMsg {
+      sequence<boolean> motor_enable_flag;
+
+      @verbatim (language="comment", text=
+        "04-velocity   05-position   02-effort")
+      sequence<uint8> motor_mode;
+
+      @verbatim (language="comment", text=
+        "04-velocity value   05-position value   02-effort value")
+      sequence<double> motor_msg;
+    };
+  };
+};

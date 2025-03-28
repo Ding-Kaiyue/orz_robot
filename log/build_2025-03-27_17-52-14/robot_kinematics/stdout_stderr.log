@@ -1,0 +1,28 @@
+[35m[1mConsolidate compiler generated dependencies of target robot_key_controller[0m
+[35m[1mConsolidate compiler generated dependencies of target robot_state_get[0m
+[35m[1mConsolidate compiler generated dependencies of target robot_func[0m
+[ 33%] Built target robot_state_get
+[ 66%] Built target robot_key_controller
+[100%] Built target robot_func
+-- Install configuration: ""
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_state_get
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_func
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/lib/robot_kinematics/robot_key_controller
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch/robot_func.launch.py
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/launch/robot_state_get.launch.py
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/package_run_dependencies/robot_kinematics
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/parent_prefix_path/robot_kinematics
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/ament_prefix_path.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/path.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/environment/path.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.bash
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.sh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.zsh
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/local_setup.dsv
+-- Installing: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/package.dsv
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/ament_index/resource_index/packages/robot_kinematics
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/cmake/robot_kinematicsConfig.cmake
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/cmake/robot_kinematicsConfig-version.cmake
+-- Up-to-date: /home/orin/auto_install/orz_robot/install/robot_kinematics/share/robot_kinematics/package.xml

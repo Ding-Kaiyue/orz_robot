@@ -1,0 +1,10 @@
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/robot_qtrecv_uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/robot_tcp_server.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/test.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/edit_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/rebuild_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/list_install_components.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/install.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/install/local.dir
+/home/orin/auto_install/orz_robot/build/robot_qtrecv/CMakeFiles/install/strip.dir

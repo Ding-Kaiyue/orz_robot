@@ -1,0 +1,330 @@
+[0.000000] (-) TimerEvent: {}
+[0.000659] (-) JobUnselected: {'identifier': 'robot_bringup'}
+[0.001162] (-) JobUnselected: {'identifier': 'robot_config'}
+[0.001439] (-) JobUnselected: {'identifier': 'robot_control'}
+[0.001705] (-) JobUnselected: {'identifier': 'robot_description'}
+[0.001819] (-) JobUnselected: {'identifier': 'robot_driver'}
+[0.001912] (-) JobUnselected: {'identifier': 'robot_gazebo'}
+[0.001999] (-) JobUnselected: {'identifier': 'robot_interfaces'}
+[0.002084] (-) JobUnselected: {'identifier': 'robot_keyboard_to_twist_py'}
+[0.002166] (-) JobUnselected: {'identifier': 'robot_kinematics'}
+[0.002246] (-) JobUnselected: {'identifier': 'robot_qtrecv'}
+[0.002318] (-) JobUnselected: {'identifier': 'robot_test'}
+[0.002419] (-) JobUnselected: {'identifier': 'robot_test_py'}
+[0.002587] (-) JobUnselected: {'identifier': 'ros2_socketcan'}
+[0.002679] (ros2_socketcan_msgs) JobQueued: {'identifier': 'ros2_socketcan_msgs', 'dependencies': OrderedDict()}
+[0.002740] (ros2_socketcan_msgs) JobStarted: {'identifier': 'ros2_socketcan_msgs'}
+[0.016655] (ros2_socketcan_msgs) JobProgress: {'identifier': 'ros2_socketcan_msgs', 'progress': 'cmake'}
+[0.017712] (ros2_socketcan_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/orin/auto_install/orz_robot/src/ros2_socketcan/ros2_socketcan_msgs', '-DCMAKE_INSTALL_PREFIX=/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099309] (-) TimerEvent: {}
+[0.142747] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199545] (-) TimerEvent: {}
+[0.257785] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.279259] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299770] (-) TimerEvent: {}
+[0.400512] (-) TimerEvent: {}
+[0.432878] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.451087] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.451847] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.452578] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.460709] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500702] (-) TimerEvent: {}
+[0.601699] (-) TimerEvent: {}
+[0.645290] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.664684] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.665318] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.665953] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.671228] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)\n'}
+[0.701868] (-) TimerEvent: {}
+[0.802529] (-) TimerEvent: {}
+[0.903196] (-) TimerEvent: {}
+[0.988902] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.003388] (-) TimerEvent: {}
+[1.104215] (-) TimerEvent: {}
+[1.205049] (-) TimerEvent: {}
+[1.305821] (-) TimerEvent: {}
+[1.320479] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.334999] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.406010] (-) TimerEvent: {}
+[1.416763] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.506188] (-) TimerEvent: {}
+[1.606817] (-) TimerEvent: {}
+[1.707441] (-) TimerEvent: {}
+[1.808114] (-) TimerEvent: {}
+[1.908754] (-) TimerEvent: {}
+[2.009414] (-) TimerEvent: {}
+[2.021591] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_cppcheck: 0.12.11 (/opt/ros/humble/share/ament_cmake_cppcheck/cmake)\n'}
+[2.028651] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_cpplint: 0.12.11 (/opt/ros/humble/share/ament_cmake_cpplint/cmake)\n'}
+[2.034678] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_uncrustify: 0.12.11 (/opt/ros/humble/share/ament_cmake_uncrustify/cmake)\n'}
+[2.041384] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.109576] (-) TimerEvent: {}
+[2.210719] (-) TimerEvent: {}
+[2.311430] (-) TimerEvent: {}
+[2.412144] (-) TimerEvent: {}
+[2.512918] (-) TimerEvent: {}
+[2.540864] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.613161] (-) TimerEvent: {}
+[2.714000] (-) TimerEvent: {}
+[2.814759] (-) TimerEvent: {}
+[2.915535] (-) TimerEvent: {}
+[3.016367] (-) TimerEvent: {}
+[3.117100] (-) TimerEvent: {}
+[3.217927] (-) TimerEvent: {}
+[3.237029] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.289706] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[3.295382] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.318085] (-) TimerEvent: {}
+[3.359855] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[3.360377] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.360532] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.360669] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[3.404158] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.418190] (-) TimerEvent: {}
+[3.518814] (-) TimerEvent: {}
+[3.536687] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_flake8: 0.12.11 (/opt/ros/humble/share/ament_cmake_flake8/cmake)\n'}
+[3.542467] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_cmake_pep257: 0.12.11 (/opt/ros/humble/share/ament_cmake_pep257/cmake)\n'}
+[3.549652] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[3.580108] (ros2_socketcan_msgs) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[3.580874] (ros2_socketcan_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.581663] (ros2_socketcan_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.586835] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.618971] (-) TimerEvent: {}
+[3.652522] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[3.675084] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs\n'}
+[3.699209] (ros2_socketcan_msgs) CommandEnded: {'returncode': 0}
+[3.701304] (ros2_socketcan_msgs) JobProgress: {'identifier': 'ros2_socketcan_msgs', 'progress': 'build'}
+[3.703225] (ros2_socketcan_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs', '--', '-j8', '-l8'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[3.719082] (-) TimerEvent: {}
+[3.782101] (ros2_socketcan_msgs) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.800210] (ros2_socketcan_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.817924] (ros2_socketcan_msgs) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_ros2_socketcan_msgs\n'}
+[3.819157] (-) TimerEvent: {}
+[3.919821] (-) TimerEvent: {}
+[4.020505] (-) TimerEvent: {}
+[4.121141] (-) TimerEvent: {}
+[4.221826] (-) TimerEvent: {}
+[4.322461] (-) TimerEvent: {}
+[4.328058] (ros2_socketcan_msgs) StdoutLine: {'line': b'[  6%] Built target ros2_socketcan_msgs__cpp\n'}
+[4.329068] (ros2_socketcan_msgs) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_generator_c.dir/rosidl_generator_c/ros2_socketcan_msgs/msg/detail/fd_frame__functions.c.o\x1b[0m\n'}
+[4.335179] (ros2_socketcan_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[4.336834] (ros2_socketcan_msgs) StdoutLine: {'line': b'creating ros2_socketcan_msgs.egg-info\n'}
+[4.337354] (ros2_socketcan_msgs) StdoutLine: {'line': b'writing ros2_socketcan_msgs.egg-info/PKG-INFO\n'}
+[4.337920] (ros2_socketcan_msgs) StdoutLine: {'line': b'writing dependency_links to ros2_socketcan_msgs.egg-info/dependency_links.txt\n'}
+[4.338275] (ros2_socketcan_msgs) StdoutLine: {'line': b'writing top-level names to ros2_socketcan_msgs.egg-info/top_level.txt\n'}
+[4.338815] (ros2_socketcan_msgs) StdoutLine: {'line': b"writing manifest file 'ros2_socketcan_msgs.egg-info/SOURCES.txt'\n"}
+[4.343881] (ros2_socketcan_msgs) StdoutLine: {'line': b"reading manifest file 'ros2_socketcan_msgs.egg-info/SOURCES.txt'\n"}
+[4.345226] (ros2_socketcan_msgs) StdoutLine: {'line': b"writing manifest file 'ros2_socketcan_msgs.egg-info/SOURCES.txt'\n"}
+[4.347827] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.348152] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.348322] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.422621] (-) TimerEvent: {}
+[4.434687] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 19%] Built target ament_cmake_python_build_ros2_socketcan_msgs_egg\n'}
+[4.491665] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libros2_socketcan_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.523930] (-) TimerEvent: {}
+[4.565085] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 22%] Built target ros2_socketcan_msgs__rosidl_generator_c\n'}
+[4.585671] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.586215] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[4.586390] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.624165] (-) TimerEvent: {}
+[4.725125] (-) TimerEvent: {}
+[4.825772] (-) TimerEvent: {}
+[4.879698] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.cpp.o\x1b[0m\n'}
+[4.885959] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros2_socketcan_msgs/msg/detail/dds_fastrtps/fd_frame__type_support.cpp.o\x1b[0m\n'}
+[4.907723] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros2_socketcan_msgs/msg/fd_frame__type_support.cpp.o\x1b[0m\n'}
+[4.925976] (-) TimerEvent: {}
+[5.026735] (-) TimerEvent: {}
+[5.089964] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros2_socketcan_msgs/msg/fd_frame__type_support.cpp.o\x1b[0m\n'}
+[5.124399] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros2_socketcan_msgs/msg/detail/fd_frame__type_support_c.cpp.o\x1b[0m\n'}
+[5.126861] (-) TimerEvent: {}
+[5.129439] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.c.o\x1b[0m\n'}
+[5.157311] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[5.209852] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking C shared library libros2_socketcan_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[5.228310] (-) TimerEvent: {}
+[5.233681] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 58%] Built target ros2_socketcan_msgs__rosidl_typesupport_c\n'}
+[5.269660] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 58%] Built target ros2_socketcan_msgs__rosidl_typesupport_introspection_c\n'}
+[5.328511] (-) TimerEvent: {}
+[5.429233] (-) TimerEvent: {}
+[5.520568] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[5.529415] (-) TimerEvent: {}
+[5.593679] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 61%] Built target ros2_socketcan_msgs__rosidl_typesupport_cpp\n'}
+[5.629622] (-) TimerEvent: {}
+[5.730410] (-) TimerEvent: {}
+[5.831180] (-) TimerEvent: {}
+[5.867057] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[5.900796] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[5.931353] (-) TimerEvent: {}
+[5.969765] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.015628] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 70%] Built target ros2_socketcan_msgs__rosidl_typesupport_introspection_cpp\n'}
+[6.031544] (-) TimerEvent: {}
+[6.061939] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 70%] Built target ros2_socketcan_msgs__rosidl_typesupport_fastrtps_c\n'}
+[6.124806] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 70%] Built target ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[6.131706] (-) TimerEvent: {}
+[6.164727] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 70%] Built target ros2_socketcan_msgs\n'}
+[6.203926] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[6.231884] (-) TimerEvent: {}
+[6.332511] (-) TimerEvent: {}
+[6.433118] (-) TimerEvent: {}
+[6.533759] (-) TimerEvent: {}
+[6.634383] (-) TimerEvent: {}
+[6.734960] (-) TimerEvent: {}
+[6.834087] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 74%] Built target ros2_socketcan_msgs__py\n'}
+[6.835007] (-) TimerEvent: {}
+[6.873787] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_generator_py.dir/rosidl_generator_py/ros2_socketcan_msgs/msg/_fd_frame_s.c.o\x1b[0m\n'}
+[6.935237] (-) TimerEvent: {}
+[7.035932] (-) TimerEvent: {}
+[7.121638] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ros2_socketcan_msgs/libros2_socketcan_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[7.136047] (-) TimerEvent: {}
+[7.199385] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 80%] Built target ros2_socketcan_msgs__rosidl_generator_py\n'}
+[7.236247] (-) TimerEvent: {}
+[7.238369] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[7.238775] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[7.238947] (ros2_socketcan_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/ros2_socketcan_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[7.336423] (-) TimerEvent: {}
+[7.436906] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[7.437384] (-) TimerEvent: {}
+[7.437640] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[7.437820] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[7.511624] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] Built target ros2_socketcan_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[7.512162] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] Built target ros2_socketcan_msgs__rosidl_typesupport_c__pyext\n'}
+[7.512351] (ros2_socketcan_msgs) StdoutLine: {'line': b'[100%] Built target ros2_socketcan_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[7.537721] (ros2_socketcan_msgs) CommandEnded: {'returncode': 0}
+[7.538723] (-) TimerEvent: {}
+[7.540162] (ros2_socketcan_msgs) JobProgress: {'identifier': 'ros2_socketcan_msgs', 'progress': 'install'}
+[7.558475] (ros2_socketcan_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan_msgs'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[7.576852] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.577574] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ament_index/resource_index/rosidl_interfaces/ros2_socketcan_msgs\n'}
+[7.577953] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.578316] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.578558] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[7.578917] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/fd_frame.h\n'}
+[7.579169] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.579449] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.h\n'}
+[7.580147] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__functions.h\n'}
+[7.580461] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__struct.h\n'}
+[7.580693] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__functions.c\n'}
+[7.581080] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/library_path.sh\n'}
+[7.581447] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/library_path.dsv\n'}
+[7.581730] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_generator_c.so\n'}
+[7.581970] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_generator_c.so" to ""\n'}
+[7.582253] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.582596] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.582928] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[7.583239] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.583500] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__rosidl_typesupport_fastrtps_c.h\n'}
+[7.583619] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[7.583734] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[7.583881] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.584013] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.584128] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[7.584301] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.584483] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.c\n'}
+[7.584599] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__rosidl_typesupport_introspection_c.h\n'}
+[7.584713] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_introspection_c.so\n'}
+[7.584837] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[7.585065] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_c.so\n'}
+[7.585213] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_c.so" to ""\n'}
+[7.585354] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.585478] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.585691] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.585957] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__struct.hpp\n'}
+[7.586266] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__builder.hpp\n'}
+[7.586570] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.hpp\n'}
+[7.586886] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__traits.hpp\n'}
+[7.587161] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/fd_frame.hpp\n'}
+[7.587431] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[7.587673] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.587939] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.588327] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.588603] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[7.588867] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/dds_fastrtps\n'}
+[7.589094] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[7.589311] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[7.589620] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[7.589850] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs\n'}
+[7.590138] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg\n'}
+[7.590480] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail\n'}
+[7.590724] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__type_support.cpp\n'}
+[7.591113] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/include/ros2_socketcan_msgs/ros2_socketcan_msgs/msg/detail/fd_frame__rosidl_typesupport_introspection_cpp.hpp\n'}
+[7.591354] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[7.591708] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[7.592043] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_cpp.so\n'}
+[7.592346] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[7.592676] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/pythonpath.sh\n'}
+[7.592962] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/pythonpath.dsv\n'}
+[7.593230] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs-1.3.0-py3.10.egg-info\n'}
+[7.593556] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs-1.3.0-py3.10.egg-info/SOURCES.txt\n'}
+[7.593864] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs-1.3.0-py3.10.egg-info/dependency_links.txt\n'}
+[7.594152] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs-1.3.0-py3.10.egg-info/PKG-INFO\n'}
+[7.594434] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs-1.3.0-py3.10.egg-info/top_level.txt\n'}
+[7.594717] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs\n'}
+[7.594963] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.595202] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[7.595422] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/__init__.py\n'}
+[7.595638] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.595899] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[7.596128] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/_ros2_socketcan_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[7.596346] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg\n'}
+[7.596561] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg/__init__.py\n'}
+[7.596776] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg/_fd_frame_s.c\n'}
+[7.596986] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg/_fd_frame.py\n'}
+[7.597195] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/libros2_socketcan_msgs__rosidl_generator_py.so\n'}
+[7.597405] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.638876] (-) TimerEvent: {}
+[7.660493] (ros2_socketcan_msgs) StdoutLine: {'line': b"Listing '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs'...\n"}
+[7.660882] (ros2_socketcan_msgs) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/__init__.py'...\n"}
+[7.661172] (ros2_socketcan_msgs) StdoutLine: {'line': b"Listing '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg'...\n"}
+[7.661405] (ros2_socketcan_msgs) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg/__init__.py'...\n"}
+[7.661632] (ros2_socketcan_msgs) StdoutLine: {'line': b"Compiling '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/msg/_fd_frame.py'...\n"}
+[7.672229] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.672849] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[7.673215] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.673734] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[7.674057] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[7.674622] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages/ros2_socketcan_msgs/ros2_socketcan_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[7.674795] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_generator_py.so\n'}
+[7.675372] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib/libros2_socketcan_msgs__rosidl_generator_py.so" to ""\n'}
+[7.675622] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/msg/FdFrame.idl\n'}
+[7.675974] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/msg/FdFrame.msg\n'}
+[7.676359] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ament_index/resource_index/package_run_dependencies/ros2_socketcan_msgs\n'}
+[7.676732] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ament_index/resource_index/parent_prefix_path/ros2_socketcan_msgs\n'}
+[7.677059] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/ament_prefix_path.sh\n'}
+[7.677365] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/ament_prefix_path.dsv\n'}
+[7.677667] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/path.sh\n'}
+[7.677998] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/environment/path.dsv\n'}
+[7.678289] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/local_setup.bash\n'}
+[7.678581] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/local_setup.sh\n'}
+[7.678869] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/local_setup.zsh\n'}
+[7.679153] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/local_setup.dsv\n'}
+[7.679439] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.dsv\n'}
+[7.679724] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ament_index/resource_index/packages/ros2_socketcan_msgs\n'}
+[7.680057] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_generator_cExport.cmake\n'}
+[7.680364] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[7.680673] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[7.680974] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[7.681315] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[7.681949] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[7.682308] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_cExport.cmake\n'}
+[7.682542] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[7.682928] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_generator_cppExport.cmake\n'}
+[7.683185] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[7.683561] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[7.683692] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[7.683858] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[7.684066] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[7.684362] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[7.684675] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_generator_pyExport.cmake\n'}
+[7.684997] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/export_ros2_socketcan_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[7.685274] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[7.685557] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[7.685852] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[7.686150] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[7.686438] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[7.686714] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[7.687017] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[7.687316] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgsConfig.cmake\n'}
+[7.687611] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/cmake/ros2_socketcan_msgsConfig-version.cmake\n'}
+[7.687918] (ros2_socketcan_msgs) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/share/ros2_socketcan_msgs/package.xml\n'}
+[7.693506] (ros2_socketcan_msgs) CommandEnded: {'returncode': 0}
+[7.740367] (-) TimerEvent: {}
+[7.783363] (ros2_socketcan_msgs) JobEnded: {'identifier': 'ros2_socketcan_msgs', 'rc': 0}
+[7.787733] (-) EventReactorShutdown: {}

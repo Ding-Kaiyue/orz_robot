@@ -1,0 +1,9 @@
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/robot_config_uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/test.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/edit_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/rebuild_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/list_install_components.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/install.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/install/local.dir
+/home/orin/auto_install/orz_robot/build/robot_config/CMakeFiles/install/strip.dir

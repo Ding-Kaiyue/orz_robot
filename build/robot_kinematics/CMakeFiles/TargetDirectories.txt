@@ -1,0 +1,12 @@
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/robot_kinematics_uninstall.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/robot_state_get.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/robot_key_controller.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/robot_func.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/test.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/edit_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/rebuild_cache.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/list_install_components.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/install.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/install/local.dir
+/home/orin/auto_install/orz_robot/build/robot_kinematics/CMakeFiles/install/strip.dir

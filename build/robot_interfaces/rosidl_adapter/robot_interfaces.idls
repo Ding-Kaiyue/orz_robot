@@ -1,0 +1,6 @@
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/QtRecv.idl
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/LineMsg.idl
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/ArmState.idl
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/QtPub.idl
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/MotorFdb.idl
+/home/orin/auto_install/orz_robot/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/RobotControlMsg.idl

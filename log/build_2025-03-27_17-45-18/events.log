@@ -1,0 +1,577 @@
+[0.000000] (-) TimerEvent: {}
+[0.000979] (-) JobUnselected: {'identifier': 'robot_bringup'}
+[0.001276] (-) JobUnselected: {'identifier': 'robot_config'}
+[0.001392] (-) JobUnselected: {'identifier': 'robot_control'}
+[0.001504] (-) JobUnselected: {'identifier': 'robot_description'}
+[0.001618] (-) JobUnselected: {'identifier': 'robot_driver'}
+[0.001707] (-) JobUnselected: {'identifier': 'robot_gazebo'}
+[0.001790] (-) JobUnselected: {'identifier': 'robot_interfaces'}
+[0.001865] (-) JobUnselected: {'identifier': 'robot_keyboard_to_twist_py'}
+[0.001964] (-) JobUnselected: {'identifier': 'robot_kinematics'}
+[0.002122] (-) JobUnselected: {'identifier': 'robot_qtrecv'}
+[0.002207] (-) JobUnselected: {'identifier': 'robot_test'}
+[0.002254] (-) JobUnselected: {'identifier': 'robot_test_py'}
+[0.002337] (-) JobUnselected: {'identifier': 'ros2_socketcan_msgs'}
+[0.002395] (ros2_socketcan) JobQueued: {'identifier': 'ros2_socketcan', 'dependencies': OrderedDict([('ros2_socketcan_msgs', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs')])}
+[0.002570] (ros2_socketcan) JobStarted: {'identifier': 'ros2_socketcan'}
+[0.019792] (ros2_socketcan) JobProgress: {'identifier': 'ros2_socketcan', 'progress': 'cmake'}
+[0.020802] (ros2_socketcan) Command: {'cmd': ['/usr/bin/cmake', '/home/orin/auto_install/orz_robot/src/ros2_socketcan/ros2_socketcan', '-DCMAKE_INSTALL_PREFIX=/home/orin/auto_install/orz_robot/install/ros2_socketcan'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble')]), 'shell': False}
+[0.098976] (-) TimerEvent: {}
+[0.136145] (ros2_socketcan) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199184] (-) TimerEvent: {}
+[0.246929] (ros2_socketcan) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.269886] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299318] (-) TimerEvent: {}
+[0.399942] (-) TimerEvent: {}
+[0.413405] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.435977] (ros2_socketcan) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.436648] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.437095] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.447819] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500167] (-) TimerEvent: {}
+[0.601062] (-) TimerEvent: {}
+[0.613216] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.636558] (ros2_socketcan) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.637568] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.639141] (ros2_socketcan) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.646875] (ros2_socketcan) StdoutLine: {'line': b'-- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)\n'}
+[0.701247] (-) TimerEvent: {}
+[0.802060] (-) TimerEvent: {}
+[0.902690] (-) TimerEvent: {}
+[0.964951] (ros2_socketcan) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.003082] (-) TimerEvent: {}
+[1.104445] (-) TimerEvent: {}
+[1.205159] (-) TimerEvent: {}
+[1.305982] (-) TimerEvent: {}
+[1.406762] (-) TimerEvent: {}
+[1.418333] (ros2_socketcan) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[1.427441] (ros2_socketcan) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.443578] (ros2_socketcan) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.466073] (ros2_socketcan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.495879] (ros2_socketcan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.506817] (-) TimerEvent: {}
+[1.578537] (ros2_socketcan) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.583235] (ros2_socketcan) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.606951] (-) TimerEvent: {}
+[1.707668] (-) TimerEvent: {}
+[1.758977] (ros2_socketcan) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.807868] (-) TimerEvent: {}
+[1.812639] (ros2_socketcan) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.888014] (ros2_socketcan) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.905995] (ros2_socketcan) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.907945] (-) TimerEvent: {}
+[2.008606] (-) TimerEvent: {}
+[2.051805] (ros2_socketcan) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.052731] (ros2_socketcan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.108891] (-) TimerEvent: {}
+[2.202103] (ros2_socketcan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[2.205194] (ros2_socketcan) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.208974] (-) TimerEvent: {}
+[2.309574] (-) TimerEvent: {}
+[2.410202] (-) TimerEvent: {}
+[2.499811] (ros2_socketcan) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[2.510321] (-) TimerEvent: {}
+[2.537972] (ros2_socketcan) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[2.554684] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.560700] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.561340] (ros2_socketcan) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/orin/auto_install/orz_robot/src/ros2_socketcan/ros2_socketcan/include\n'}
+[2.561610] (ros2_socketcan) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.564773] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[2.565062] (ros2_socketcan) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[2.565924] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[2.567312] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.568311] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[2.571524] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.572064] (ros2_socketcan) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.572639] (ros2_socketcan) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.578479] (ros2_socketcan) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.610544] (-) TimerEvent: {}
+[2.645770] (ros2_socketcan) StdoutLine: {'line': b'-- Generating done\n'}
+[2.670417] (ros2_socketcan) StdoutLine: {'line': b'-- Build files have been written to: /home/orin/auto_install/orz_robot/build/ros2_socketcan\n'}
+[2.703118] (ros2_socketcan) CommandEnded: {'returncode': 0}
+[2.704632] (ros2_socketcan) JobProgress: {'identifier': 'ros2_socketcan', 'progress': 'build'}
+[2.706543] (ros2_socketcan) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/orin/auto_install/orz_robot/build/ros2_socketcan', '--', '-j8', '-l8'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble')]), 'shell': False}
+[2.710581] (-) TimerEvent: {}
+[2.809911] (ros2_socketcan) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[2.810495] (ros2_socketcan) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/socket_can_sender_node_exe.dir/rclcpp_components/node_main_socket_can_sender_node_exe.cpp.o\x1b[0m\n'}
+[2.810682] (-) TimerEvent: {}
+[2.811265] (ros2_socketcan) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan.dir/src/socket_can_common.cpp.o\x1b[0m\n'}
+[2.811529] (ros2_socketcan) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/socket_can_receiver_node_exe.dir/rclcpp_components/node_main_socket_can_receiver_node_exe.cpp.o\x1b[0m\n'}
+[2.811832] (ros2_socketcan) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan.dir/src/socket_can_id.cpp.o\x1b[0m\n'}
+[2.811987] (ros2_socketcan) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[2.812148] (ros2_socketcan) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan.dir/src/socket_can_receiver.cpp.o\x1b[0m\n'}
+[2.812429] (ros2_socketcan) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan.dir/src/socket_can_sender.cpp.o\x1b[0m\n'}
+[2.910905] (-) TimerEvent: {}
+[3.011609] (-) TimerEvent: {}
+[3.112331] (-) TimerEvent: {}
+[3.213089] (-) TimerEvent: {}
+[3.315268] (-) TimerEvent: {}
+[3.416010] (-) TimerEvent: {}
+[3.516738] (-) TimerEvent: {}
+[3.617455] (-) TimerEvent: {}
+[3.718182] (-) TimerEvent: {}
+[3.818940] (-) TimerEvent: {}
+[3.919655] (-) TimerEvent: {}
+[3.954163] (ros2_socketcan) StdoutLine: {'line': b'[ 42%] \x1b[32m\x1b[1mLinking CXX shared library libros2_socketcan.so\x1b[0m\n'}
+[4.019855] (-) TimerEvent: {}
+[4.120582] (-) TimerEvent: {}
+[4.185169] (ros2_socketcan) StdoutLine: {'line': b'[ 42%] Built target ros2_socketcan\n'}
+[4.220784] (-) TimerEvent: {}
+[4.228946] (ros2_socketcan) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/socket_can_receiver_node.dir/src/socket_can_receiver_node.cpp.o\x1b[0m\n'}
+[4.320972] (-) TimerEvent: {}
+[4.384286] (ros2_socketcan) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[4.421141] (-) TimerEvent: {}
+[4.461100] (ros2_socketcan) StdoutLine: {'line': b'[ 52%] Built target gtest_main\n'}
+[4.521326] (-) TimerEvent: {}
+[4.622053] (-) TimerEvent: {}
+[4.722924] (-) TimerEvent: {}
+[4.823832] (-) TimerEvent: {}
+[4.924537] (-) TimerEvent: {}
+[5.025216] (-) TimerEvent: {}
+[5.126068] (-) TimerEvent: {}
+[5.226837] (-) TimerEvent: {}
+[5.327538] (-) TimerEvent: {}
+[5.428271] (-) TimerEvent: {}
+[5.528995] (-) TimerEvent: {}
+[5.629762] (-) TimerEvent: {}
+[5.730462] (-) TimerEvent: {}
+[5.831186] (-) TimerEvent: {}
+[5.931905] (-) TimerEvent: {}
+[6.032611] (-) TimerEvent: {}
+[6.133278] (-) TimerEvent: {}
+[6.234027] (-) TimerEvent: {}
+[6.334723] (-) TimerEvent: {}
+[6.435460] (-) TimerEvent: {}
+[6.536165] (-) TimerEvent: {}
+[6.636836] (-) TimerEvent: {}
+[6.737554] (-) TimerEvent: {}
+[6.838252] (-) TimerEvent: {}
+[6.938955] (-) TimerEvent: {}
+[7.039762] (-) TimerEvent: {}
+[7.140460] (-) TimerEvent: {}
+[7.241190] (-) TimerEvent: {}
+[7.341945] (-) TimerEvent: {}
+[7.442673] (-) TimerEvent: {}
+[7.543388] (-) TimerEvent: {}
+[7.644075] (-) TimerEvent: {}
+[7.744747] (-) TimerEvent: {}
+[7.845448] (-) TimerEvent: {}
+[7.946127] (-) TimerEvent: {}
+[8.046822] (-) TimerEvent: {}
+[8.147497] (-) TimerEvent: {}
+[8.248187] (-) TimerEvent: {}
+[8.348860] (-) TimerEvent: {}
+[8.449573] (-) TimerEvent: {}
+[8.550243] (-) TimerEvent: {}
+[8.650912] (-) TimerEvent: {}
+[8.751576] (-) TimerEvent: {}
+[8.852243] (-) TimerEvent: {}
+[8.952946] (-) TimerEvent: {}
+[9.053658] (-) TimerEvent: {}
+[9.154341] (-) TimerEvent: {}
+[9.255025] (-) TimerEvent: {}
+[9.355728] (-) TimerEvent: {}
+[9.456471] (-) TimerEvent: {}
+[9.557616] (-) TimerEvent: {}
+[9.576765] (ros2_socketcan) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking CXX static library libgtest.a\x1b[0m\n'}
+[9.657810] (-) TimerEvent: {}
+[9.698863] (ros2_socketcan) StdoutLine: {'line': b'[ 57%] Built target gtest\n'}
+[9.739215] (ros2_socketcan) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/sanity_checks.cpp.o\x1b[0m\n'}
+[9.739916] (ros2_socketcan) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/receiver.cpp.o\x1b[0m\n'}
+[9.740130] (ros2_socketcan) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/ros2_socketcan_test.dir/test/gtest_main.cpp.o\x1b[0m\n'}
+[9.758015] (-) TimerEvent: {}
+[9.858684] (-) TimerEvent: {}
+[9.959351] (-) TimerEvent: {}
+[10.060088] (-) TimerEvent: {}
+[10.160798] (-) TimerEvent: {}
+[10.261493] (-) TimerEvent: {}
+[10.362201] (-) TimerEvent: {}
+[10.463210] (-) TimerEvent: {}
+[10.564189] (-) TimerEvent: {}
+[10.608074] (ros2_socketcan) StdoutLine: {'line': b'[ 76%] \x1b[32m\x1b[1mLinking CXX executable socket_can_receiver_node_exe\x1b[0m\n'}
+[10.664375] (-) TimerEvent: {}
+[10.765373] (-) TimerEvent: {}
+[10.866411] (-) TimerEvent: {}
+[10.963172] (ros2_socketcan) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX executable socket_can_sender_node_exe\x1b[0m\n'}
+[10.966598] (-) TimerEvent: {}
+[10.970797] (ros2_socketcan) StdoutLine: {'line': b'[ 80%] Built target socket_can_receiver_node_exe\n'}
+[11.066820] (-) TimerEvent: {}
+[11.167649] (-) TimerEvent: {}
+[11.242486] (ros2_socketcan) StdoutLine: {'line': b'[ 80%] Built target socket_can_sender_node_exe\n'}
+[11.267839] (-) TimerEvent: {}
+[11.368588] (-) TimerEvent: {}
+[11.470679] (-) TimerEvent: {}
+[11.571535] (-) TimerEvent: {}
+[11.672326] (-) TimerEvent: {}
+[11.773102] (-) TimerEvent: {}
+[11.873897] (-) TimerEvent: {}
+[11.974664] (-) TimerEvent: {}
+[12.075372] (-) TimerEvent: {}
+[12.176070] (-) TimerEvent: {}
+[12.276760] (-) TimerEvent: {}
+[12.377497] (-) TimerEvent: {}
+[12.478165] (-) TimerEvent: {}
+[12.578828] (-) TimerEvent: {}
+[12.679481] (-) TimerEvent: {}
+[12.780397] (-) TimerEvent: {}
+[12.881095] (-) TimerEvent: {}
+[12.981813] (-) TimerEvent: {}
+[13.002516] (ros2_socketcan) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX executable ros2_socketcan_test\x1b[0m\n'}
+[13.081993] (-) TimerEvent: {}
+[13.182724] (-) TimerEvent: {}
+[13.283419] (-) TimerEvent: {}
+[13.384080] (-) TimerEvent: {}
+[13.438167] (ros2_socketcan) StdoutLine: {'line': b'[ 85%] Built target ros2_socketcan_test\n'}
+[13.484238] (-) TimerEvent: {}
+[13.584864] (-) TimerEvent: {}
+[13.685495] (-) TimerEvent: {}
+[13.786107] (-) TimerEvent: {}
+[13.886735] (-) TimerEvent: {}
+[13.987356] (-) TimerEvent: {}
+[14.087974] (-) TimerEvent: {}
+[14.188589] (-) TimerEvent: {}
+[14.289244] (-) TimerEvent: {}
+[14.389900] (-) TimerEvent: {}
+[14.490517] (-) TimerEvent: {}
+[14.591143] (-) TimerEvent: {}
+[14.691750] (-) TimerEvent: {}
+[14.792353] (-) TimerEvent: {}
+[14.892970] (-) TimerEvent: {}
+[14.993597] (-) TimerEvent: {}
+[15.094241] (-) TimerEvent: {}
+[15.194861] (-) TimerEvent: {}
+[15.295451] (-) TimerEvent: {}
+[15.396068] (-) TimerEvent: {}
+[15.496695] (-) TimerEvent: {}
+[15.597358] (-) TimerEvent: {}
+[15.698045] (-) TimerEvent: {}
+[15.798720] (-) TimerEvent: {}
+[15.899668] (-) TimerEvent: {}
+[16.000631] (-) TimerEvent: {}
+[16.101358] (-) TimerEvent: {}
+[16.202063] (-) TimerEvent: {}
+[16.303004] (-) TimerEvent: {}
+[16.403811] (-) TimerEvent: {}
+[16.504744] (-) TimerEvent: {}
+[16.605475] (-) TimerEvent: {}
+[16.706407] (-) TimerEvent: {}
+[16.807101] (-) TimerEvent: {}
+[16.871875] (ros2_socketcan) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking CXX shared library libsocket_can_receiver_node.so\x1b[0m\n'}
+[16.907293] (-) TimerEvent: {}
+[17.008275] (-) TimerEvent: {}
+[17.109018] (-) TimerEvent: {}
+[17.209752] (-) TimerEvent: {}
+[17.310421] (-) TimerEvent: {}
+[17.336550] (ros2_socketcan) StdoutLine: {'line': b'[ 90%] Built target socket_can_receiver_node\n'}
+[17.376685] (ros2_socketcan) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding CXX object CMakeFiles/socket_can_sender_node.dir/src/socket_can_sender_node.cpp.o\x1b[0m\n'}
+[17.410776] (-) TimerEvent: {}
+[17.511578] (-) TimerEvent: {}
+[17.612214] (-) TimerEvent: {}
+[17.713032] (-) TimerEvent: {}
+[17.813773] (-) TimerEvent: {}
+[17.914268] (-) TimerEvent: {}
+[18.015013] (-) TimerEvent: {}
+[18.115508] (-) TimerEvent: {}
+[18.216050] (-) TimerEvent: {}
+[18.316920] (-) TimerEvent: {}
+[18.417489] (-) TimerEvent: {}
+[18.518043] (-) TimerEvent: {}
+[18.618631] (-) TimerEvent: {}
+[18.719221] (-) TimerEvent: {}
+[18.819952] (-) TimerEvent: {}
+[18.920564] (-) TimerEvent: {}
+[19.021333] (-) TimerEvent: {}
+[19.122126] (-) TimerEvent: {}
+[19.222684] (-) TimerEvent: {}
+[19.323248] (-) TimerEvent: {}
+[19.423849] (-) TimerEvent: {}
+[19.524819] (-) TimerEvent: {}
+[19.625612] (-) TimerEvent: {}
+[19.726343] (-) TimerEvent: {}
+[19.826837] (-) TimerEvent: {}
+[19.927400] (-) TimerEvent: {}
+[20.028116] (-) TimerEvent: {}
+[20.128674] (-) TimerEvent: {}
+[20.229189] (-) TimerEvent: {}
+[20.329718] (-) TimerEvent: {}
+[20.430308] (-) TimerEvent: {}
+[20.531093] (-) TimerEvent: {}
+[20.631912] (-) TimerEvent: {}
+[20.732671] (-) TimerEvent: {}
+[20.833232] (-) TimerEvent: {}
+[20.933787] (-) TimerEvent: {}
+[21.034330] (-) TimerEvent: {}
+[21.134840] (-) TimerEvent: {}
+[21.235441] (-) TimerEvent: {}
+[21.336159] (-) TimerEvent: {}
+[21.436733] (-) TimerEvent: {}
+[21.537301] (-) TimerEvent: {}
+[21.637957] (-) TimerEvent: {}
+[21.738666] (-) TimerEvent: {}
+[21.839234] (-) TimerEvent: {}
+[21.939770] (-) TimerEvent: {}
+[22.040566] (-) TimerEvent: {}
+[22.141328] (-) TimerEvent: {}
+[22.241935] (-) TimerEvent: {}
+[22.342855] (-) TimerEvent: {}
+[22.443480] (-) TimerEvent: {}
+[22.544160] (-) TimerEvent: {}
+[22.644981] (-) TimerEvent: {}
+[22.745748] (-) TimerEvent: {}
+[22.846270] (-) TimerEvent: {}
+[22.946907] (-) TimerEvent: {}
+[23.047964] (-) TimerEvent: {}
+[23.148708] (-) TimerEvent: {}
+[23.249492] (-) TimerEvent: {}
+[23.350325] (-) TimerEvent: {}
+[23.451409] (-) TimerEvent: {}
+[23.552251] (-) TimerEvent: {}
+[23.653067] (-) TimerEvent: {}
+[23.753873] (-) TimerEvent: {}
+[23.854632] (-) TimerEvent: {}
+[23.955374] (-) TimerEvent: {}
+[24.056091] (-) TimerEvent: {}
+[24.156682] (-) TimerEvent: {}
+[24.257294] (-) TimerEvent: {}
+[24.357960] (-) TimerEvent: {}
+[24.458891] (-) TimerEvent: {}
+[24.559592] (-) TimerEvent: {}
+[24.660283] (-) TimerEvent: {}
+[24.760979] (-) TimerEvent: {}
+[24.861673] (-) TimerEvent: {}
+[24.962344] (-) TimerEvent: {}
+[25.063024] (-) TimerEvent: {}
+[25.163685] (-) TimerEvent: {}
+[25.264370] (-) TimerEvent: {}
+[25.365057] (-) TimerEvent: {}
+[25.465759] (-) TimerEvent: {}
+[25.566461] (-) TimerEvent: {}
+[25.667397] (-) TimerEvent: {}
+[25.768069] (-) TimerEvent: {}
+[25.869041] (-) TimerEvent: {}
+[25.970055] (-) TimerEvent: {}
+[26.071003] (-) TimerEvent: {}
+[26.171931] (-) TimerEvent: {}
+[26.272654] (-) TimerEvent: {}
+[26.373647] (-) TimerEvent: {}
+[26.474380] (-) TimerEvent: {}
+[26.575099] (-) TimerEvent: {}
+[26.676023] (-) TimerEvent: {}
+[26.776942] (-) TimerEvent: {}
+[26.877893] (-) TimerEvent: {}
+[26.978544] (-) TimerEvent: {}
+[27.079453] (-) TimerEvent: {}
+[27.180415] (-) TimerEvent: {}
+[27.281355] (-) TimerEvent: {}
+[27.381929] (-) TimerEvent: {}
+[27.482461] (-) TimerEvent: {}
+[27.583036] (-) TimerEvent: {}
+[27.683748] (-) TimerEvent: {}
+[27.784644] (-) TimerEvent: {}
+[27.885523] (-) TimerEvent: {}
+[27.986130] (-) TimerEvent: {}
+[28.086845] (-) TimerEvent: {}
+[28.187650] (-) TimerEvent: {}
+[28.288435] (-) TimerEvent: {}
+[28.389224] (-) TimerEvent: {}
+[28.490091] (-) TimerEvent: {}
+[28.590931] (-) TimerEvent: {}
+[28.691727] (-) TimerEvent: {}
+[28.792516] (-) TimerEvent: {}
+[28.893305] (-) TimerEvent: {}
+[28.994126] (-) TimerEvent: {}
+[29.094929] (-) TimerEvent: {}
+[29.195745] (-) TimerEvent: {}
+[29.296556] (-) TimerEvent: {}
+[29.397360] (-) TimerEvent: {}
+[29.498151] (-) TimerEvent: {}
+[29.598913] (-) TimerEvent: {}
+[29.699666] (-) TimerEvent: {}
+[29.800444] (-) TimerEvent: {}
+[29.901223] (-) TimerEvent: {}
+[30.002039] (-) TimerEvent: {}
+[30.102828] (-) TimerEvent: {}
+[30.203573] (-) TimerEvent: {}
+[30.304330] (-) TimerEvent: {}
+[30.405106] (-) TimerEvent: {}
+[30.505976] (-) TimerEvent: {}
+[30.606793] (-) TimerEvent: {}
+[30.707634] (-) TimerEvent: {}
+[30.808455] (-) TimerEvent: {}
+[30.909262] (-) TimerEvent: {}
+[31.010090] (-) TimerEvent: {}
+[31.110895] (-) TimerEvent: {}
+[31.211668] (-) TimerEvent: {}
+[31.312440] (-) TimerEvent: {}
+[31.413204] (-) TimerEvent: {}
+[31.514034] (-) TimerEvent: {}
+[31.614837] (-) TimerEvent: {}
+[31.715600] (-) TimerEvent: {}
+[31.816357] (-) TimerEvent: {}
+[31.917128] (-) TimerEvent: {}
+[32.017907] (-) TimerEvent: {}
+[32.118621] (-) TimerEvent: {}
+[32.219354] (-) TimerEvent: {}
+[32.320099] (-) TimerEvent: {}
+[32.420875] (-) TimerEvent: {}
+[32.521600] (-) TimerEvent: {}
+[32.622362] (-) TimerEvent: {}
+[32.723091] (-) TimerEvent: {}
+[32.823808] (-) TimerEvent: {}
+[32.924531] (-) TimerEvent: {}
+[33.025291] (-) TimerEvent: {}
+[33.126103] (-) TimerEvent: {}
+[33.226701] (-) TimerEvent: {}
+[33.327259] (-) TimerEvent: {}
+[33.427830] (-) TimerEvent: {}
+[33.528543] (-) TimerEvent: {}
+[33.629166] (-) TimerEvent: {}
+[33.729915] (-) TimerEvent: {}
+[33.830501] (-) TimerEvent: {}
+[33.931153] (-) TimerEvent: {}
+[34.031962] (-) TimerEvent: {}
+[34.132564] (-) TimerEvent: {}
+[34.233231] (-) TimerEvent: {}
+[34.334058] (-) TimerEvent: {}
+[34.434600] (-) TimerEvent: {}
+[34.535090] (-) TimerEvent: {}
+[34.635526] (-) TimerEvent: {}
+[34.736019] (-) TimerEvent: {}
+[34.836507] (-) TimerEvent: {}
+[34.937057] (-) TimerEvent: {}
+[35.037733] (-) TimerEvent: {}
+[35.138299] (-) TimerEvent: {}
+[35.238773] (-) TimerEvent: {}
+[35.339213] (-) TimerEvent: {}
+[35.439702] (-) TimerEvent: {}
+[35.540201] (-) TimerEvent: {}
+[35.640701] (-) TimerEvent: {}
+[35.741458] (-) TimerEvent: {}
+[35.842191] (-) TimerEvent: {}
+[35.942705] (-) TimerEvent: {}
+[36.043458] (-) TimerEvent: {}
+[36.144077] (-) TimerEvent: {}
+[36.244636] (-) TimerEvent: {}
+[36.345160] (-) TimerEvent: {}
+[36.445701] (-) TimerEvent: {}
+[36.546226] (-) TimerEvent: {}
+[36.646782] (-) TimerEvent: {}
+[36.747333] (-) TimerEvent: {}
+[36.847864] (-) TimerEvent: {}
+[36.948361] (-) TimerEvent: {}
+[37.048862] (-) TimerEvent: {}
+[37.149377] (-) TimerEvent: {}
+[37.249858] (-) TimerEvent: {}
+[37.350297] (-) TimerEvent: {}
+[37.450796] (-) TimerEvent: {}
+[37.551304] (-) TimerEvent: {}
+[37.651769] (-) TimerEvent: {}
+[37.752211] (-) TimerEvent: {}
+[37.852711] (-) TimerEvent: {}
+[37.953196] (-) TimerEvent: {}
+[38.053712] (-) TimerEvent: {}
+[38.154224] (-) TimerEvent: {}
+[38.254783] (-) TimerEvent: {}
+[38.355326] (-) TimerEvent: {}
+[38.456094] (-) TimerEvent: {}
+[38.556636] (-) TimerEvent: {}
+[38.657149] (-) TimerEvent: {}
+[38.757868] (-) TimerEvent: {}
+[38.858361] (-) TimerEvent: {}
+[38.958869] (-) TimerEvent: {}
+[39.059406] (-) TimerEvent: {}
+[39.159980] (-) TimerEvent: {}
+[39.260721] (-) TimerEvent: {}
+[39.361395] (-) TimerEvent: {}
+[39.461973] (-) TimerEvent: {}
+[39.562606] (-) TimerEvent: {}
+[39.663292] (-) TimerEvent: {}
+[39.764059] (-) TimerEvent: {}
+[39.864835] (-) TimerEvent: {}
+[39.965627] (-) TimerEvent: {}
+[40.066399] (-) TimerEvent: {}
+[40.167154] (-) TimerEvent: {}
+[40.267987] (-) TimerEvent: {}
+[40.369073] (-) TimerEvent: {}
+[40.470188] (-) TimerEvent: {}
+[40.571304] (-) TimerEvent: {}
+[40.672356] (-) TimerEvent: {}
+[40.773399] (-) TimerEvent: {}
+[40.874524] (-) TimerEvent: {}
+[40.975351] (-) TimerEvent: {}
+[41.076170] (-) TimerEvent: {}
+[41.176930] (-) TimerEvent: {}
+[41.277750] (-) TimerEvent: {}
+[41.378557] (-) TimerEvent: {}
+[41.479643] (-) TimerEvent: {}
+[41.580475] (-) TimerEvent: {}
+[41.681598] (-) TimerEvent: {}
+[41.782689] (-) TimerEvent: {}
+[41.883494] (-) TimerEvent: {}
+[41.931541] (ros2_socketcan) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libsocket_can_sender_node.so\x1b[0m\n'}
+[41.983677] (-) TimerEvent: {}
+[42.084406] (-) TimerEvent: {}
+[42.185227] (-) TimerEvent: {}
+[42.286039] (-) TimerEvent: {}
+[42.387015] (-) TimerEvent: {}
+[42.487827] (-) TimerEvent: {}
+[42.588627] (-) TimerEvent: {}
+[42.689417] (-) TimerEvent: {}
+[42.790218] (-) TimerEvent: {}
+[42.890962] (-) TimerEvent: {}
+[42.991706] (-) TimerEvent: {}
+[43.092442] (-) TimerEvent: {}
+[43.193180] (-) TimerEvent: {}
+[43.221199] (ros2_socketcan) StdoutLine: {'line': b'[100%] Built target socket_can_sender_node\n'}
+[43.244573] (ros2_socketcan) CommandEnded: {'returncode': 0}
+[43.247076] (ros2_socketcan) JobProgress: {'identifier': 'ros2_socketcan', 'progress': 'install'}
+[43.266513] (ros2_socketcan) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/orin/auto_install/orz_robot/build/ros2_socketcan'], 'cwd': '/home/orin/auto_install/orz_robot/build/ros2_socketcan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HTTPS_PROXY', 'http://127.0.0.1:7890/'), ('no_proxy', 'localhost,127.0.0.0/8,::1'), ('LANGUAGE', 'en_US:en'), ('USER', 'orin'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/orin'), ('OLDPWD', '/home/orin/auto_install/orz_robot/install_script'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.0/8,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1805'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('https_proxy', 'http://127.0.0.1:7890/'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'orin'), ('http_proxy', 'http://127.0.0.1:7890/'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'orin'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/orin/.fishros/bin/'), ('SESSION_MANAGER', 'local/ubuntu:@/tmp/.ICE-unix/1805,unix/ubuntu:/tmp/.ICE-unix/1805'), ('PAPERSIZE', 'a4'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/cf19e79f_229c_4ac7_b726_b7f801dd561b'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/orin/auto_install/orz_robot/build/ros2_socketcan'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=b94d012be24167ca710cd57067e51867'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/'), ('PYTHONPATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7890/'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs:/opt/ros/humble')]), 'shell': False}
+[43.282104] (ros2_socketcan) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[43.282539] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/ros2_socketcan/socket_can_receiver_node_exe\n'}
+[43.283941] (ros2_socketcan) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/ros2_socketcan/socket_can_receiver_node_exe" to ""\n'}
+[43.284172] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/ros2_socketcan/socket_can_sender_node_exe\n'}
+[43.285011] (ros2_socketcan) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/ros2_socketcan/socket_can_sender_node_exe" to ""\n'}
+[43.285232] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include\n'}
+[43.285477] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan\n'}
+[43.285651] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_receiver.hpp\n'}
+[43.285842] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_common.hpp\n'}
+[43.286032] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_sender_node.hpp\n'}
+[43.286226] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/visibility_control.hpp\n'}
+[43.286416] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_receiver_node.hpp\n'}
+[43.286602] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_id.hpp\n'}
+[43.286787] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/include/ros2_socketcan/socket_can_sender.hpp\n'}
+[43.287040] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/library_path.sh\n'}
+[43.287295] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/library_path.dsv\n'}
+[43.287578] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libros2_socketcan.so\n'}
+[43.288250] (ros2_socketcan) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libros2_socketcan.so" to ""\n'}
+[43.288443] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libsocket_can_receiver_node.so\n'}
+[43.293299] (ros2_socketcan) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libsocket_can_receiver_node.so" to ""\n'}
+[43.293718] (-) TimerEvent: {}
+[43.294027] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libsocket_can_sender_node.so\n'}
+[43.313773] (ros2_socketcan) StdoutLine: {'line': b'-- Set runtime path of "/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib/libsocket_can_sender_node.so" to ""\n'}
+[43.314160] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/launch\n'}
+[43.314460] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/launch/socket_can_sender.launch.py\n'}
+[43.314765] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/launch/socket_can_receiver.launch.py\n'}
+[43.315137] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/launch/socket_can_bridge.launch.xml\n'}
+[43.315738] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ament_index/resource_index/package_run_dependencies/ros2_socketcan\n'}
+[43.316080] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ament_index/resource_index/parent_prefix_path/ros2_socketcan\n'}
+[43.316396] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/ament_prefix_path.sh\n'}
+[43.316676] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/ament_prefix_path.dsv\n'}
+[43.316955] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/path.sh\n'}
+[43.317238] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/environment/path.dsv\n'}
+[43.317542] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/local_setup.bash\n'}
+[43.317806] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/local_setup.sh\n'}
+[43.318084] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/local_setup.zsh\n'}
+[43.318353] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/local_setup.dsv\n'}
+[43.318619] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/package.dsv\n'}
+[43.318874] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ament_index/resource_index/packages/ros2_socketcan\n'}
+[43.319149] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ament_index/resource_index/rclcpp_components/ros2_socketcan\n'}
+[43.319422] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[43.319691] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[43.319963] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[43.320232] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/cmake/ros2_socketcanConfig.cmake\n'}
+[43.320532] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/cmake/ros2_socketcanConfig-version.cmake\n'}
+[43.320757] (ros2_socketcan) StdoutLine: {'line': b'-- Installing: /home/orin/auto_install/orz_robot/install/ros2_socketcan/share/ros2_socketcan/package.xml\n'}
+[43.325410] (ros2_socketcan) CommandEnded: {'returncode': 0}
+[43.389217] (ros2_socketcan) JobEnded: {'identifier': 'ros2_socketcan', 'rc': 0}
+[43.390747] (-) EventReactorShutdown: {}

@@ -1,0 +1,44 @@
+[1.519s] Invoking command in '/home/orin/auto_install/orz_robot/src/robot_test_py': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/orin/auto_install/orz_robot/build/robot_test_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_test_py build --build-base /home/orin/auto_install/orz_robot/build/robot_test_py/build install --record /home/orin/auto_install/orz_robot/build/robot_test_py/install.log --single-version-externally-managed install_data
+[2.079s] running egg_info
+[2.080s] creating ../../build/robot_test_py/robot_test_py.egg-info
+[2.081s] writing ../../build/robot_test_py/robot_test_py.egg-info/PKG-INFO
+[2.082s] writing dependency_links to ../../build/robot_test_py/robot_test_py.egg-info/dependency_links.txt
+[2.082s] writing entry points to ../../build/robot_test_py/robot_test_py.egg-info/entry_points.txt
+[2.082s] writing requirements to ../../build/robot_test_py/robot_test_py.egg-info/requires.txt
+[2.082s] writing top-level names to ../../build/robot_test_py/robot_test_py.egg-info/top_level.txt
+[2.083s] writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[2.087s] reading manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[2.089s] writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[2.089s] running build
+[2.089s] running build_py
+[2.089s] creating /home/orin/auto_install/orz_robot/build/robot_test_py/build
+[2.090s] creating /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib
+[2.090s] creating /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+[2.090s] copying robot_test_py/robot_test_py2.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+[2.090s] copying robot_test_py/__init__.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+[2.091s] copying robot_test_py/robot_test_py.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+[2.091s] copying robot_test_py/robot_test_py3.py -> /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py
+[2.092s] running install
+[2.092s] running install_lib
+[2.094s] creating /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[2.095s] copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py2.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[2.095s] copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/__init__.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[2.095s] copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[2.095s] copying /home/orin/auto_install/orz_robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py3.py -> /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[2.097s] byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py2.py to robot_test_py2.cpython-310.pyc
+[2.098s] byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/__init__.py to __init__.cpython-310.pyc
+[2.099s] byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py.py to robot_test_py.cpython-310.pyc
+[2.100s] byte-compiling /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py3.py to robot_test_py3.cpython-310.pyc
+[2.102s] running install_data
+[2.102s] creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index
+[2.102s] creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index
+[2.102s] creating /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index/packages
+[2.102s] copying resource/robot_test_py -> /home/orin/auto_install/orz_robot/install/robot_test_py/share/ament_index/resource_index/packages
+[2.103s] copying package.xml -> /home/orin/auto_install/orz_robot/install/robot_test_py/share/robot_test_py
+[2.103s] running install_egg_info
+[2.108s] Copying ../../build/robot_test_py/robot_test_py.egg-info to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py-0.0.0-py3.10.egg-info
+[2.110s] running install_scripts
+[2.157s] Installing robot_test_py script to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/robot_test_py
+[2.157s] Installing robot_test_py2 script to /home/orin/auto_install/orz_robot/install/robot_test_py/lib/robot_test_py
+[2.158s] writing list of installed files to '/home/orin/auto_install/orz_robot/build/robot_test_py/install.log'
+[2.242s] Invoked command in '/home/orin/auto_install/orz_robot/src/robot_test_py' returned '0': CMAKE_PREFIX_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces:/home/orin/auto_install/orz_robot/install/ros2_socketcan:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs LD_LIBRARY_PATH=/home/orin/auto_install/orz_robot/install/robot_interfaces/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan/lib:/home/orin/auto_install/orz_robot/install/ros2_socketcan_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/orin/auto_install/orz_robot/build/robot_test_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/orin/auto_install/orz_robot/install/robot_test_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_test_py build --build-base /home/orin/auto_install/orz_robot/build/robot_test_py/build install --record /home/orin/auto_install/orz_robot/build/robot_test_py/install.log --single-version-externally-managed install_data

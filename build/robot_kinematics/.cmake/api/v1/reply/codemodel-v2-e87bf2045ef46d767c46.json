@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-1f470cb5cb602dfde65d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "robot_kinematics",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_func::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_func-cee83d94c788d2f4c37c.json",
+					"name" : "robot_func",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_key_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_key_controller-522f46c3dab7bfe96f41.json",
+					"name" : "robot_key_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_kinematics_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_kinematics_uninstall-5143d6fa3c373a9b631c.json",
+					"name" : "robot_kinematics_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_state_get::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_state_get-e2ca289b3c48d03fdc66.json",
+					"name" : "robot_state_get",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-0634ed39c0572a7b932c.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/orin/auto_install/orz_robot/build/robot_kinematics",
+		"source" : "/home/orin/auto_install/orz_robot/src/robot_kinematics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

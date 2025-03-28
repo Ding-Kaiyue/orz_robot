@@ -1,0 +1,12 @@
+msg/ArmState.idl
+msg/ArmState.msg
+msg/LineMsg.idl
+msg/LineMsg.msg
+msg/MotorFdb.idl
+msg/MotorFdb.msg
+msg/QtPub.idl
+msg/QtPub.msg
+msg/QtRecv.idl
+msg/QtRecv.msg
+msg/RobotControlMsg.idl
+msg/RobotControlMsg.msg
