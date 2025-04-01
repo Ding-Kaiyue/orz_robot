@@ -37,7 +37,7 @@ class SocketCanSenderNode : public rclcpp :: Node
             subscriber_motor_msgs_ = this->create_subscription<robot_interfaces::msg::RobotControlMsg>("motor_msgs", 10, std::bind(&SocketCanSenderNode::motor_msg_cmd_callback, this, _1));
 
             subscriber_motor_zero_position_set_ = this->create_subscription<std_msgs::msg::Int32>("motor_zero_position_set", 10, std::bind(&SocketCanSenderNode::motor_zero_position_set_callback, this, _1));
-            timer_ = this->create_wall_timer(std::chrono::milliseconds(20), std::bind(&SocketCanSenderNode::timer_callback, this));
+            timer_ = this->create_wall_timer(std::chrono::milliseconds(1), std::bind(&SocketCanSenderNode::timer_callback, this));
         }
     private:
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_;
