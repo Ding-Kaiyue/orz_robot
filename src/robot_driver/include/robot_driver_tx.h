@@ -58,6 +58,11 @@ typedef enum {
     MOTOR_DISABLE = 0x00
 } Motor_Enable_Mode_e;
 
+typedef enum {
+    ONCE = 0x00,
+    CYCLE = 0x01
+} Motor_Feedback_Method_e;
+
 class tx_package_t {
     private:
         uint8_t tx_data[8] = {0};
@@ -160,8 +165,42 @@ class SocketCanSenderNode : public rclcpp :: Node
             subscriber_motor_msgs_ = this->create_subscription<robot_interfaces::msg::RobotControlMsg>("motor_msgs", 10, std::bind(&SocketCanSenderNode::motor_msg_cmd_callback, this, _1));
 
             subscriber_motor_zero_position_set_ = this->create_subscription<std_msgs::msg::UInt8>("motor_zero_position_set", 10, std::bind(&SocketCanSenderNode::motor_zero_position_set_callback, this, _1));
-            timer_ = this->create_wall_timer(std::chrono::milliseconds(20), std::bind(&SocketCanSenderNode::timer_callback, this));
+            timer_ = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&SocketCanSenderNode::timer_callback, this));
         }
+
+        void motor_data1_message_request() {
+            for (uint8_t i = 0; i < 6; i++) {
+                tx_package_t data1_msg_request(i+1, static_cast<uint32_t>(FDB_REQ_TX), 
+                                                    static_cast<uint8_t>(DATA1), 
+                                                    static_cast<uint8_t>(CYCLE));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+        void motor_data2_message_request() {
+            for (uint8_t i = 0; i < 6; i++) {
+                tx_package_t data2_msg_request(i+1, static_cast<uint32_t>(FDB_REQ_TX), 
+                                                    static_cast<uint8_t>(DATA2), 
+                                                    static_cast<uint8_t>(CYCLE));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+        void motor_data3_message_request() {
+            for (uint8_t i = 0; i < 6; i++) {
+                tx_package_t data3_msg_request(i+1, static_cast<uint32_t>(FDB_REQ_TX), 
+                                                    static_cast<uint8_t>(DATA3), 
+                                                    static_cast<uint8_t>(CYCLE));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+        void motor_data4_message_request() {
+            for (uint8_t i = 0; i < 6; i++) {
+                tx_package_t data4_msg_request(i+1, static_cast<uint32_t>(FDB_REQ_TX), 
+                                                    static_cast<uint8_t>(DATA4), 
+                                                    static_cast<uint8_t>(CYCLE));
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+
     private:
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_;
         rclcpp::Subscription<robot_interfaces::msg::QtPub>::SharedPtr subscriber_motor_states_;
@@ -170,7 +209,7 @@ class SocketCanSenderNode : public rclcpp :: Node
         rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr subscriber_motor_zero_position_set_;
         rclcpp::TimerBase::SharedPtr timer_;
         
-        // Motor Zero 
+        // Motor Zero Position Set
         void motor_zero_position_set_callback(const std_msgs::msg::UInt8::SharedPtr msg);
         // rviz control
         void joint_pos_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
@@ -180,7 +219,7 @@ class SocketCanSenderNode : public rclcpp :: Node
         void motor_msg_cmd_callback(const robot_interfaces::msg::RobotControlMsg::SharedPtr msg);
         // Gripper Control
         void gripper_states_request_callback(const std_msgs::msg::UInt8MultiArray::SharedPtr msg);
-
+        // Motor Feedback Message Request
         void timer_callback();
 };
 

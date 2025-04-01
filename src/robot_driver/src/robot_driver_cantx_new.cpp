@@ -51,3 +51,14 @@ void SocketCanSenderNode::gripper_states_request_callback(const std_msgs::msg::U
     tx_package_t gripper_control(0x3F, msg->data[0], msg->data[1], msg->data[2]);
     RCLCPP_INFO(this->get_logger(), "Gripper msg sent------------------");
 }
+
+// Request Motor Feedback Message
+void SocketCanSenderNode::timer_callback() {
+    motor_data1_message_request();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    motor_data2_message_request();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    motor_data3_message_request();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    timer_->cancel();
+}
