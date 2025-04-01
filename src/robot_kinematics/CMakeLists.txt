@@ -43,12 +43,12 @@ ament_target_dependencies(robot_func
     rclcpp 
     moveit_ros_planning_interface 
     moveit_ros_move_group 
-    robot_interfaces 
     rclcpp_action 
     actionlib_msgs 
     sensor_msgs 
     trajectory_msgs
     control_msgs
+    robot_interfaces 
 )
 
 install(TARGETS

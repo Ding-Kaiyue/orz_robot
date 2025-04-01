@@ -1,6 +1,9 @@
 #ifndef __ROBOT_KEY_CONTROLLER_H__
 #define __ROBOT_KEY_CONTROLLER_H__
 
+#include <sensor_msgs/msg/joint_state.hpp>
+#include <geometry_msgs/msg/pose.h>
+
 #define BACKTOSTART 0
 #define PASSIVE 1
 #define JOINTCONTROL 2
@@ -65,7 +68,6 @@ class KeyboardController : public rclcpp :: Node {
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movej_action_;
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movel_action_;
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movec_action_;
-
         rclcpp::Publisher<robot_interfaces::msg::RobotControlMsg>::SharedPtr motor_msg_pub;
         rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr gripper_msg_pub;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;

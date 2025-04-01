@@ -84,7 +84,7 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
             break;
         }
         case TEACH: {
-            
+
         }
         case TEACHREPEAT: {
 
@@ -569,6 +569,37 @@ void KeyboardController::movec_action_callback(const std_msgs::msg::Float64Multi
         arm->execute(plan);
     } else {
         RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the trajectory which is passthrough the arm medium pose and get to arm goal pose!");
+    // geometry_msgs::msg::Pose arm_goal_pose;
+    // if (msg->data.size() % 6 != 0) {
+    //     RCLCPP_ERROR(this->get_logger(), "Error input pose values!");
+    // } else {
+    //     for (size_t i = 0; i < msg->data.size(); i += 6) {
+    //         arm_goal_pose.position.x = msg->data[i];
+    //         arm_goal_pose.position.y = msg->data[i+1];
+    //         arm_goal_pose.position.z = msg->data[i+2];
+    //         double roll = msg->data[i+3];
+    //         double pitch = msg->data[i+4];
+    //         double yaw = msg->data[i+5];
+
+    //         tf2::Quaternion quat_tf;
+    //         quat_tf.setRPY(roll, pitch, yaw);
+
+    //         geometry_msgs::msg::Quaternion quat_msg;
+    //         quat_msg = tf2::toMsg(quat_tf);
+    //         arm_goal_pose.orientation = quat_msg;
+
+    //         arm->setStartStateToCurrentState();
+    //         arm->setPoseTarget(arm_goal_pose, arm->getEndEffectorLink());
+
+    //         moveit::planning_interface::MoveGroupInterface::Plan plan;
+    //         moveit::core::MoveItErrorCode success = arm->plan(plan);
+
+    //         RCLCPP_INFO(this->get_logger(), "Plan (pose goal) %s", success ? "SUCCEED" : "FAILED");
+            
+    //         if (success) { 
+    //             moveit::core::MoveItErrorCode execute_success = arm->execute(plan); 
+    //             RCLCPP_INFO(this->get_logger(), "Execute (pose goal) %s", execute_success? "SUCCEED" : "FAILED");
+    //         }
     }
 }
 
@@ -594,15 +625,15 @@ void KeyboardController::timer_callback()
 
 void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg) {
     geometry_msgs::msg::Pose arm_current_pose = arm->getCurrentPose().pose;
-    geometry_msgs::msg::Pose arm_pose_goal;
+    geometry_msgs::msg::Pose arm_goal_pose;
 
     switch (msg->data) {
         case FORWARD: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.x += 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.x += 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -619,11 +650,11 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case BACKWARD: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.x -= 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.x -= 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -640,11 +671,11 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case LEFT: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.y -= 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.y -= 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -661,11 +692,11 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case RIGHT: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.y += 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.y += 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -682,11 +713,11 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case UP: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.z += 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.z += 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -703,11 +734,11 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case DOWN: {
-            arm_pose_goal = arm_current_pose;
-            arm_pose_goal.position.z -= 0.01;
+            arm_goal_pose = arm_current_pose;
+            arm_goal_pose.position.z -= 0.01;
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -724,7 +755,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case ROLL_POSITIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double roll_angle = 0.017453f; // 1度
 
             // 创建一个表示绕x轴旋转的四元数
@@ -740,10 +771,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -760,7 +791,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case ROLL_NEGATIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double roll_angle = -0.017453f; // -1度
 
             // 创建一个表示绕x轴旋转的四元数
@@ -776,10 +807,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -796,7 +827,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case PITCH_POSITIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double pitch_angle = 0.017453f; // 1度
 
             // 创建一个表示绕y轴旋转的四元数
@@ -812,10 +843,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -832,7 +863,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case PITCH_NEGATIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double pitch_angle = -0.017453f; // 1度
 
             // 创建一个表示绕y轴旋转的四元数
@@ -848,10 +879,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -868,7 +899,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case YAW_POSITIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double yaw_angle = 0.017453f; // 1度
 
             // 创建一个表示绕y轴旋转的四元数
@@ -884,10 +915,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -904,7 +935,7 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             break;
         }
         case YAW_NEGATIVE: {
-            arm_pose_goal = arm_current_pose;
+            arm_goal_pose = arm_current_pose;
             double yaw_angle = -0.017453f; // 1度
 
             // 创建一个表示绕y轴旋转的四元数
@@ -920,10 +951,10 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
             q_new.normalize(); // 归一化四元数
 
             // 将新的四元数转换回 geometry_msgs::msg::Quaternion 并赋值给目标姿态
-            arm_pose_goal.orientation = tf2::toMsg(q_new);
+            arm_goal_pose.orientation = tf2::toMsg(q_new);
 
             std::vector<geometry_msgs::msg::Pose> waypoints;
-            waypoints.push_back(arm_pose_goal);
+            waypoints.push_back(arm_goal_pose);
 
             moveit_msgs::msg::RobotTrajectory trajectory;
             const double jump_threshold = 0.0;
@@ -981,7 +1012,6 @@ void KeyboardController::joint_states_callback(const sensor_msgs::msg::JointStat
         current_joint_states_.position[i] = msg->position[i];
     }
 }
-
 
 int main(int argc, char const *argv[])
 {

@@ -8,7 +8,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include "geometry_msgs/msg/quaternion.hpp"
-#include "std_msgs/msg/int8_multi_array.hpp"
+#include "std_msgs/msg/u_int8_multi_array.hpp"
 #include "robot_interfaces/msg/qt_recv.hpp"
 #include "robot_interfaces/msg/arm_state.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
@@ -21,7 +21,7 @@ class TcpServer : public rclcpp::Node
         TcpServer(const std::string& node_name) : Node(node_name)
         {
             publisher_ = this->create_publisher<robot_interfaces::msg::QtRecv>("qt_cmd", 10);
-            publisher_gripper_states_ = this->create_publisher<std_msgs::msg::Int8MultiArray>("gripper_cmd", 10);
+            publisher_gripper_states_ = this->create_publisher<std_msgs::msg::UInt8MultiArray>("gripper_cmd", 10);
             subscriber_states_ = this->create_subscription<robot_interfaces::msg::ArmState>("arm_states", 10, std::bind(&TcpServer::arm_states_callback, this, _1));
             subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&TcpServer::joint_states_callback, this, _1));
 
@@ -69,13 +69,13 @@ class TcpServer : public rclcpp::Node
         std::thread accept_thread_;
         int receivedValue[50];
         robot_interfaces::msg::QtRecv qt_cmd;
-        std_msgs::msg::Int8MultiArray gripper_states;
+        std_msgs::msg::UInt8MultiArray gripper_states;
         int client_fd_;
         geometry_msgs::msg::Pose end_effector_pose;     // 末端执行器的当前姿态
         tf2::Quaternion end_effector_quat;    // 末端执行器的当前四元数
 
         rclcpp::Publisher<robot_interfaces::msg::QtRecv>::SharedPtr publisher_;         // joint_states
-        rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr publisher_gripper_states_;     // gripper states
+        rclcpp::Publisher<std_msgs::msg::UInt8MultiArray>::SharedPtr publisher_gripper_states_;     // gripper states
         rclcpp::Subscription<robot_interfaces::msg::ArmState>::SharedPtr subscriber_states_;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;
 

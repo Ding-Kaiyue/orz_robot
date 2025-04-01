@@ -167,6 +167,7 @@ the robotics arm will move to this state.
 --------------------------------------------------------------------------------
 Please input:
 """
+
 # 添加一个字典来映射按键和模式
 key_mode_mapping = {
     '`': BACKTOSTART,
@@ -300,7 +301,7 @@ class KeyboardControlNode(Node):
                                         print("Invalid input. Please enter valid joint positions separated by spaces.")
                                 else:
                                     empty_input_count_j += 1
-                                    if empty_input_count_j == 1:
+                                    if empty_input_count_j == 2:
                                         break
                             joint_position_msgs = Float64MultiArray()
                             joint_position_msgs.data = all_joint_positions
@@ -325,6 +326,7 @@ class KeyboardControlNode(Node):
                                 else:
                                     empty_input_count_l += 1
                                     if empty_input_count_l == 1:
+                            
                                         break
                             arm_position_msgs = Float64MultiArray()
                             arm_position_msgs.data = all_arm_positions
@@ -337,7 +339,7 @@ class KeyboardControlNode(Node):
                             input_count = 0     # 已经输入的数值数量
                             while True:
                                 if input_count == 12:
-                                    break
+                                    break                           
                                 input_str = input()
                                 if input_str:
                                     try:
@@ -358,7 +360,7 @@ class KeyboardControlNode(Node):
                                         print("Invalid input. Please enter valid arm pose separated by spaces.")
                                 else:
                                     empty_input_count_c += 1
-                                    if input_count == 12 and empty_input_count_c == 1:
+                                    if input_count == 12 and empty_input_count_c == 1:                                    
                                         break
                             arm_circle_position_msgs = Float64MultiArray()
                             arm_circle_position_msgs.data = all_circle_arm_positions
@@ -421,7 +423,6 @@ class KeyboardControlNode(Node):
                     self.joint_action_msg.data = key_jointctrl_mapping[key]
                 elif key in key_cartesian_mapping and self.keyboard_control_working_mode == CARTESIAN:
                     self.cartesian_msg.data = key_cartesian_mapping[key]
-
                 else:
                     if key == '\x03':
                         break
@@ -497,7 +498,6 @@ class KeyboardControlNode(Node):
             self.data_index += 1
         else:
             self.timer.cancel()
-
 
 def main(args=None):
     if args is None:

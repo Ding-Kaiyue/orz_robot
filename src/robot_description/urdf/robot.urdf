@@ -204,6 +204,10 @@
     </inertial>    
   </link>
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 5dfbd5e (Updates at 20250331. Updated the motor driver protocol.)
   <link name="world"/>
   <joint name="base_joint" type="fixed">
       <parent link="world"/>
