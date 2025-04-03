@@ -16,12 +16,16 @@ def generate_launch_description():
     #     PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver.launch.py'))
     # )
 
-    robot_driver_cantx = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver_cantx.launch.py'))
-    )
+    # robot_driver_cantx = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver_cantx.launch.py'))
+    # )
 
-    robot_driver_canrx = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver_canrx.launch.py'))
+    # robot_driver_canrx = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver_canrx.launch.py'))
+    # )
+
+    robot_driver = IncludeLaunchDescription (
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_driver'), 'launch', 'robot_driver.launch.py'))
     )
 
     robto_tcp_server = IncludeLaunchDescription(
@@ -41,7 +45,7 @@ def generate_launch_description():
     )
 
     robot_description = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_description'), 'launch', 'robot_display.launch.py'))
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_description'), 'launch', 'arm620_display.launch.py'))
     )
 
     robot_control = IncludeLaunchDescription(
@@ -49,13 +53,14 @@ def generate_launch_description():
     )
 
     robot_moveit_config = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_config'), 'launch', 'real_moveit_demo.launch.py'))
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('arm620_config'), 'launch', 'real_moveit_demo.launch.py'))
     )
 
     
     return LaunchDescription([
-        robot_driver_cantx,
-        robot_driver_canrx,
+        # robot_driver_cantx,
+        # robot_driver_canrx,
+        robot_driver,
         robto_tcp_server,
         robot_func,
         robot_test,

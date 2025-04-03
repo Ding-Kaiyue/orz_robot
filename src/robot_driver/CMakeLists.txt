@@ -17,10 +17,16 @@ find_package(robot_interfaces REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(ros2_socketcan REQUIRED)
 
-add_executable(robot_driver_cantx src/robot_driver_cantx.cpp)
+# add_executable(robot_driver_cantx src/robot_driver_cantx.cpp)
+# ament_target_dependencies(robot_driver_cantx rclcpp std_msgs can_msgs ros2_socketcan sensor_msgs robot_interfaces)
+
+# add_executable(robot_driver_canrx src/robot_driver_canrx.cpp)
+# ament_target_dependencies(robot_driver_canrx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
+
+add_executable(robot_driver_cantx src/robot_driver_cantx_new.cpp)
 ament_target_dependencies(robot_driver_cantx rclcpp std_msgs can_msgs ros2_socketcan sensor_msgs robot_interfaces)
 
-add_executable(robot_driver_canrx src/robot_driver_canrx.cpp)
+add_executable(robot_driver_canrx src/robot_driver_canrx_new.cpp)
 ament_target_dependencies(robot_driver_canrx rclcpp can_msgs ros2_socketcan sensor_msgs robot_interfaces)
 
 include_directories(
