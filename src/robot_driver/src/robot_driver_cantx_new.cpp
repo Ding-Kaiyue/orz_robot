@@ -62,3 +62,12 @@ void SocketCanSenderNode::timer_callback() {
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     timer_->cancel();
 }
+
+int main(int argc, char const *argv[])
+{
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<SocketCanSenderNode>("robot_driver_cantx");
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}

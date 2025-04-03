@@ -115,24 +115,24 @@ public:
                 case PAM_RW_RX: {
                     if (rx_data[0] == 0x01) { // Parameter read
                         if (rx_data[3] == 0x01) { // The parameter is int
-                            std::cout << "Read " << unsigned((rx_data[1] << 8) | rx_data[2] & 0xFF) << "%d parameter is %d"
+                            std::cout << "Read " << unsigned((rx_data[1] << 8) | (rx_data[2] & 0xFF)) << "%d parameter is %d"
                                     << ((rx_data[4] << 24) | (rx_data[5] << 16) | (rx_data[6] << 8) | (rx_data[7] && 0xFF));
                         }
                         else if (rx_data[3] == 0x02) { // The parameter is float
                             FloatUintConverter_u converter;
                             converter.u = (rx_data[4] << 24) | (rx_data[5] << 16) | (rx_data[6] << 8) | (rx_data[7] && 0xFF);
-                            std::cout << unsigned((rx_data[1] << 8) | rx_data[2] & 0xFF) << "%d parameter is %f" << converter.f;
+                            std::cout << unsigned((rx_data[1] << 8) | (rx_data[2] & 0xFF)) << "%d parameter is %f" << converter.f;
                         }
                     }
                     else if (rx_data[0] == 0x02) { // Parameter write
                         if (rx_data[3] == 0x01) { // The parameter is int
-                            std::cout << "Write " << unsigned((rx_data[1] << 8) | rx_data[2] & 0xFF) << "%d parameter is %d"
+                            std::cout << "Write " << unsigned((rx_data[1] << 8) | (rx_data[2] & 0xFF)) << "%d parameter is %d"
                                     << ((rx_data[4] << 24) | (rx_data[5] << 16) | (rx_data[6] << 8) | (rx_data[7] && 0xFF));
                         }
                         else if (rx_data[3] == 0x02) { // The parameter is float
                             FloatUintConverter_u converter;
                             converter.u = (rx_data[4] << 24) | (rx_data[5] << 16) | (rx_data[6] << 8) | (rx_data[7] && 0xFF);
-                            std::cout << unsigned((rx_data[1] << 8) | rx_data[2] & 0xFF) << "%d parameter is %f" << converter.f;
+                            std::cout << unsigned((rx_data[1] << 8) | (rx_data[2] & 0xFF)) << "%d parameter is %f" << converter.f;
                         }
                     }
                     break;
