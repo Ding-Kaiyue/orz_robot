@@ -11,12 +11,15 @@
   <depend>rclcpp</depend>
   <!-- <depend>robot_interfaces</depend> -->
   <build_depend>sensor_msgs</build_depend>
+  <build_depend>robot_interfaces</build_depend>
+  <build_depend>ros2_socketcan</build_depend>
 
   <exec_depend>sensor_msgs</exec_depend>
   
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-
+  <exec_depend>robot_interfaces</exec_depend>
+  
   <export>
     <build_type>ament_cmake</build_type>
   </export>
