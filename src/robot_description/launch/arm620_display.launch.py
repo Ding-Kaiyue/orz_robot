@@ -9,7 +9,7 @@ import xacro
 
 def generate_launch_description():
 
-    robot_xacro_file = os.path.join(get_package_share_directory('robot_description'), 'urdf', 'robot.urdf')
+    robot_xacro_file = os.path.join(get_package_share_directory('robot_description'), 'urdf', 'arm620.urdf')
 
     robot_description = Command(
         [FindExecutable(name='xacro'), ' ', robot_xacro_file])

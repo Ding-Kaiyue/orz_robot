@@ -15,7 +15,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("robot_description", package_name="robot_config").to_moveit_configs() 
+    moveit_config = MoveItConfigsBuilder("arm620", package_name="arm620_config").to_moveit_configs() 
 
     ld = LaunchDescription()
 

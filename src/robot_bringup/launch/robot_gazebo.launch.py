@@ -9,11 +9,11 @@ def generate_launch_description():
 
     # For Realman
     robot_gazebo_up =  IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory(('robot_gazebo')), 'launch', 'robot_gazebo.launch.py'))
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory(('robot_gazebo')), 'launch', 'arm620_gazebo.launch.py'))
     )
 
     robot_moveit_up = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory(('robot_config')), 'launch', 'gazebo_moveit_demo.launch.py'))
+        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory(('arm620_config')), 'launch', 'gazebo_moveit_demo.launch.py'))
     )
 
     return LaunchDescription ([

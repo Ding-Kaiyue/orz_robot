@@ -14,10 +14,10 @@ import xacro
 def generate_launch_description():
     package_name = 'robot_gazebo'
 
-    robot_name_in_model = 'robot_description'
+    robot_name_in_model = 'arm620'
 
     pkg_share = FindPackageShare(package=package_name).find(package_name) 
-    urdf_model_path = os.path.join(pkg_share, f'config/gazebo_robot_description.urdf.xacro')
+    urdf_model_path = os.path.join(pkg_share, f'config/gazebo_arm620.urdf.xacro')
 
     
     print("---", urdf_model_path)

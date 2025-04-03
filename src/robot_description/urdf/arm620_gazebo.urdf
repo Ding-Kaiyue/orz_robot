@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="robot_description">
+<robot name="arm620">
 
   <link name="base_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/base_link.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/base_link.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/base_link.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -42,7 +42,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link1.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link1.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -51,7 +51,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link1.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link1.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -78,7 +78,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link2.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link2.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -87,7 +87,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link2.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link2.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -114,7 +114,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link3.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link3.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -123,7 +123,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link3.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link3.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -150,7 +150,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link4.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link4.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -174,7 +174,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link4.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link4.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -186,7 +186,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link5.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link5.STL" />
       </geometry>
       <material  name="">
         <color rgba="1 1 1 1" />
@@ -195,7 +195,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link5.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link5.STL" />
       </geometry>
     </collision>
     <inertial>
@@ -222,7 +222,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link6.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link6.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -231,7 +231,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find robot_description)/meshes/Link6.STL" />
+        <mesh filename="file://$(find robot_description)/meshes/arm620/Link6.STL" />
       </geometry>
     </collision>
     <inertial>
