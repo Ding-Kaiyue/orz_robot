@@ -20,7 +20,6 @@
     </gazebo>
     <gazebo reference="Link1">
         <material>Gazebo/Turquoise</material>
-        <self_collide>false</self_collide>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link2">

@@ -14,33 +14,32 @@
 
     <!-- 对一些link进行gazebo的属性设置 -->
     <gazebo reference="base_link">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <self_collide>false</self_collide>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link1">
-        <material>Gazebo/TurquoiseGlowOutline</material>
-        <self_collide>false</self_collide>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link2">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link3">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link4">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link5">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
     <gazebo reference="Link6">
-        <material>Gazebo/TurquoiseGlowOutline</material>
+        <material>Gazebo/Turquoise</material>
         <gravity>false</gravity>
     </gazebo>
 
