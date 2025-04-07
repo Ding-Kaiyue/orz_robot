@@ -28,9 +28,10 @@ ros2 run robot_test_py robot_test_py --ros-args -p answer_value:=1
 
 # Motor Control & Pose Control
 ros2 run robot_test_py robot_test_py --ros-args -p working_mode:=8 -p joint_angles_goal.data0:=0 -p joint_angles_goal.data1:=25 -p joint_angles_goal.data2:=52 -p joint_angles_goal.data3:=0 -p joint_angles_goal.data4:=84 -p joint_angles_goal.data5:=0 -p arm_pose_goal.position.x:=-0.48 -p arm_pose_goal.position.y:=0.016 -p arm_pose_goal.position.z:=0.196 -p arm_pose_goal.orientation.x:=1.0 -p arm_pose_goal.orientation.y:=0.0 -p arm_pose_goal.orientation.z:=0.0 -p arm_pose_goal.orientation.w:=0.0 -->
-
+<!-- ```
 # Gripper Control
 ros2 topic pub --once /gripper_cmd std_msgs/msg/UInt8MultiArray "{layout: {dim: [], data_offset: 0}, data: [10, 100, 10]}"
+``` -->
 
 ## <span style="color:#B885B0;">ID设置</span>
 Joint1 ~ Joint6的关节电机控制ID设置为0x201 ~ 0x206，反馈ID设置为0x301 ~ 0x306

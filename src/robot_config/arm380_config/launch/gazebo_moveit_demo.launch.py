@@ -13,8 +13,9 @@ from moveit_configs_utils.launch_utils import (
 from launch.substitutions import LaunchConfiguration
 from launch_ros.parameter_descriptions import ParameterValue
 
+
 def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("arm620", package_name="arm620_config").to_moveit_configs() 
+    moveit_config = MoveItConfigsBuilder("arm380", package_name="arm380_config").to_moveit_configs() 
 
     ld = LaunchDescription()
 
@@ -25,7 +26,9 @@ def generate_launch_description():
 
     return ld
 
+
 def my_generate_move_group_launch(ld, moveit_config):
+
     ld.add_action(DeclareBooleanLaunchArg("debug", default_value=False))
     ld.add_action(
         DeclareBooleanLaunchArg("allow_trajectory_execution", default_value=True)
@@ -60,21 +63,13 @@ def my_generate_move_group_launch(ld, moveit_config):
         "publish_state_updates": should_publish,
         "publish_transforms_updates": should_publish,
         "monitor_dynamics": False,
-        "use_sim_time": True,
-    }
-
-    trajectory_execution = {
-        "moveit_manage_controllers": False,
-        "trajectory_execution.allowed_execution_duration_scaling": 1.2,
-        "trajectory_execution.allowed_goal_duration_margin": 0.5,
-        "trajectory_execution.allowed_start_tolerance": 0.15,
     }
 
     move_group_params = [
         moveit_config.to_dict(),
         move_group_configuration,
-        trajectory_execution,
     ]
+    move_group_params.append({"use_sim_time": True})
 
     add_debuggable_node(
         ld,
@@ -104,6 +99,7 @@ def my_generate_moveit_rviz_launch(ld, moveit_config):
         moveit_config.planning_pipelines,
         moveit_config.robot_description_kinematics,
     ]
+    rviz_parameters.append({"use_sim_time": True})
 
     add_debuggable_node(
         ld,
