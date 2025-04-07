@@ -197,7 +197,7 @@ class RobotFunctions : public rclcpp :: Node
                         plan.trajectory_ = trajectory;
                         arm->execute(plan);
                     } else {
-                        RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion in PITCH_POSITIVE direction");
+                        RCLCPP_ERROR(this->get_logger(), "MoveIt failed to plan the Cartesian motion!");
                     }
                     break;
                 }
