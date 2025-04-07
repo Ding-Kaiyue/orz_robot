@@ -1,27 +1,37 @@
-# <span style="color:#FCDB72;">使用说明</span>
+# <span style="color:#FCDB72;">安装说明</span>
+使用如下命令进行编译、安装
 ```
-cd src/
-rm -rf ros2_socketcan/
-git clone http://github.com/autowarefoundation/ros2_socketcan.git
-colcon build --packages-select robot_interfaces
-colcon build --packages-select ros2_socketcan_msgs
-colcon build --packages-select ros2_socketcan
-source install/setup.bash
-
 sudo ip link set can0 up type can bitrate 1000000
-cd Projects/orz_robot
+mkdir -p {Your WorkSpace}/src && cd {Your WorkSpace}/src
+git clone --recurse-submodules https://github.com/Ding-Kaiyue/orz_robot.git
+cd ..
 colcon build
 source install/setup.bash
-ros2 launch robot_bringup robot_real.launch.py
-ros2 run robot_test robot_test
+```
+使用如下命令进行机械臂仿真
+```
+ros2 launch robot_bringup arm620_gazebo.launch.py
+ros2 launch robot_bringup arm380_gazebo.launch.py
+```
+使用如下命令进行机械臂真机控制
+```
+ros2 launch robot_bringup arm620_real.launch.py
+ros2 launch robot_bringup arm380_real.launch.py
+```
+真机控制前请给CAN赋予权限
+```
+sudo ip link set can0 up type can bitrate 1000000
+```
+
+<!-- ros2 run robot_test robot_test
 ros2 run robot_test_py robot_test_py --ros-args -p answer_value:=1
 
 # Motor Control & Pose Control
-ros2 run robot_test_py robot_test_py --ros-args -p working_mode:=8 -p joint_angles_goal.data0:=0 -p joint_angles_goal.data1:=25 -p joint_angles_goal.data2:=52 -p joint_angles_goal.data3:=0 -p joint_angles_goal.data4:=84 -p joint_angles_goal.data5:=0 -p arm_pose_goal.position.x:=-0.48 -p arm_pose_goal.position.y:=0.016 -p arm_pose_goal.position.z:=0.196 -p arm_pose_goal.orientation.x:=1.0 -p arm_pose_goal.orientation.y:=0.0 -p arm_pose_goal.orientation.z:=0.0 -p arm_pose_goal.orientation.w:=0.0
+ros2 run robot_test_py robot_test_py --ros-args -p working_mode:=8 -p joint_angles_goal.data0:=0 -p joint_angles_goal.data1:=25 -p joint_angles_goal.data2:=52 -p joint_angles_goal.data3:=0 -p joint_angles_goal.data4:=84 -p joint_angles_goal.data5:=0 -p arm_pose_goal.position.x:=-0.48 -p arm_pose_goal.position.y:=0.016 -p arm_pose_goal.position.z:=0.196 -p arm_pose_goal.orientation.x:=1.0 -p arm_pose_goal.orientation.y:=0.0 -p arm_pose_goal.orientation.z:=0.0 -p arm_pose_goal.orientation.w:=0.0 -->
 
 # Gripper Control
 ros2 topic pub --once /gripper_cmd std_msgs/msg/UInt8MultiArray "{layout: {dim: [], data_offset: 0}, data: [10, 100, 10]}"
-```
+
 ## <span style="color:#B885B0;">ID设置</span>
 Joint1 ~ Joint6的关节电机控制ID设置为0x201 ~ 0x206，反馈ID设置为0x301 ~ 0x306
 
