@@ -33,10 +33,10 @@ typedef struct
 
 typedef enum
 {
-    MOTOR_CTRL_RX = 0x00000100,
-    FDB_REQ_RX = 0x00000300,
-    FUN_CTRL_RX = 0x00000500,
-    PAM_RW_RX = 0x00000700,
+    MOTOR_CTRL_RX = 0x100,
+    FDB_REQ_RX = 0x300,
+    FUN_CTRL_RX = 0x500,
+    PAM_RW_RX = 0x700,
 } CommandID_Rx_e;
 
 class rx_package_t
@@ -150,25 +150,25 @@ class SocketCanReceiverNode : public rclcpp :: Node
 public:
     SocketCanReceiverNode(const std::string &node_name) : Node(node_name)
     {
-        SocketCanReceiver receiver("can0", false);
+        receiver_ = std::make_unique<SocketCanReceiver>("can0", false);
         // publish the joint attitude from the real motors
         publisher_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
-
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(10), std::bind(&SocketCanReceiverNode::timer_callback, this));
         std::shared_ptr<Motor_Status_t> motor_status = std::make_shared<Motor_Status_t>();
 
         // Set CAN Filters
         try {
-            receiver.SetCanFilters(filters);
+            receiver_->SetCanFilters(filters);
         } catch (const std::runtime_error & e) {
             RCLCPP_ERROR(this->get_logger(), "Failed to set filters: %s", e.what());
         }
 
         // CAN Message Receive
-        std::thread([this, &receiver]() {
+        std::thread([this]() {
             std::array<uint8_t, 8> data;
             while (rclcpp::ok()) {
                 try {
-                    CanId can_id = receiver.receive(data, std::chrono::seconds(1));
+                    CanId can_id = receiver_->receive(data, std::chrono::seconds(1));
                     uint8_t motor_id = can_id.identifier() & 0x000000FF;
 
                     if (motor_status_map.find(motor_id) == motor_status_map.end()) {
@@ -181,8 +181,6 @@ public:
                 }
             }
         }).detach();
-
-        timer_ = this->create_wall_timer(std::chrono::milliseconds(10), std::bind(&SocketCanReceiverNode::timer_callback, this));
     }
 
 private:
@@ -191,6 +189,7 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr publisher_;
     std::map<uint8_t, std::shared_ptr<Motor_Status_t>> motor_status_map;
     rclcpp::TimerBase::SharedPtr timer_;
+    std::unique_ptr<SocketCanReceiver> receiver_;
 
     union FloatUintConverter
     {

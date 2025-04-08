@@ -19,6 +19,9 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(rosbag2_cpp REQUIRED)
+find_package(rosbag2_storage REQUIRED)
+find_package(rosbag2_transport REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(actionlib_msgs REQUIRED)
@@ -34,7 +37,22 @@ add_executable(robot_state_get src/robot_state_get.cpp)
 ament_target_dependencies(robot_state_get geometry_msgs std_msgs rclcpp moveit_ros_planning_interface moveit_ros_move_group tf2_ros robot_interfaces)
 
 add_executable(robot_key_controller src/robot_key_controller.cpp)
-ament_target_dependencies(robot_key_controller rclcpp moveit_ros_planning_interface moveit_ros_move_group moveit_msgs geometry_msgs std_msgs robot_interfaces sensor_msgs tf2_ros tf2_geometry_msgs)
+ament_target_dependencies(robot_key_controller 
+    rclcpp 
+    moveit_ros_planning_interface 
+    moveit_ros_move_group 
+    moveit_msgs 
+    geometry_msgs 
+    std_msgs 
+    trajectory_msgs 
+    robot_interfaces 
+    sensor_msgs 
+    tf2_ros 
+    tf2_geometry_msgs
+    rosbag2_cpp
+    rosbag2_storage
+    rosbag2_transport
+)
 
 add_executable(robot_func src/robot_func.cpp)
 ament_target_dependencies(robot_func 

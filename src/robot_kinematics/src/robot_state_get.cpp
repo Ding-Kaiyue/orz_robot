@@ -46,14 +46,14 @@ class RobotStateGet : public rclcpp :: Node
                 arm_pose.end_effector_pose.position.z = transform.transform.translation.z;
                 arm_pose.end_effector_pose.orientation = transform.transform.rotation;
 
-                RCLCPP_INFO(this->get_logger(), "Get the arm position: %lf, %lf, %lf. Get the arm orientation: %lf, %lf, %lf, %lf", 
-                                                    arm_pose.end_effector_pose.position.x, 
-                                                    arm_pose.end_effector_pose.position.y,
-                                                    arm_pose.end_effector_pose.position.z,
-                                                    arm_pose.end_effector_pose.orientation.w,
-                                                    arm_pose.end_effector_pose.orientation.x,
-                                                    arm_pose.end_effector_pose.orientation.y,
-                                                    arm_pose.end_effector_pose.orientation.z);
+                // RCLCPP_INFO(this->get_logger(), "Get the arm position: %lf, %lf, %lf. Get the arm orientation: %lf, %lf, %lf, %lf", 
+                //                                     arm_pose.end_effector_pose.position.x, 
+                //                                     arm_pose.end_effector_pose.position.y,
+                //                                     arm_pose.end_effector_pose.position.z,
+                //                                     arm_pose.end_effector_pose.orientation.w,
+                //                                     arm_pose.end_effector_pose.orientation.x,
+                //                                     arm_pose.end_effector_pose.orientation.y,
+                //                                     arm_pose.end_effector_pose.orientation.z);
                 publisher_arm_pose_->publish(arm_pose);
 
                 // 计算爪子末端位姿
@@ -69,14 +69,14 @@ class RobotStateGet : public rclcpp :: Node
                 gripper_pose.end_effector_pose.position.z = gripper_position.z();
                 gripper_pose.end_effector_pose.orientation = transform.transform.rotation;
 
-                RCLCPP_INFO(this->get_logger(), "Get the gripper position: %lf, %lf, %lf. Get the gripper orientation: %lf, %lf, %lf, %lf", 
-                                                    gripper_pose.end_effector_pose.position.x, 
-                                                    gripper_pose.end_effector_pose.position.y,
-                                                    gripper_pose.end_effector_pose.position.z,
-                                                    gripper_pose.end_effector_pose.orientation.w,
-                                                    gripper_pose.end_effector_pose.orientation.x,
-                                                    gripper_pose.end_effector_pose.orientation.y,
-                                                    gripper_pose.end_effector_pose.orientation.z);
+                // RCLCPP_INFO(this->get_logger(), "Get the gripper position: %lf, %lf, %lf. Get the gripper orientation: %lf, %lf, %lf, %lf", 
+                //                                     gripper_pose.end_effector_pose.position.x, 
+                //                                     gripper_pose.end_effector_pose.position.y,
+                //                                     gripper_pose.end_effector_pose.position.z,
+                //                                     gripper_pose.end_effector_pose.orientation.w,
+                //                                     gripper_pose.end_effector_pose.orientation.x,
+                //                                     gripper_pose.end_effector_pose.orientation.y,
+                //                                     gripper_pose.end_effector_pose.orientation.z);
                 publisher_gripper_pose_->publish(gripper_pose);
 
                 double x = 0.0317196, y = -0.020996, z = 0.750743;
@@ -110,7 +110,7 @@ class RobotStateGet : public rclcpp :: Node
 
                 tf_broadcaster_->sendTransform(camera_transform);
             } catch (tf2::TransformException &ex) {
-                RCLCPP_WARN(this->get_logger(), "Could not transform: %s", ex.what());
+                // RCLCPP_WARN(this->get_logger(), "Could not transform: %s", ex.what());
             }
         }
 };

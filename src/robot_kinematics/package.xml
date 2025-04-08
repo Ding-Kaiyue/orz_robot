@@ -14,12 +14,20 @@
   <build_depend>sensor_msgs</build_depend>
   <build_depend>control_msgs</build_depend>
   <build_depend>robot_interfaces</build_depend>
-  
+  <build_depend>trajectory_msgs</build_depend>
+  <build_depend>rosbag2_transport</build_depend>
+  <build_depend>rosbag2_cpp</build_depend>
+  <build_depend>rosbag2_storage</build_depend>
+
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>control_msgs</exec_depend>
   <exec_depend>robot_interfaces</exec_depend>
-  
+  <exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>rosbag2_transport</exec_depend>
+  <exec_depend>rosbag2_cpp</exec_depend>
+  <exec_depend>rosbag2_storage</exec_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

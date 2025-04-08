@@ -36,9 +36,9 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_kinematics'), 'launch', 'robot_func.launch.py'))
     )
 
-    robot_test = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_test'), 'launch', 'robot_test.launch.py'))
-    )
+    # robot_test = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_test'), 'launch', 'robot_test.launch.py'))
+    # )
 
     robot_current_state_get = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('robot_kinematics'), 'launch', 'robot_state_get.launch.py'))
@@ -63,7 +63,7 @@ def generate_launch_description():
         robot_driver,
         robto_tcp_server,
         robot_func,
-        robot_test,
+        # robot_test,
         robot_current_state_get,
         robot_description,
         robot_control,

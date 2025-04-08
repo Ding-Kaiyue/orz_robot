@@ -290,7 +290,7 @@ class TcpServer : public rclcpp::Node
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
         {
             if (client_fd_ <= 0) {
-                RCLCPP_INFO(this->get_logger(), "No client connected to send joint_states");
+                // RCLCPP_INFO(this->get_logger(), "No client connected to send joint_states");
                 return;
             }
             std::vector<double> positions = msg->position;

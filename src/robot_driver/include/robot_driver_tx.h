@@ -34,10 +34,10 @@ union FloatUintConverter_u {
 
 // 发送接口类型
 typedef enum {
-    MOTOR_CTRL_TX = 0x00000000,
-    FDB_REQ_TX = 0x00000200,
-    FUNC_CTRL_TX = 0x00000400,
-    PARM_RW_TX = 0x00000600,
+    MOTOR_CTRL_TX = 0x000,
+    FDB_REQ_TX = 0x200,
+    FUNC_CTRL_TX = 0x400,
+    PARM_RW_TX = 0x600,
 } CommandID_Tx_e;
 
 typedef enum {
@@ -82,7 +82,7 @@ class tx_package_t {
         tx_package_t(uint8_t motor_id, uint32_t interfaces_type, uint8_t control_enable_flag, uint8_t control_mode, float control_value) {
             this->canid = std::make_unique<CanId>(motor_id + interfaces_type, 0, FrameType::DATA, ExtendedFrame);
             FloatUintConverter_u converter;
-            converter.f = control_value;
+            converter.f = (static_cast<float>(control_value)) * 180.0f / 3.141592654f;
             uint32_t control_value_uint = converter.u;
             tx_data[0] = control_enable_flag;
             tx_data[1] = control_mode;
@@ -92,7 +92,7 @@ class tx_package_t {
             tx_data[5] = control_value_uint >> 16;
             tx_data[6] = control_value_uint >> 8;
             tx_data[7] = control_value_uint & 0xFF;
-            
+            RCLCPP_INFO(rclcpp::get_logger("tx_package_t"), "Motor %d cmd position: %f", motor_id, control_value);
             sender->send(tx_data, sizeof(tx_data), *this->canid, std::chrono::seconds(1));
         }
         // Motor Feedback Request

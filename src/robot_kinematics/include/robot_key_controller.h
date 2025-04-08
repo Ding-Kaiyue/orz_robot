@@ -3,6 +3,10 @@
 
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <geometry_msgs/msg/pose.h>
+#include <rosbag2_cpp/writer.hpp>
+#include <rosbag2_cpp/reader.hpp>
+#include <rosbag2_cpp/storage_options.hpp>
+#include <rosbag2_cpp/converter_options.hpp>
 
 #define BACKTOSTART 0
 #define PASSIVE 1
@@ -68,13 +72,21 @@ class KeyboardController : public rclcpp :: Node {
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movej_action_;
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movel_action_;
         rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr movec_action_;
+
         rclcpp::Publisher<robot_interfaces::msg::RobotControlMsg>::SharedPtr motor_msg_pub;
         rclcpp::Publisher<std_msgs::msg::Int8MultiArray>::SharedPtr gripper_msg_pub;
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscriber_joint_states_;
         geometry_msgs::msg::Pose current_pose_;
-        sensor_msgs::msg::JointState current_joint_states_;
-        rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::TimerBase::SharedPtr teach_timer_;
+        rclcpp::TimerBase::SharedPtr play_timer_;
         
+        /* Teach and Teach Repeat*/
+        std::shared_ptr<rosbag2_cpp::Writer> teach_bag_writer_;
+        std::shared_ptr<rosbag2_cpp::Reader> play_bag_reader_;
+        
+        rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr joint_trajectory_pub_;
+        std::vector<double> current_joint_positions_;
+
         // std::vector<double> joint_group_positions;
         robot_interfaces::msg::RobotControlMsg rbt_ctrl_msg;
         uint8_t gripper_position;
@@ -87,7 +99,9 @@ class KeyboardController : public rclcpp :: Node {
         void movel_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void movec_action_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
         void joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
-        void timer_callback();
+        // void timer_callback();
+        void teach_action_callback();
+        void teach_repeat_callback();
 };
 
 #endif

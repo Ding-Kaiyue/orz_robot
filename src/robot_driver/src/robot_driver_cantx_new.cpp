@@ -18,7 +18,7 @@ void SocketCanSenderNode::motor_zero_position_set_callback(const std_msgs::msg::
 // rviz control
 void SocketCanSenderNode::joint_pos_callback(const sensor_msgs::msg::JointState::SharedPtr msg) {
     for (size_t i = 0; i < msg->position.size(); i++) {
-        tx_package_t motor_control_pos(static_cast<uint8_t>(msg->position[i+1]), MOTOR_CTRL_TX, MOTOR_ENABLE, POSITION_ABS_MODE, msg->position[i]);
+        tx_package_t motor_control_pos(static_cast<uint8_t>(i+1), MOTOR_CTRL_TX, MOTOR_ENABLE, POSITION_ABS_MODE, msg->position[i]);
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
@@ -56,10 +56,10 @@ void SocketCanSenderNode::gripper_states_request_callback(const std_msgs::msg::U
 void SocketCanSenderNode::timer_callback() {
     motor_data1_message_request();
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    motor_data2_message_request();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    motor_data3_message_request();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    // motor_data2_message_request();
+    // std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    // motor_data3_message_request();
+    // std::this_thread::sleep_for(std::chrono::milliseconds(100));
     timer_->cancel();
 }
 

@@ -1,16 +1,16 @@
 #include <rclcpp/rclcpp.hpp>
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit_msgs/msg/move_it_error_codes.hpp>
-#include <geometry_msgs/msg/pose.hpp>
 #include <std_msgs/msg/int8.hpp>
 #include <robot_interfaces/msg/robot_control_msg.hpp>
 #include <robot_interfaces/msg/arm_state.hpp>
-#include "sensor_msgs/msg/joint_state.hpp"
+#include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include "std_msgs/msg/int8_multi_array.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <sensor_msgs/msg/joint_state.hpp>
 #include <chrono>
 #include <thread>
 #include "robot_key_controller.h"
@@ -21,8 +21,8 @@ KeyboardController::KeyboardController(std::string node_name) : Node(node_name) 
     mode_sub = this->create_subscription<std_msgs::msg::Int8>("keyboard_control_mode", 10, std::bind(&KeyboardController::working_mode_callback, this, std::placeholders::_1));
     motor_msg_pub = this->create_publisher<robot_interfaces::msg::RobotControlMsg>("motor_msg", 10);
     gripper_msg_pub = this->create_publisher<std_msgs::msg::Int8MultiArray>("gripper_msg", 10);
-    subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&KeyboardController::joint_states_callback, this, std::placeholders::_1));
-    timer_ = this->create_wall_timer(std::chrono::microseconds(50), std::bind(&KeyboardController::timer_callback, this));
+    joint_trajectory_pub_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>("/joint_trajectory_controller/joint_trajectory", 10);
+    // timer_ = this->create_wall_timer(std::chrono::microseconds(50), std::bind(&KeyboardController::timer_callback, this));
 
     // 设置机械臂运动允许的误差
     arm->setGoalJointTolerance(0.0007);
@@ -63,7 +63,7 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
             break;
         }
         case JOINTCONTROL: {         // 关节空间速度控制，可以通过长按键盘直接地给定机械臂六个关节运动的速度
-            timer_ = this->create_wall_timer(std::chrono::microseconds(20), std::bind(&KeyboardController::timer_callback, this));
+            // timer_ = this->create_wall_timer(std::chrono::microseconds(20), std::bind(&KeyboardController::timer_callback, this));
             jointctrl_action_ = this->create_subscription<std_msgs::msg::Int8>("jointctrl_action", 10, std::bind(&KeyboardController::jointctrl_action_callback, this, std::placeholders::_1));
             break;
         }
@@ -84,10 +84,15 @@ void KeyboardController::working_mode_callback(const std_msgs::msg::Int8::Shared
             break;
         }
         case TEACH: {
-
+            subscriber_joint_states_ = this->create_subscription<sensor_msgs::msg::JointState>("joint_states", 10, std::bind(&KeyboardController::joint_states_callback, this, std::placeholders::_1));
+            teach_timer_ = this->create_wall_timer(std::chrono::milliseconds(10), std::bind(&KeyboardController::teach_action_callback, this));
+            RCLCPP_INFO(this->get_logger(), "Enter TEACH mode: Recording trajectory...");
+            break;
         }
         case TEACHREPEAT: {
-
+            play_timer_ = this->create_wall_timer(std::chrono::milliseconds(10), std::bind(&KeyboardController::teach_repeat_callback, this));
+            RCLCPP_INFO(this->get_logger(), "Enter TEACHREPEAT mode: Playing trajectory...");
+            break;
         }
         case SAVESTATE: {
 
@@ -122,12 +127,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
             
-            if (current_joint_states_.position[0] > -PI_ && current_joint_states_.position[0] < PI_) {
-                rbt_ctrl_msg.motor_msg = {JOINT_ROTATE_POSITIVE_SPEED, current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[0] > -PI_ && current_joint_positions_[0] < PI_) {
+                rbt_ctrl_msg.motor_msg = {JOINT_ROTATE_POSITIVE_SPEED, current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {0.0f, current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {0.0f, current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
             
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -149,12 +154,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[0] > -PI_ && current_joint_states_.position[0] < PI_) {
-                rbt_ctrl_msg.motor_msg = {JOINT_ROTATE_NEGATIVE_SPEED, current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[0] > -PI_ && current_joint_positions_[0] < PI_) {
+                rbt_ctrl_msg.motor_msg = {JOINT_ROTATE_NEGATIVE_SPEED, current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {0.0f, current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {0.0f, current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
             
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -176,12 +181,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[1] > -PI_/2 && current_joint_states_.position[1] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], JOINT_ROTATE_POSITIVE_SPEED, current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[1] > -PI_/2 && current_joint_positions_[1] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], JOINT_ROTATE_POSITIVE_SPEED, current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], 0.0f, current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], 0.0f, current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -203,12 +208,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[1] > -PI_/2 && current_joint_states_.position[1] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], JOINT_ROTATE_NEGATIVE_SPEED, current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[1] > -PI_/2 && current_joint_positions_[1] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], JOINT_ROTATE_NEGATIVE_SPEED, current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], 0.0f, current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], 0.0f, current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -230,12 +235,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[2] > -PI_/2 && current_joint_states_.position[2] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], JOINT_ROTATE_POSITIVE_SPEED, current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[2] > -PI_/2 && current_joint_positions_[2] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], JOINT_ROTATE_POSITIVE_SPEED, current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], 0.0f, current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], 0.0f, current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -257,12 +262,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[2] > -PI_/2 && current_joint_states_.position[2] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], JOINT_ROTATE_NEGATIVE_SPEED, current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[2] > -PI_/2 && current_joint_positions_[2] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], JOINT_ROTATE_NEGATIVE_SPEED, current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], 0.0f, current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], 0.0f, current_joint_positions_[3], 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -284,12 +289,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[3] > -PI_/2 && current_joint_states_.position[3] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], JOINT_ROTATE_POSITIVE_SPEED, 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[3] > -PI_/2 && current_joint_positions_[3] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], JOINT_ROTATE_POSITIVE_SPEED, 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], 0.0f, 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], 0.0f, 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -311,12 +316,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[3] > -PI_/2 && current_joint_states_.position[3] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], JOINT_ROTATE_NEGATIVE_SPEED, 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+            if (current_joint_positions_[3] > -PI_/2 && current_joint_positions_[3] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], JOINT_ROTATE_NEGATIVE_SPEED, 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], 0.0f, 
-                                            current_joint_states_.position[4], current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], 0.0f, 
+                                            current_joint_positions_[4], current_joint_positions_[5]};
             }
 
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -338,12 +343,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = VELOCITY_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[4] > -PI_ && current_joint_states_.position[4] < PI_) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            JOINT_ROTATE_POSITIVE_SPEED, current_joint_states_.position[5]};
+            if (current_joint_positions_[4] > -PI_ && current_joint_positions_[4] < PI_) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            JOINT_ROTATE_POSITIVE_SPEED, current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            0.0f, current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            0.0f, current_joint_positions_[5]};
             }
             
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -365,12 +370,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = VELOCITY_MODE;
             rbt_ctrl_msg.motor_mode[5] = POSITION_MODE;
 
-            if (current_joint_states_.position[4] > -PI_/2 && current_joint_states_.position[4] < PI_/2) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            JOINT_ROTATE_NEGATIVE_SPEED, current_joint_states_.position[5]};
+            if (current_joint_positions_[4] > -PI_/2 && current_joint_positions_[4] < PI_/2) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            JOINT_ROTATE_NEGATIVE_SPEED, current_joint_positions_[5]};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            0.0f, current_joint_states_.position[5]};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            0.0f, current_joint_positions_[5]};
             }
             
             motor_msg_pub->publish(rbt_ctrl_msg);
@@ -392,12 +397,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = VELOCITY_MODE;
 
-            if (current_joint_states_.position[5] > -PI_ && current_joint_states_.position[5] < PI_) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], JOINT_ROTATE_POSITIVE_SPEED};
+            if (current_joint_positions_[5] > -PI_ && current_joint_positions_[5] < PI_) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], JOINT_ROTATE_POSITIVE_SPEED};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], 0.0f};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], 0.0f};
             }
             motor_msg_pub->publish(rbt_ctrl_msg);
             break;
@@ -418,12 +423,12 @@ void KeyboardController::jointctrl_action_callback(const std_msgs::msg::Int8::Sh
             rbt_ctrl_msg.motor_mode[4] = POSITION_MODE;
             rbt_ctrl_msg.motor_mode[5] = VELOCITY_MODE;
 
-            if (current_joint_states_.position[5] > -PI_ && current_joint_states_.position[5] < PI_) {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], JOINT_ROTATE_NEGATIVE_SPEED};
+            if (current_joint_positions_[5] > -PI_ && current_joint_positions_[5] < PI_) {
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], JOINT_ROTATE_NEGATIVE_SPEED};
             } else {
-                rbt_ctrl_msg.motor_msg = {current_joint_states_.position[0], current_joint_states_.position[1], current_joint_states_.position[2], current_joint_states_.position[3], 
-                                            current_joint_states_.position[4], 0.0f};
+                rbt_ctrl_msg.motor_msg = {current_joint_positions_[0], current_joint_positions_[1], current_joint_positions_[2], current_joint_positions_[3], 
+                                            current_joint_positions_[4], 0.0f};
             }
             motor_msg_pub->publish(rbt_ctrl_msg);
             break;
@@ -603,25 +608,25 @@ void KeyboardController::movec_action_callback(const std_msgs::msg::Float64Multi
     }
 }
 
-void KeyboardController::timer_callback()
-{
-    auto elapsed_time = this->now() - last_msg_time;
-    // 将时间差转换为ms
-    auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed_time.to_chrono<std::chrono::nanoseconds>());
-    if (elapsed_ms.count() > 100) {
-        rbt_ctrl_msg.motor_enable_flag.resize(6);
-        rbt_ctrl_msg.motor_mode.resize(6);
-        rbt_ctrl_msg.motor_msg.resize(6);
+// void KeyboardController::timer_callback()
+// {
+//     auto elapsed_time = this->now() - last_msg_time;
+//     // 将时间差转换为ms
+//     auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed_time.to_chrono<std::chrono::nanoseconds>());
+//     if (elapsed_ms.count() > 100) {
+//         rbt_ctrl_msg.motor_enable_flag.resize(6);
+//         rbt_ctrl_msg.motor_mode.resize(6);
+//         rbt_ctrl_msg.motor_msg.resize(6);
 
-        for (size_t i = 0; i < rbt_ctrl_msg.motor_enable_flag.size(); i++) {
-            rbt_ctrl_msg.motor_enable_flag[i] = true;
-            rbt_ctrl_msg.motor_mode[i] = VELOCITY_MODE;
-            rbt_ctrl_msg.motor_msg[i] = 0.0f;
-        }
+//         for (size_t i = 0; i < rbt_ctrl_msg.motor_enable_flag.size(); i++) {
+//             rbt_ctrl_msg.motor_enable_flag[i] = true;
+//             rbt_ctrl_msg.motor_mode[i] = VELOCITY_MODE;
+//             rbt_ctrl_msg.motor_msg[i] = 0.0f;
+//         }
 
-        motor_msg_pub->publish(rbt_ctrl_msg);
-    }
-}
+//         motor_msg_pub->publish(rbt_ctrl_msg);
+//     }
+// }
 
 void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::SharedPtr msg) {
     geometry_msgs::msg::Pose arm_current_pose = arm->getCurrentPose().pose;
@@ -999,19 +1004,63 @@ void KeyboardController::cartesian_action_callback(const std_msgs::msg::Int8::Sh
     }
 }
 
-void KeyboardController::joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
-{
-    current_joint_states_.header.stamp = this->get_clock()->now();
-    current_joint_states_.name.resize(6);
-    current_joint_states_.position.resize(6);
-    current_joint_states_.effort.resize(6);
+void KeyboardController::joint_states_callback(const sensor_msgs::msg::JointState::SharedPtr msg) {
+    current_joint_positions_ = msg->position;
+}
 
-    // 只使用了位置，可以添加其他信息
-    for (size_t i = 0; i < msg->name.size(); i++) {
-        current_joint_states_.name[i] = msg->name[i];
-        current_joint_states_.position[i] = msg->position[i];
+
+void KeyboardController::teach_action_callback() {
+    if (current_joint_positions_.empty()) {
+        RCLCPP_WARN(this->get_logger(), "No joint states received yet!");
+        return;
+    }
+
+    auto joint_state = std::make_shared<sensor_msgs::msg::JointState>();
+    joint_state->header.stamp = this->now();
+    joint_state->name = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6"};
+    joint_state->position = current_joint_positions_;
+
+    // 录制到 rosbag
+    if (!teach_bag_writer_) {
+        teach_bag_writer_ = std::make_shared<rosbag2_cpp::Writer>();
+        teach_bag_writer_->open(
+            rosbag2_cpp::StorageOptions{"taught_trajectory", "sqlite3"},
+            rosbag2_cpp::ConverterOptions{"", ""}
+        );
+    }
+    // teach_bag_writer_->write(joint_state, "/joint_states", this->now());
+}
+
+
+void KeyboardController::teach_repeat_callback() {
+    if (!play_bag_reader_) {
+        play_bag_reader_ = std::make_shared<rosbag2_cpp::Reader>();
+        play_bag_reader_->open(
+            rosbag2_cpp::StorageOptions{"taught_trajectory", "sqlite3"},
+            rosbag2_cpp::ConverterOptions{"", ""}
+        );
+    }
+
+    // 从 bag 中读取下一帧数据
+    if (play_bag_reader_->has_next()) {
+        auto msg = play_bag_reader_->read_next<sensor_msgs::msg::JointState>();
+        auto trajectory_msg = std::make_unique<trajectory_msgs::msg::JointTrajectory>();
+        trajectory_msg->joint_names = msg.name;
+        trajectory_msg->header.stamp = this->now();
+
+        
+        trajectory_msgs::msg::JointTrajectoryPoint point;
+        point.positions = msg.position;
+        point.time_from_start.sec = 0;
+        point.time_from_start.nanosec = 100000000;  // 0.1秒
+        
+        trajectory_msg->points.push_back(point);
+
+        // 发布轨迹到机械臂控制器
+        joint_trajectory_pub_->publish(std::move(trajectory_msg));
     }
 }
+
 
 int main(int argc, char const *argv[])
 {

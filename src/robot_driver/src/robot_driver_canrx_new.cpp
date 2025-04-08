@@ -13,7 +13,9 @@ void SocketCanReceiverNode::timer_callback() {
         message.velocity.push_back(status->velocity);
         message.effort.push_back(status->current);
     }
-
+    // RCLCPP_INFO(this->get_logger(), "%lf, %lf, %lf, %lf, %lf, %lf", 
+    //             message.position[0], message.position[1], message.position[2], 
+    //             message.position[3], message.position[4], message.position[5]);
     publisher_->publish(message);
 }
 
